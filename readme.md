@@ -2,13 +2,13 @@
 
 Sistema que permita llevar la economía de la casa en forma fácil e intuitiva permitiendo que cada integrante del grupo familiar cargue las transacciones desde su celular sin necesidad de estar conectado y se pueda llevar una economía ordenada tanto de la casa como de los gastos personales de cada uno.
 
-## Carácterísticas
+## Características
 
 ### Principales
 
-- Que sea multiplataforma (Linux, windows, Android, etc.)
+- Que sea multi-plataforma (Linux, Windows, Android, etc.)
 - Que permita sincronizar diferentes dispositivos y mantenga una base de datos en cada terminal.
-- Que permita el uso sin estar conectado a internet y al obtener conexión permita sincronizar con las deás terminales.
+- Que permita el uso sin estar conectado a internet y al obtener conexión permita sincronizar con las demás terminales.
 - Que tenga sistema de plugins para agregar funcionalidades en forma fácil.
 - Que permita guardar y transmitir los datos en forma encriptada,
 - Que maneje múltiples monedas y la conversión de las mismas (con o sin comisión).
@@ -25,5 +25,6 @@ Sistema que permita llevar la economía de la casa en forma fácil e intuitiva p
 
 ## Diseño
 
-Las versiones pra PC y mac se harían en Python con Django, y las versiones para Android se harían en javascript/html/css con phonegap.
+Las versiones para Linux y Windows se harían en Python con Django, y las versiones para IOS y Android se harían en javascript/html/css con cordova/phonegap.
 
+Para almacenamiento de datos se puede usar sqlite ya que es compatible tanto con python como con phonegap (usando Cordova-sqlite-storage), permite encriptar y no necesita la instalación de un motor de base de datos separado.
