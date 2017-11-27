@@ -31,6 +31,7 @@ Sistema que permita llevar la economía de la casa en forma fácil e intuitiva p
 - Que maneje inversiones (bonos, acciones, crowfunding, crowlending,  criptomonedas, metales, etc).
 - Que maneje presupuesto de gastos.
 - Que tenga un modo "avanzado" que permita calcular y registrar operaciones mas complejas (como swaption por ejemplo).
+- Que calcule algunos impuestos como por ejemplo bienes personales, ingresos brutos, ganancias, etc.
 
 ### Whishlist
 
@@ -40,6 +41,6 @@ Sistema que permita llevar la economía de la casa en forma fácil e intuitiva p
 
 ## Diseño
 
-Todas las versiones se podrían desarrollar con kivy, que es multiplataforma, y de esa forma me evito que 
+Todas las versiones se podrían desarrollar con kivy, que es multiplataforma, y de esa forma me evito tener 2 aplicaciones distintas (para moviles y para pc).
 
 Para almacenamiento de datos se puede usar sqlite ya que es compatible tanto con python como con phonegap (usando Cordova-sqlite-storage), permite encriptar y no necesita la instalación de un motor de base de datos separado.
