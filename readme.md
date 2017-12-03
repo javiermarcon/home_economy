@@ -39,8 +39,45 @@ Sistema que permita llevar la economía de la casa en forma fácil e intuitiva p
 - Que permita hablarle a la aplicacion con patrones preestablecidos y la aplicacion reconozca la voz y ejecute las ordenes dictadas. Por ejemplo "contraseña 12345 gasté 57 pesos con 40 centavos en una ensalada en chino top para almuerzo deshabilitar login" y (si la contraseña especificada es correcta) que deshabilite el login e ingrese una transaccion nueva con los datos: tipo: gasto, moneda: ARS, importe: 57.40, destinatario: chino top, categoria: almuerzo, descripcion: ensalada. Tambien podria ser por ejemplo "ayer le preste 14 pesos a NN para comprar una coca cola" o "NN me devolvio 14 pesos de lo que me debia".
 - Que tenga un anazizador de webs tipo selenium para loguearse en páginas (de bancos, de inversiones, etc.) para actualizar los valores de las inversiones.
 
-## Diseño
+## Diseño y desarrollo
 
-Todas las versiones se podrían desarrollar con kivy, que es multiplataforma, y de esa forma me evito tener 2 aplicaciones distintas (para moviles y para pc).
+La aplicación se desarrollará en capas utilizando los métodos SCRUM y TDD utilizando el lenguaje Python. Se empaquetará con Kivy para que sea multiplataforma.
 
-Para almacenamiento de datos se puede usar sqlite ya que es compatible tanto con python como con phonegap (usando Cordova-sqlite-storage), permite encriptar y no necesita la instalación de un motor de base de datos separado.
+La aplicación tendrá distintas partes que interactuarán:
+- **Core**: parte central que permitirá hacer los asientos, cálculos que se guarden, lógica de usuarios, manejo de plugins, etc.
+- **Sync**: módulo de sincronización y api que permite que interactuar con otras instancias de Home_Economy o con programas externos.
+- **TextUI**: interface de texto para interactuar en forma simple con la aplicación.
+- **GUI**: interfaz gráfica linda para interacuar con la aplicación.
+- **Listener**: módulo para interactuar hablando con la aplicación.
+
+### Core
+
+El core se hará con clases de python puro, las cuales serán importadas por los demás módulos.
+Para procesamiento de datos se usará pandas y numpy.
+Para almacenamiento de datos se utilizará el ORM sqlAlchemy con una base de datos sqlite (tener en cuenta http://cheparev.com/kivy-sqlite/), ya que sqlite es muy liviana, permite encriptar y no necesita la instalación de un motor de base de datos separado. Si la aplicación crece en complejidad puede sustituirse la base de datos por una bd relacional más robusta (como postgresql) o incluso sustituir el diseño para utilizar una base de datos nosql o de grafos. Igualmente al tener una api de comunicación, el cambio sería transparente para los demás módulos.
+
+### Sync
+
+La parte de sync tendrá una api hecha con Tornado, la cual se utilizará tanto para la comunicación con otras instancias de la aplicación como con programas externos. También se prevee que en el futuro permita importar y exportar datos utilizando archivos compartidos por Dropbox, Google Drive, etc.
+
+### TextUI
+
+Este módulo sería una interfaz simple para usar la aplicación mientras se arma la gui. Todavía no se si voy a hacerlo porque no parece demasiado útil. También puede servirle a los que quieran usar la aplicación en maquinas muy viejas con monitores monocromáticos que no soportan interfaz gráfica.
+
+### GUI
+
+La gui se desarrollará con kivy, que es multiplataforma, y de esa forma me evito tener 2 aplicaciones distintas (para moviles y para pc). Entre los widgets que se pretende utilizar se encuentran:
+- Kivy Datagrid Plugin (https://github.com/namkazt/Kivy-Datagrid-plugin)
+- Kivy Garden (https://github.com/kivy-garden)
+
+### Listener
+
+Este módulo utilizará reconocimiento de voz para entender lo que el usuario le dice y así operar con el sistema. Se utilizará para eso la librería CMUSphinx (https://cmusphinx.github.io/) para hacer el reconocmimiento y la librería SpeechRecognition (https://pypi.python.org/pypi/SpeechRecognition) como puente entre el programa y CMUSphinx.
+
+### Plugins
+
+Los plugins tendrán funcionalidades específicas como por ejemplo leer mails, manejar duplicados (por ejemplo si 2 plugins leen info de distintos medios y ponen una misma transacción 2 veces), etc.
+
+### Testing
+Se desarrollará tests unitarios en forma de historia y luego se verificará el accuracy y coverage de los tests para  que no quede nada en el tintero. Posiblemente se utilice KivyUnitTests (https://github.com/KeyWeeUsr/KivyUnitTest).
+
