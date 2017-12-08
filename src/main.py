@@ -2,7 +2,7 @@ import multiprocessing
 
 from src.hegui.hegui import HEguiApp
 from src.hesync.hesync import HEsyncApp
-
+from src.helistener.helistener import *
 
 def open_gui(s):
     HEguiApp(s).run()
