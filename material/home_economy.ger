@@ -1,0 +1,30 @@
+home_economy
+/media/sda6/proyectos/finanzas/home_economy/home_economy.ger
+javier marcon
+3
+1
+0 0 824 768
+2
+User
+57.0
+40.0
+6
+id varchar(32)
+login varchar(32)
+name varchar(32)
+surname varchar(32)
+password varchar(32)
+is_admin int
+1
+id
+0
+Account
+309.0
+47.0
+2
+id varchar(32)
+name varchar(32)
+1
+id
+0
+0
