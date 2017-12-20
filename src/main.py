@@ -24,7 +24,7 @@ def main():
 
     # gui speech recognition
     from hegui.hegui import HEguiApp
-    #from helistener.helistener import SpeechDetector
+    from helistener.helistener import SpeechDetector
 
     if args.runtype == "s":
         import multiprocessing
@@ -35,7 +35,7 @@ def main():
 
 
 
-    """
+    
     def open_speech(num):
         sd = SpeechDetector()
         sd.setup_mic()
@@ -44,11 +44,12 @@ def main():
 
     # leo configuracion
     #corro los modulos del programa
-    a = multiprocessing.Process(target=open_gui, args=['hello'])
+    import multiprocessing
+    #a = multiprocessing.Process(target=open_gui, args=['hello'])
     c = multiprocessing.Process(target=open_speech, args=[5])
-    a.start()
+    #a.start()
     c.start()
-    """
+    
 
 def open_sync(s):
     from hesync.hesync import HEsyncApp
