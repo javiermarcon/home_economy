@@ -58,7 +58,7 @@ Para almacenamiento de datos se utilizará el ORM sqlAlchemy con una base de dat
 
 ### Sync
 
-La parte de sync tendrá una api hecha con Tornado, la cual se utilizará tanto para la comunicación con otras instancias de la aplicación como con programas externos. También se prevee que en el futuro permita importar y exportar datos utilizando archivos compartidos por Dropbox, Google Drive, etc.
+La parte de sync tendrá una api hecha con Tornado, la cual se utilizará tanto para la comunicación con otras instancias de la aplicación como con programas externos. También se prevee que en el futuro permita importar y exportar datos utilizando archivos compartidos por Dropbox, Google Drive, etc. Al sincronizar x http tendra opciones de ingresar ip, utilizar ultima ip conocida y/o buscar host en lan.
 
 ### TextUI
 

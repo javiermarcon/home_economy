@@ -1,4 +1,7 @@
-import kivy
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+#import kivy
 #kivy.require('1.0.6') # replace with your current kivy version !
 
 from kivy.app import App
@@ -17,6 +20,9 @@ class HEguiApp(App):
     def build(self):
         return Label(text=self.my_string)
 
+    # To keep the app running in background
+    #def on_pause(self):
+    #    return True
 
 if __name__ == '__main__':
     HEguiApp().run()

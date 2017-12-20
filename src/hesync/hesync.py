@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import tornado.httpserver
 import tornado.ioloop
 import tornado.options
@@ -18,7 +21,7 @@ class HEsyncApp:
         define("text", default=s, help="text")
 
     def run(self):
-        tornado.options.parse_command_line()
+        #tornado.options.parse_command_line()
         application = tornado.web.Application([
             (r"/", MainHandler),
         ])
