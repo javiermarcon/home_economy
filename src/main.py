@@ -4,6 +4,8 @@
 from argparse import ArgumentParser
 import os
 
+__version__ = "0.0.1"
+
 def main():
     # inicializo parametros
     # parseo argumentos de linea de comandos
@@ -23,7 +25,7 @@ def main():
     os.environ["KIVY_NO_ARGS"] = "1"
 
     # gui speech recognition
-    from hegui.hegui import HEguiApp
+    from hegui.hegui import LoginApp #HEguiApp
     from helistener.helistener import SpeechDetector
 
     if args.runtype == "s":
@@ -31,7 +33,8 @@ def main():
         syncproc = multiprocessing.Process(target=open_sync, args=['hello'])
         syncproc.start()
 
-    HEguiApp('hello').run()
+    #HEguiApp('hello').run()
+    LoginApp().run()
 
 
 
