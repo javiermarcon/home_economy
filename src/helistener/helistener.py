@@ -39,7 +39,7 @@ class SpeechDetector:
         self.num_phrases = -1
 
         # These will need to be modified according to where the pocketsphinx folder is
-        MODELDIR = "model"  # "/usr/share/pocketsphinx/model"
+        MODELDIR = "plugins/speech_lang"  # "/usr/share/pocketsphinx/model"
         # DATADIR = "../../tools/pocketsphinx/test/data"
 
         # Create a decoder with certain model

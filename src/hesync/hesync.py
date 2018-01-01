@@ -1,33 +1,30 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import tornado.httpserver
-import tornado.ioloop
-import tornado.options
-import tornado.web
+# install_twisted_rector must be called before importing and using the reactor
+from kivy.support import install_twisted_reactor
 
-from tornado.options import define, options
+install_twisted_reactor()
 
-define("port", default=8888, help="run on the given port", type=int)
+from twisted.internet import reactor
+from twisted.internet import protocol
 
 
-class MainHandler(tornado.web.RequestHandler):
-    def get(self):
-        self.write(options.text)
+class EchoServer(protocol.Protocol):
+	def dataReceived(self, data):
+		response = self.factory.app.handle_message(data)
+		if response:
+			self.transport.write(response)
+
+class EchoServerFactory(protocol.Factory):
+	protocol = EchoServer
+
+	def __init__ (self, app):
+		self.app = app
+
 
 class HEsyncApp:
-
-    def __init__(self, s):
-        define("text", default=s, help="text")
-
-    def run(self):
-        #tornado.options.parse_command_line()
-        application = tornado.web.Application([
-            (r"/", MainHandler),
-        ])
-        http_server = tornado.httpserver.HTTPServer(application)
-        http_server.listen(options.port)
-        tornado.ioloop.IOLoop.current().start()
+    pass
 
 
 if __name__ == '__main__':

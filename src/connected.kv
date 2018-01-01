@@ -1,0 +1,17 @@
+<Connected>:
+    BoxLayout:
+        orientation: 'vertical'
+
+        Label:
+            text: "Welcome to application"
+            font_size: 32
+        Label:
+            text: app.username
+            font_size: 32
+        Label:
+            text: app.password
+            font_size: 32
+        Button:
+            text: "Disconnect"
+            font_size: 24
+            on_press: root.disconnect()
