@@ -4,10 +4,10 @@
 from kivy.app import App
 from kivy.properties import StringProperty
 from kivy.uix.screenmanager import ScreenManager, Screen, SlideTransition
-from kivy.lang import Builder
+
 import os
 
-from connected import Connected
+from mainscreen import MainScreen
 
 class Login(Screen):
     def do_login(self, loginText, passwordText):
@@ -17,7 +17,7 @@ class Login(Screen):
         app.password = passwordText
 
         self.manager.transition = SlideTransition(direction="left")
-        self.manager.current = 'connected'
+        self.manager.current = 'mainscreen'
 
         app.config.read(app.get_application_config())
         app.config.write()
@@ -36,7 +36,7 @@ class HeGuiApp(App):
         manager = ScreenManager()
 
         manager.add_widget(Login(name='login'))
-        manager.add_widget(Connected(name='connected'))
+        manager.add_widget(MainScreen(name='mainscreen'))
 
         return manager
 
