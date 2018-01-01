@@ -26,13 +26,13 @@ def main():
     #print args
 
     # gui
-    from hegui import LoginApp #HEguiApp
+    from hegui import HeGuiApp #HEguiApp
 
     #if args.runtype == "s":
     # lanzo el sync
 
     #HEguiApp('hello').run()
-    LoginApp().run()
+    HeGuiApp().run()
 
     ##speech recognition
     #def open_speech(num):

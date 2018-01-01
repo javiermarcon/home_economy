@@ -26,7 +26,7 @@ class Login(Screen):
         self.ids['login'].text = ""
         self.ids['password'].text = ""
 
-class LoginApp(App):
+class HeGuiApp(App):
     #kv_directory = os.path.join(__file__, 'kv')
     username = StringProperty('')
     password = StringProperty('')
@@ -42,16 +42,16 @@ class LoginApp(App):
 
     def get_application_config(self):
         if(not self.username):
-            return super(LoginApp, self).get_application_config()
+            return super(HeGuiApp, self).get_application_config()
 
         conf_directory = self.user_data_dir + '/' + self.username
 
         if(not os.path.exists(conf_directory)):
             os.makedirs(conf_directory)
 
-        return super(LoginApp, self).get_application_config(
+        return super(HeGuiApp, self).get_application_config(
             '%s/config.cfg' % (conf_directory)
         )
 
 if __name__ == '__main__':
-    LoginApp().run()
+    HeGuiApp().run()
