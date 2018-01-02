@@ -65,7 +65,7 @@ class HeGuiApp(App):
         self._switch_main_page('Sincronizar',  PaginaSincro)
 
     def do_logout(self):
-        Login.resetForm()
+        Login().resetForm()
         self._switch_main_page('Login', Login)
 
     def _switch_main_page(self, key,  panel):
