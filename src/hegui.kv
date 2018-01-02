@@ -1,3 +1,23 @@
+#:kivy 1.8.0
+
+# outline widgets for debugging
+#:include widget_outline.kv
+
 #:include mainscreen.kv
 #:include login.kv
+#:include menu.kv
 
+<AppActionBar>:
+    pos_hint: {'top':1}
+    ActionView:
+        use_separator: True
+        ActionMenu:
+            title: 'AndroidApp'
+            with_previous: False
+            app_icon: 'atlas://data/images/defaulttheme/splitter_grip'
+            on_press: self.menu()
+        ActionOverflow:
+        ActionQuit:
+            text: 'Salir'
+            icon: 'atlas://data/images/defaulttheme/close'
+            on_press: self.menu()

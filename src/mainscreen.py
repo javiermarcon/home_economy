@@ -1,7 +1,9 @@
-from kivy.uix.screenmanager import Screen, SlideTransition
+# -*- coding: utf-8 -*-
 
-class MainScreen(Screen):
+from kivy.app import App
+from kivy.uix.boxlayout import BoxLayout
+
+class MainPanel(BoxLayout):
     def disconnect(self):
-        self.manager.transition = SlideTransition(direction="right")
-        self.manager.current = 'login'
-        self.manager.get_screen('login').resetForm()
+        app = App.get_running_app()
+        app.do_logout()

@@ -9,7 +9,7 @@ __version__ = "0.0.1"
 def main():
     ## inicializo parametros
     # para que kivy no acapare las opciones de linea de comando
-    os.environ["KIVY_NO_ARGS"] = "1"
+    #os.environ["KIVY_NO_ARGS"] = "1"
 
 
     ## parseo argumentos de linea de comandos
