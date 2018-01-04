@@ -6,7 +6,38 @@
         text: 'Inicio'
 
     MenuItem:
-        text: 'Cuentas'
+        text: 'Base de datos'
 
     MenuItem:
         text: 'Sincronizar'
+
+    BoxLayout:
+        orientation: 'horizontal'
+
+        Label:
+            text: 'Entidades'
+                #size_hint: (4., 1.)
+
+        BoxLayout:
+            orientation: 'vertical'
+
+            MenuItem:
+                text: 'Cuentas'
+
+            MenuItem:
+                text: 'Monedas'
+
+            MenuItem:
+                text: 'Categorias'
+
+            MenuItem:
+                text: 'Usuarios'
+
+    MenuItem:
+        text: 'Presupuestos'
+
+    MenuItem:
+        text: 'Reportes'
+
+    MenuItem:
+        text: 'Acerca de...'
