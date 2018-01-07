@@ -8,7 +8,7 @@ from kivy.app import App
 from kivy.properties import StringProperty
 #from kivy.uix.screenmanager import ScreenManager, Screen, SlideTransition
 
-from navigationdrawer import NavigationDrawer
+from hegui.navigationdrawer import NavigationDrawer
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.button import Button
@@ -16,7 +16,7 @@ from kivy.uix.actionbar import ActionBar, ActionButton, ActionPrevious
 
 import os
 
-from login import Login
+from hegui.login import Login
 
 class HeGuiApp(App):
     #kv_directory = os.path.join(__file__, 'kv')

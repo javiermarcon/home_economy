@@ -4,7 +4,7 @@
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 
-from mainscreen import MainPanel
+from hegui.mainscreen import MainPanel
 
 class Login(BoxLayout):
     def do_login(self, loginText, passwordText):

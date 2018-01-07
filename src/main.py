@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from argparse import ArgumentParser
-import os
-
 __version__ = "0.0.1"
 
 def main():
@@ -26,7 +23,7 @@ def main():
     #print args
 
     # gui
-    from hegui import HeGuiApp #HEguiApp
+    from maingui import HeGuiApp #HEguiApp
 
     #if args.runtype == "s":
     # lanzo el sync
