@@ -4,7 +4,28 @@ Sistema que permita llevar la economía de la casa en forma fácil e intuitiva p
 
 ## Características
 
-### Principales
+### realizadas
+Todavia no hay nada hecho que sea usable.
+
+### sprint actual
+
+#### Seguridad:
+- Manejo básico de usuarios.
+
+#### Usabilidad
+
+- Que sea facil de usar para personas sin conocimientos de computación ni de economia.
+- Que sea multi-plataforma (Linux, Windows, Android, etc.)
+- Que permita sincronizar diferentes dispositivos y mantenga una base de datos en cada terminal.
+- Que permita el uso sin estar conectado a internet y al obtener conexión permita sincronizar con las demás terminales.
+- Que tenga sistema de plugins para agregar funcionalidades en forma fácil.
+
+#### Economia
+
+- Que permita ingresar operaciones básicas como gastos, ingresos simples o transferencias simples
+- Que maneje múltiples monedas.
+
+### Sprints futuros
 
 #### Seguridad:
 - Usuarios con contraseña estatica o dinamica (que la contraseña incluya calculos con variables como fecha y hora para que cambie cada 5 minutos por ejemplo).
@@ -12,18 +33,18 @@ Sistema que permita llevar la economía de la casa en forma fácil e intuitiva p
 - Que haya un comando para deshabilitar el login hasta el proximo cambio de contraseña.
 
 #### Usabilidad
-- Que sea facil de usar para personas sin conocimientos de computación ni de economia.
-- Que sea multi-plataforma (Linux, Windows, Android, etc.)
-- Que permita sincronizar diferentes dispositivos y mantenga una base de datos en cada terminal.
-- Que permita el uso sin estar conectado a internet y al obtener conexión permita sincronizar con las demás terminales.
-- Que tenga sistema de plugins para agregar funcionalidades en forma fácil.
+
 - Que permita guardar y transmitir los datos en forma encriptada,
 - Que cada transacción permita guardar uno o varios archivos de comprobante.
-- Que permita importar y exportar datos en QIF y otros formatos.
+- Que permita importar y exportar datos en QIF y otros formatos de archivos contables.
+- Que permita importar datos de bases de datos de otros progrmamas como "money Manager Ex" por ejemplo.
 - Que tenga backward-compatibility permitiendo la sincronización entre distintas versiones.
 - Que tenga un parser de mails para incorporar automaticamente transacciones que se informan por mail (pagos con débito automático, valorización de cartera, acreditación de dividendos, etc).
+- Que permita hablarle a la aplicacion con patrones preestablecidos y la aplicacion reconozca la voz y ejecute las ordenes dictadas. Por ejemplo "contraseña 12345 gasté 57 pesos con 40 centavos en una ensalada en chino top para almuerzo deshabilitar login" y (si la contraseña especificada es correcta) que deshabilite el login e ingrese una transaccion nueva con los datos: tipo: gasto, moneda: ARS, importe: 57.40, destinatario: chino top, categoria: almuerzo, descripcion: ensalada. Tambien podria ser por ejemplo "ayer le preste 14 pesos a NN para comprar una coca cola" o "NN me devolvio 14 pesos de lo que me debia".
+- Que tenga un anazizador de webs tipo selenium para loguearse en páginas (de bancos, de inversiones, etc.) para actualizar los valores de las inversiones.
 
 #### Economia
+
 - Que maneje múltiples monedas y la conversión de las mismas (con o sin comisión).
 - Que maneje gastos tanto recurrentes (impuestos x ejemplo) como no recurrentes.
 - Que maneje ingresos incluyendo valores futuros (cheque diferido x ejemplo).
@@ -32,21 +53,15 @@ Sistema que permita llevar la economía de la casa en forma fácil e intuitiva p
 - Que maneje presupuesto de gastos.
 - Que tenga un modo "avanzado" que permita calcular y registrar operaciones mas complejas (como swaption por ejemplo).
 - Que calcule algunos impuestos como por ejemplo bienes personales, ingresos brutos, ganancias, etc.
-
-### Whishlist
-
 - Que permita importar datos de bancos, tarjetas de crédito, brokers, etc.
-- Que permita hablarle a la aplicacion con patrones preestablecidos y la aplicacion reconozca la voz y ejecute las ordenes dictadas. Por ejemplo "contraseña 12345 gasté 57 pesos con 40 centavos en una ensalada en chino top para almuerzo deshabilitar login" y (si la contraseña especificada es correcta) que deshabilite el login e ingrese una transaccion nueva con los datos: tipo: gasto, moneda: ARS, importe: 57.40, destinatario: chino top, categoria: almuerzo, descripcion: ensalada. Tambien podria ser por ejemplo "ayer le preste 14 pesos a NN para comprar una coca cola" o "NN me devolvio 14 pesos de lo que me debia".
-- Que tenga un anazizador de webs tipo selenium para loguearse en páginas (de bancos, de inversiones, etc.) para actualizar los valores de las inversiones.
 
 ## Diseño y desarrollo
 
-La aplicación se desarrollará en capas utilizando los métodos SCRUM y TDD utilizando el lenguaje Python. Se empaquetará con Kivy para que sea multiplataforma.
+La aplicación se desarrollará en capas utilizando los métodos SCRUM y BDD utilizando el lenguaje Python. Se empaquetará con Kivy para que sea multiplataforma.
 
 La aplicación tendrá distintas partes que interactuarán:
 - **Core**: parte central que permitirá hacer los asientos, cálculos que se guarden, lógica de usuarios, manejo de plugins, etc.
 - **Sync**: módulo de sincronización y api que permite que interactuar con otras instancias de Home_Economy o con programas externos.
-- **TextUI**: interface de texto para interactuar en forma simple con la aplicación.
 - **GUI**: interfaz gráfica linda para interacuar con la aplicación.
 - **Listener**: módulo para interactuar hablando con la aplicación.
 
@@ -59,10 +74,6 @@ Para almacenamiento de datos se utilizará el ORM sqlAlchemy con una base de dat
 ### Sync
 
 La parte de sync tendrá una api hecha con Tornado, la cual se utilizará tanto para la comunicación con otras instancias de la aplicación como con programas externos. También se prevee que en el futuro permita importar y exportar datos utilizando archivos compartidos por Dropbox, Google Drive, etc. Al sincronizar x http tendra opciones de ingresar ip, utilizar ultima ip conocida y/o buscar host en lan.
-
-### TextUI
-
-Este módulo sería una interfaz simple para usar la aplicación mientras se arma la gui. Todavía no se si voy a hacerlo porque no parece demasiado útil. También puede servirle a los que quieran usar la aplicación en maquinas muy viejas con monitores monocromáticos que no soportan interfaz gráfica.
 
 ### GUI
 
@@ -80,4 +91,3 @@ Los plugins tendrán funcionalidades específicas como por ejemplo leer mails, m
 
 ### Testing
 Se desarrollará tests unitarios en forma de historia y luego se verificará el accuracy y coverage de los tests para  que no quede nada en el tintero. Posiblemente se utilice KivyUnitTests (https://github.com/KeyWeeUsr/KivyUnitTest).
-
