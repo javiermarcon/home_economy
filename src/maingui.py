@@ -6,7 +6,6 @@ kivy.require('1.8.0')
 
 from kivy.app import App
 from kivy.properties import StringProperty
-#from kivy.uix.screenmanager import ScreenManager, Screen, SlideTransition
 
 from hegui.navigationdrawer import NavigationDrawer
 from kivy.uix.boxlayout import BoxLayout
@@ -17,20 +16,19 @@ from kivy.uix.actionbar import ActionBar, ActionButton, ActionPrevious
 import os
 
 from hegui.login import Login
+from hegui.menufunctions import MenuFunctions, SidePanel_AppMenu
 
-class HeGuiApp(App):
-    #kv_directory = os.path.join(__file__, 'kv')
+RootApp = None
+id_AppMenu_METHOD = 0
+id_AppMenu_PANEL = 1
+
+class HeGuiApp(App, MenuFunctions):
+    kv_directory = os.path.join(os.path.dirname(__file__), "hegui", 'kv')
+    print kv_directory
     username = StringProperty('a')
     password = StringProperty('x')
 
     def build(self):
-
-        #manager = ScreenManager()
-
-        #manager.add_widget(Login(name='login'))
-        #manager.add_widget(MainScreen(name='mainscreen'))
-
-        #return manager
 
         global RootApp
         RootApp = self
@@ -52,17 +50,6 @@ class HeGuiApp(App):
 
     def toggle_sidepanel(self):
         self.navigationdrawer.toggle_state()
-
-    def on_uno(self):
-        print 'UNO... exec'
-        self._switch_main_page('Inicio', PaginaInicio)
-
-    def on_due(self):
-        print 'DUE... exec'
-        self._switch_main_page('Cuentas', PaginaCuentas)
-    def on_tre(self):
-        print 'TRE... exec'
-        self._switch_main_page('Sincronizar',  PaginaSincro)
 
     def do_logout(self):
         Login().resetForm()
@@ -89,26 +76,6 @@ class HeGuiApp(App):
         return super(HeGuiApp, self).get_application_config(
             '%s/config.cfg' % (conf_directory)
         )
-
-
-#--------------------------------------------------------------------------
-'''dictionary that contains the correspondance between items descriptions
-and methods that actually implement the specific function and panels to be
-shown instead of the first main_panel
-'''
-SidePanel_AppMenu = {'Login': ['Login',None],
-                     'MainPanel': ['MainPanel',None],
-                     'Inicio':['on_uno',None],
-                     'Cuentas':['on_due',None],
-                     'Sincronizar':['on_tre',None],
-                     }
-id_AppMenu_METHOD = 0
-id_AppMenu_PANEL = 1
-
-
-#--------------------------------------------------------------------------
-
-RootApp = None
 
 class SidePanel(BoxLayout):
     pass
@@ -155,13 +122,4 @@ class NavDrawer(NavigationDrawer):
                 self.state = 'closed'
 
 class AppArea(FloatLayout):
-    pass
-
-class PaginaInicio(FloatLayout):
-    pass
-
-class PaginaCuentas(FloatLayout):
-    pass
-
-class PaginaSincro(FloatLayout):
     pass
