@@ -5,20 +5,22 @@
     AppActionBar:
         size_hint: (1., 0.1)
 
-    GridLayout:
-        cols: 3
-
     BoxLayout:
         orientation: 'vertical'
         Label:
             text: "Welcome to application"
             font_size: 32
-        Label:
-            text: app.username
-            font_size: 32
-        Label:
-            text: app.password
-            font_size: 32
+
+        RV:
+            viewclass: 'Label'
+
+            RecycleBoxLayout:
+                default_size: None, dp(56)
+                default_size_hint: 1, None
+                size_hint_y: None
+                height: self.minimum_height
+                orientation: 'vertical'
+
         Button:
             text: "Disconnect"
             font_size: 24
