@@ -2,6 +2,8 @@
 
 Sistema que permita llevar la economía de la casa en forma fácil e intuitiva permitiendo que cada integrante del grupo familiar cargue las transacciones desde su celular sin necesidad de estar conectado y se pueda llevar una economía ordenada tanto de la casa como de los gastos personales de cada uno.
 
+Tambien esta pensado para que la informacion que pueda ser accesible via web o mail se cargue en forma automatica evitandole al usuario el trabajo de cargarla (ahorrandole tiempo y esfuerzo al usuario) y evitando discrepancias x olvidarse de cargar algo.
+
 ## Características
 
 ### realizadas
@@ -42,6 +44,10 @@ Todavia no hay nada hecho que sea usable.
 - Que tenga un parser de mails para incorporar automaticamente transacciones que se informan por mail (pagos con débito automático, valorización de cartera, acreditación de dividendos, etc).
 - Que permita hablarle a la aplicacion con patrones preestablecidos y la aplicacion reconozca la voz y ejecute las ordenes dictadas. Por ejemplo "contraseña 12345 gasté 57 pesos con 40 centavos en una ensalada en chino top para almuerzo deshabilitar login" y (si la contraseña especificada es correcta) que deshabilite el login e ingrese una transaccion nueva con los datos: tipo: gasto, moneda: ARS, importe: 57.40, destinatario: chino top, categoria: almuerzo, descripcion: ensalada. Tambien podria ser por ejemplo "ayer le preste 14 pesos a NN para comprar una coca cola" o "NN me devolvio 14 pesos de lo que me debia".
 - Que tenga un anazizador de webs tipo selenium para loguearse en páginas (de bancos, de inversiones, etc.) para actualizar los valores de las inversiones.
+- Que permita guardar backups en forma automatica.
+- Que permita usar y guardar plantillas de operaciones.
+- Que tenga reglas para definir x horario y monto la plantilla x defecto al iniciar una operacion.
+- Que tenga multiples idiomas.
 
 #### Economia
 
@@ -54,6 +60,9 @@ Todavia no hay nada hecho que sea usable.
 - Que tenga un modo "avanzado" que permita calcular y registrar operaciones mas complejas (como swaption por ejemplo).
 - Que calcule algunos impuestos como por ejemplo bienes personales, ingresos brutos, ganancias, etc.
 - Que permita importar datos de bancos, tarjetas de crédito, brokers, etc.
+- Que tenga cuentas compartidas (gastos de la casa  o supermercados por ejemplo).
+- Que maneje prestamos a otras personas.
+- Que tenga plugins de consejos financieros (por ejemplo te puede aconsejar cuando comprar o vender divisas o acciones usando estrategias como los promedios de ruedas moviles).
 
 ## Diseño y desarrollo
 
