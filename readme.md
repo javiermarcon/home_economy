@@ -48,6 +48,7 @@ Todavia no hay nada hecho que sea usable.
 - Que permita usar y guardar plantillas de operaciones.
 - Que tenga reglas para definir x horario y monto la plantilla x defecto al iniciar una operacion.
 - Que tenga multiples idiomas.
+- Que sincronice con Google Calendar los eventos de inversiones (pago cupones y dividendos, finalizacion de inversiones, etc).
 
 #### Economia
 
