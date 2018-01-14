@@ -15,8 +15,8 @@ class Login(BoxLayout):
 
         app._switch_main_page('MainPanel', MainPanel)
 
-        app.config.read(app.get_application_config())
-        app.config.write()
+        #app.config.read(app.get_application_config())
+        #app.config.write()
 
     def resetForm(self):
         self.ids['login'].text = ""

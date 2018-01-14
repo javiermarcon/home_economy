@@ -5,9 +5,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.recycleview import RecycleView
 
 class MainPanel(BoxLayout):
-    def disconnect(self):
-        app = App.get_running_app()
-        app.do_logout()
+    pass
 
 class RV(RecycleView):
     """ver: https://kivy.org/docs/api-kivy.uix.recycleview.html#kivy.uix.recycleview.RecycleView"""

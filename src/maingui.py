@@ -25,8 +25,8 @@ id_AppMenu_PANEL = 1
 class HeGuiApp(App, MenuFunctions):
     kv_directory = os.path.join(os.path.dirname(__file__), "hegui", 'kv')
     print kv_directory
-    username = StringProperty('a')
-    password = StringProperty('x')
+    username = StringProperty('')
+    password = StringProperty('')
 
     def build(self):
 
@@ -54,6 +54,10 @@ class HeGuiApp(App, MenuFunctions):
     def do_logout(self):
         Login().resetForm()
         self._switch_main_page('Login', Login)
+
+    def do_quit(self):
+        print 'App quit'
+        self.stop()
 
     def _switch_main_page(self, key,  panel):
         self.navigationdrawer.close_sidepanel()
@@ -106,9 +110,6 @@ class ActionMenu(ActionPrevious):
 
 class ActionQuit(ActionButton):
     pass
-    def menu(self):
-        print 'App quit'
-        RootApp.stop()
 
 class NavDrawer(NavigationDrawer):
     def __init__(self, **kwargs):

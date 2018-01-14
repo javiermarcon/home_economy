@@ -17,6 +17,7 @@
 
         Label:
             text: 'Entidades'
+            size_hint: 0.5, 1
 
         BoxLayout:
             orientation: 'vertical'
@@ -28,7 +29,7 @@
                 text: 'Monedas'
 
             MenuItem:
-                text: 'Categorias'
+                text: 'Categorías'
 
             MenuItem:
                 text: 'Usuarios'
@@ -39,5 +40,28 @@
     MenuItem:
         text: 'Reportes'
 
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint: 1, 3
+
+        Label:
+            text: 'Ayuda'
+            size_hint: 0.5, 1
+
+        BoxLayout:
+            orientation: 'vertical'
+
+            MenuItem:
+                text: 'Ayuda General'
+
+            MenuItem:
+                text: 'Preguntas frecuentes'
+
+            MenuItem:
+                text: 'Acerca de...'
+
     MenuItem:
-        text: 'Acerca de...'
+        text: 'Cerrar sesión'
+
+    MenuItem:
+        text: 'Salir'

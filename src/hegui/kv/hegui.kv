@@ -6,6 +6,7 @@
 #:include hegui/kv/mainscreen.kv
 #:include hegui/kv/login.kv
 #:include hegui/kv/menu.kv
+#:include hegui/kv/cuentas.kv
 
 <AppActionBar>:
     pos_hint: {'top':1}
@@ -20,4 +21,4 @@
         ActionQuit:
             text: 'Salir'
             icon: 'atlas://data/images/defaulttheme/close'
-            on_press: self.menu()
+            on_press: app.do_quit()

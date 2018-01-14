@@ -39,5 +39,10 @@
     Button:
         text: 'Connexion'
         font_size: 24
-
         on_press: root.do_login(login.text, password.text)
+
+    ActionQuit:
+        text: 'Salir'
+        icon: 'atlas://data/images/defaulttheme/close'
+        on_press: app.do_quit()
+
