@@ -7,9 +7,11 @@
 
     BoxLayout:
         orientation: 'vertical'
+
         Label:
             text: "Welcome to application"
             font_size: 32
+            size_hint_y: 0.5
 
         RV:
             viewclass: 'Label'
@@ -21,5 +23,14 @@
                 height: self.minimum_height
                 orientation: 'vertical'
 
-        Label:
-            text: "Status bar..."
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: 0.2
+
+            Label:
+                text: "Status bar..."
+
+            Button:
+                text: 'Add'
+                size_hint_x: 0.2
+
