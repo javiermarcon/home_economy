@@ -24,9 +24,11 @@ id_AppMenu_PANEL = 1
 
 class HeGuiApp(App, MenuFunctions):
     kv_directory = os.path.join(os.path.dirname(__file__), "hegui", 'kv')
-    print kv_directory
+    # login
     username = StringProperty('')
     password = StringProperty('')
+    # runs at server ot not
+    runserver = False
 
     def build(self):
 
@@ -80,6 +82,17 @@ class HeGuiApp(App, MenuFunctions):
         return super(HeGuiApp, self).get_application_config(
             '%s/config.cfg' % (conf_directory)
         )
+
+    # mensajes de sync
+    def handle_message(self, msg):
+        msg = msg.decode('utf-8')
+        self.username = "received: {}\n".format(msg)
+        if msg == "ping":
+            msg = "Pong"
+        if msg == "plop":
+            msg = "Kivy Rocks!!!"
+        self.username += "responded: {}\n".format(msg)
+        return msg.encode('utf-8')
 
 class SidePanel(BoxLayout):
     pass

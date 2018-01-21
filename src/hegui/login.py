@@ -13,6 +13,11 @@ class Login(BoxLayout):
         app.username = loginText
         app.password = passwordText
 
+        if app.runserver:
+            from twisted.internet import reactor
+            from hesync.hesync import EchoServerFactory
+            reactor.listenTCP(8000, EchoServerFactory(self))
+
         app._switch_main_page('MainPanel', MainPanel)
 
         #app.config.read(app.get_application_config())
@@ -21,6 +26,7 @@ class Login(BoxLayout):
     def resetForm(self):
         self.ids['login'].text = ""
         self.ids['password'].text = ""
+
 
 class PaginaCuentas(BoxLayout):
     pass
