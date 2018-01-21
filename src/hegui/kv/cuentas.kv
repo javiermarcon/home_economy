@@ -27,3 +27,17 @@
 
     Label:
         text: 'applicazion'
+
+<PaginaBd>:
+    id: pagina_bd
+    orientation: 'vertical'
+    spacing: 1
+
+    Button
+        size_hint_y: 0.1
+        text: "Abrir"
+        on_release: pagina_bd.open(filechooser.path, filechooser.selection)
+
+    FileChooserListView:
+        id: filechooser
+        on_selection: pagina_bd.selected(filechooser.selection)

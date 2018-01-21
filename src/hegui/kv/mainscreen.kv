@@ -13,7 +13,17 @@
         Label:
             text: "Welcome to application"
             font_size: 32
-            size_hint_y: 0.5
+            size_hint_y: 0.3
+
+        RV:
+            viewclass: 'Label'
+
+            RecycleBoxLayout:
+                default_size: None, dp(56)
+                default_size_hint: 1, 0.5
+                size_hint_y: 0.5
+                height: self.minimum_height
+                orientation: 'vertical'
 
         ScrollView:
             pos: 0, 0
