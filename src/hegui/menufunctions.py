@@ -4,6 +4,7 @@ import os
 
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.floatlayout import FloatLayout
+from kivy.app import App
 
 from hegui.mainscreen import MainPanel
 
@@ -56,6 +57,7 @@ class PaginaSincro(FloatLayout):
     pass
 
 class PaginaBd(BoxLayout):
+
     def open(self, path, filename):
         with open(os.path.join(path, filename[0])) as f:
             print f.read()
@@ -63,3 +65,6 @@ class PaginaBd(BoxLayout):
     def selected(self, filename):
         print "selected: %s" % filename[0]
 
+    def cancel(self):
+        app = App.get_running_app()
+        app.menu_inicio()
