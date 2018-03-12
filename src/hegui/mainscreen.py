@@ -14,15 +14,15 @@ class MainPanel(BoxLayout):
         mc.bind(minimum_height=mc.setter('height'))
 
     def populate_treeview(self, tv):
-        n = tv.add_node(TreeViewLabel(text='Item 1'))
-        for x in xrange(30):
-            tv.add_node(TreeViewLabel(text='Subitem %d' % x), n)
-        n = tv.add_node(TreeViewLabel(text='Item 2', is_open=True))
-        for x in xrange(30):
-            tv.add_node(TreeViewLabel(text='Subitem %d' % x), n)
-        n = tv.add_node(TreeViewLabel(text='Item 3'))
-        for x in xrange(30):
-            tv.add_node(TreeViewLabel(text='Subitem %d' % x), n)
+        #n = tv.add_node(TreeViewLabel(text='Item 1'))
+        #for x in xrange(30):
+        #    tv.add_node(TreeViewLabel(text='Subitem %d' % x), n)
+        #n = tv.add_node(TreeViewLabel(text='Item 2', is_open=True))
+        #for x in xrange(30):
+        #    tv.add_node(TreeViewLabel(text='Subitem %d' % x), n)
+        #n = tv.add_node(TreeViewLabel(text='Item 3'))
+        #for x in xrange(30):
+        #    tv.add_node(TreeViewLabel(text='Subitem %d' % x), n)
         return tv
 
 class RV(RecycleView):

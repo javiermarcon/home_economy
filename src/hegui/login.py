@@ -7,7 +7,8 @@ from kivy.uix.boxlayout import BoxLayout
 from hegui.mainscreen import MainPanel
 
 class Login(BoxLayout):
-    def do_login(self, loginText, passwordText):
+
+    def do_login(self, loginText, passwordText, dbPath):
         app = App.get_running_app()
 
         app.username = loginText
@@ -23,7 +24,7 @@ class Login(BoxLayout):
         #app.config.read(app.get_application_config())
         #app.config.write()
 
-    def resetForm(self):
+    def reset_form(self):
         self.ids['login'].text = ""
         self.ids['password'].text = ""
 

@@ -1,0 +1,25 @@
+<PaginaBd>:
+    id: pagina_bd
+    orientation: 'vertical'
+    spacing: 1
+
+    BoxLayout:
+        size_hint_y: 0.1
+        orientation: 'horizontal'
+
+        Label:
+            id: lvl_bd
+            size_hint_x: 2
+
+        Button:
+            text: "Abrir"
+            on_release: pagina_bd.open(filechooser.path, filechooser.selection)
+
+        Button:
+            text: "Cancelar"
+            on_release: pagina_bd.cancel()
+
+
+    FileChooserListView:
+        id: filechooser
+        on_selection: pagina_bd.selected(filechooser.selection)

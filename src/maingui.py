@@ -29,6 +29,14 @@ class HeGuiApp(App, MenuFunctions):
     password = StringProperty('')
     # runs at server ot not
     runserver = False
+    dbconn = None
+
+    def build_config(self, config):
+        config.setdefaults('last_session', {
+            'dbpath': '',
+            'lastuser': '',
+            'keeplogged': False
+        })
 
     def build(self):
 
@@ -44,9 +52,15 @@ class HeGuiApp(App, MenuFunctions):
 
         # MainPanel
         self.main_panel = Login()
+        # last_panel stores the previous window to know which panel to choose
+        # when we want to retun to previous window
+        self.last_panel = self.main_panel
 
         self.navigationdrawer.anim_type = 'slide_above_anim'
         self.navigationdrawer.add_widget(self.main_panel)
+
+        # configuration
+        self.main_panel.ids['dbpath'].text = self.config.get('last_session', 'dbpath')
 
         return self.navigationdrawer
 
@@ -54,7 +68,7 @@ class HeGuiApp(App, MenuFunctions):
         self.navigationdrawer.toggle_state()
 
     def do_logout(self):
-        Login().resetForm()
+        Login().reset_form()
         self._switch_main_page('Login', Login)
 
     def do_quit(self):
@@ -62,13 +76,22 @@ class HeGuiApp(App, MenuFunctions):
         self.stop()
 
     def _switch_main_page(self, key,  panel):
+        # last_panel stores the previous window to know which panel to choose
+        # when we want to retun to previous window
+        self.last_panel = self.main_panel
         self.navigationdrawer.close_sidepanel()
         if not SidePanel_AppMenu[key][id_AppMenu_PANEL]:
-            SidePanel_AppMenu[key][id_AppMenu_PANEL] = panel()
+            if callable(panel):
+                SidePanel_AppMenu[key][id_AppMenu_PANEL] = panel()
+            else:
+                SidePanel_AppMenu[key][id_AppMenu_PANEL] = panel
         main_panel = SidePanel_AppMenu[key][id_AppMenu_PANEL]
-        self.navigationdrawer.remove_widget(self.main_panel)    # FACCIO REMOVE ED ADD perchè la set_main_panel
-        self.navigationdrawer.add_widget(main_panel)            # dà un'eccezione e non ho capito perchè
-        self.main_panel = main_panel
+        self.change_panel(main_panel)
+
+    def change_panel(self, panel):
+        self.navigationdrawer.remove_widget(self.main_panel)  # saco la ventana anterior
+        self.navigationdrawer.add_widget(panel)  # cargo la ventana nueva
+        self.main_panel = panel
 
     def get_application_config(self):
         if(not self.username):

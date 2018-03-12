@@ -1,3 +1,5 @@
+#:include hegui/kv/bd.kv
+
 <PaginaSincro>:
     orientation: 'vertical'
     spacing: 1
@@ -18,6 +20,16 @@
     Label:
         text: 'due'
 
+<PaginaOpciones>:
+    orientation: 'vertical'
+    spacing: 1
+
+    AppActionBar:
+        size_hint: (1., 0.1)
+
+    Label:
+        text: 'due'
+
 <PaginaInicio>:
     orientation: 'vertical'
     spacing: 1
@@ -27,25 +39,3 @@
 
     Label:
         text: 'applicazion'
-
-<PaginaBd>:
-    id: pagina_bd
-    orientation: 'vertical'
-    spacing: 1
-
-    BoxLayout:
-        size_hint_y: 0.1
-        orientation: 'horizontal'
-
-        Button
-            text: "Abrir"
-            on_release: pagina_bd.open(filechooser.path, filechooser.selection)
-
-        Button
-            text: "Cancelar"
-            on_release: pagina_bd.cancel()
-
-
-    FileChooserListView:
-        id: filechooser
-        on_selection: pagina_bd.selected(filechooser.selection)
