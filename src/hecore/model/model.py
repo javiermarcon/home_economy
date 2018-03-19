@@ -4,20 +4,19 @@ For more details please check here:
 https://github.com/PiTiLeZarD/workbench_alchemy
 """
 
-import os
+#import os
 from sqlalchemy.orm import relationship
 from sqlalchemy import Column, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 
-if os.environ.get('DB_TYPE', 'MySQL') == 'MySQL':
-    from sqlalchemy.dialects.mysql import FLOAT, VARCHAR, ENUM, CHAR, BLOB, DATE, INTEGER
-else:
-    from sqlalchemy import Enum as ENUM, String as BLOB, Float as FLOAT, String as VARCHAR, Date as DATE, Char as CHAR, \
-        Integer
+#if os.environ.get('DB_TYPE', 'MySQL') == 'MySQL':
+#    from sqlalchemy.dialects.mysql import FLOAT, VARCHAR, ENUM, CHAR, BLOB, DATE, INTEGER
+#else:
+from sqlalchemy import Enum as ENUM, String as BLOB, Float as FLOAT, String as VARCHAR, Date as DATE, Integer
 
-    class INTEGER(Integer):
-        def __init__(self, *args, **kwargs):
-            super(Integer, self).__init__()
+class INTEGER(Integer):
+    def __init__(self, *args, **kwargs):
+        super(Integer, self).__init__()
 
 
 DECLARATIVE_BASE = declarative_base()
@@ -26,9 +25,6 @@ DECLARATIVE_BASE = declarative_base()
 class User(DECLARATIVE_BASE):
 
     __tablename__ = 'User'
-    __table_args__ = (
-        {'mysql_engine': 'InnoDB', 'mysql_charset': 'utf8'}
-    )
 
     id = Column(VARCHAR(32), autoincrement=False, primary_key=True, nullable=False)  # pylint: disable=invalid-name
     login = Column(VARCHAR(45), nullable=False)
@@ -37,7 +33,7 @@ class User(DECLARATIVE_BASE):
     surname = Column(VARCHAR(45), nullable=False)
     default_account = Column(VARCHAR(32))
     password_type = Column(VARCHAR(32))
-    state = Column(CHAR(1))
+    state = Column(VARCHAR(1))
 
     def __repr__(self):
         return self.__str__()
@@ -49,9 +45,6 @@ class User(DECLARATIVE_BASE):
 class Acounttype(DECLARATIVE_BASE):
 
     __tablename__ = 'AcountType'
-    __table_args__ = (
-        {'mysql_engine': 'InnoDB', 'mysql_charset': 'utf8'}
-    )
 
     id = Column(VARCHAR(32), autoincrement=False, primary_key=True, nullable=False)  # pylint: disable=invalid-name
     name = Column(VARCHAR(45), nullable=False)
@@ -68,9 +61,6 @@ class Acounttype(DECLARATIVE_BASE):
 class Accountgroup(DECLARATIVE_BASE):
 
     __tablename__ = 'AccountGroup'
-    __table_args__ = (
-        {'mysql_engine': 'InnoDB', 'mysql_charset': 'utf8'}
-    )
 
     id = Column(VARCHAR(32), autoincrement=False, primary_key=True, nullable=False)  # pylint: disable=invalid-name
     name = Column(VARCHAR(45), nullable=False)
@@ -85,9 +75,6 @@ class Accountgroup(DECLARATIVE_BASE):
 class Account(DECLARATIVE_BASE):
 
     __tablename__ = 'Account'
-    __table_args__ = (
-        {'mysql_engine': 'InnoDB', 'mysql_charset': 'utf8'}
-    )
 
     id = Column(VARCHAR(32), autoincrement=False, primary_key=True, nullable=False)  # pylint: disable=invalid-name
     name = Column(VARCHAR(45), nullable=False)
@@ -110,9 +97,6 @@ class Account(DECLARATIVE_BASE):
 class Category(DECLARATIVE_BASE):
 
     __tablename__ = 'Category'
-    __table_args__ = (
-        {'mysql_engine': 'InnoDB', 'mysql_charset': 'utf8'}
-    )
 
     id = Column(VARCHAR(32), autoincrement=False, primary_key=True, nullable=False)  # pylint: disable=invalid-name
     parent = Column(VARCHAR(32), nullable=False)
@@ -128,9 +112,6 @@ class Category(DECLARATIVE_BASE):
 class Transaction(DECLARATIVE_BASE):
 
     __tablename__ = 'transaction'
-    __table_args__ = (
-        {'mysql_engine': 'InnoDB', 'mysql_charset': 'utf8'}
-    )
 
     id = Column(VARCHAR(32), autoincrement=False, primary_key=True, nullable=False)  # pylint: disable=invalid-name
     origin = Column(VARCHAR(32), nullable=False)
@@ -151,9 +132,6 @@ class Transaction(DECLARATIVE_BASE):
 class Currency(DECLARATIVE_BASE):
 
     __tablename__ = 'Currency'
-    __table_args__ = (
-        {'mysql_engine': 'InnoDB', 'mysql_charset': 'utf8'}
-    )
 
     id = Column(VARCHAR(32), autoincrement=False, primary_key=True, nullable=False)  # pylint: disable=invalid-name
     denomination = Column(VARCHAR(3), nullable=False)
@@ -171,9 +149,6 @@ class Currency(DECLARATIVE_BASE):
 class Currencyhistory(DECLARATIVE_BASE):
 
     __tablename__ = 'CurrencyHistory'
-    __table_args__ = (
-        {'mysql_engine': 'InnoDB', 'mysql_charset': 'utf8'}
-    )
 
     id = Column(INTEGER, autoincrement=False, primary_key=True, nullable=False)  # pylint: disable=invalid-name
     id_currency = Column(VARCHAR(32), ForeignKey("Currency.id"), index=True, nullable=False)
@@ -193,9 +168,6 @@ class Currencyhistory(DECLARATIVE_BASE):
 class Instrument(DECLARATIVE_BASE):
 
     __tablename__ = 'Instrument'
-    __table_args__ = (
-        {'mysql_engine': 'InnoDB', 'mysql_charset': 'utf8'}
-    )
 
     id = Column(VARCHAR(32), autoincrement=False, primary_key=True, nullable=False)  # pylint: disable=invalid-name
     name = Column(VARCHAR(45), nullable=False)

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """ Clases que va a exponer el módulo core:
 
 Login: (user, password)

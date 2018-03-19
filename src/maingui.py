@@ -12,15 +12,20 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.button import Button
 from kivy.uix.actionbar import ActionBar, ActionButton, ActionPrevious
+from kivy.uix.gridlayout import GridLayout
+from kivy.uix.popup import Popup
+from kivy.properties import StringProperty
 
 import os
 
+from hecore.model.base import Db
 from hegui.login import Login
 from hegui.menufunctions import MenuFunctions, SidePanel_AppMenu
 
 RootApp = None
 id_AppMenu_METHOD = 0
 id_AppMenu_PANEL = 1
+
 
 class HeGuiApp(App, MenuFunctions):
     kv_directory = os.path.join(os.path.dirname(__file__), "hegui", 'kv')
@@ -29,7 +34,10 @@ class HeGuiApp(App, MenuFunctions):
     password = StringProperty('')
     # runs at server ot not
     runserver = False
-    dbconn = None
+    # database connection object
+    db = None
+    # response of a popup
+    popup_actions = None
 
     def build_config(self, config):
         config.setdefaults('last_session', {
@@ -42,6 +50,9 @@ class HeGuiApp(App, MenuFunctions):
 
         global RootApp
         RootApp = self
+
+        # The database connection object
+        self.db = Db(self)
 
         # NavigationDrawer
         self.navigationdrawer = NavDrawer()
@@ -74,6 +85,34 @@ class HeGuiApp(App, MenuFunctions):
     def do_quit(self):
         print 'App quit'
         self.stop()
+
+    def open_popup(self, message, title='Confirmar', action_yes=None, params_action_yes=None,
+                   action_no=None, params_action_no=None, size=(480, 400), size_hint=(None, None)):
+        self.popup_actions = {'action_yes': action_yes,
+                              'params_action_yes': params_action_yes,
+                              'action_no': action_no,
+                              'params_action_no': params_action_no}
+        content = ConfirmPopup(text=message)
+        content.bind(on_answer=self._on_popup_answer)
+        self.popup = Popup(title=title,
+                           content=content,
+                           size_hint=size_hint,
+                           size=size,
+                           auto_dismiss=False)
+        self.popup.open()
+
+    def _on_popup_answer(self, instance, answer):
+        self.popup.dismiss()
+        if answer:
+            if self.popup_actions['params_action_yes']:
+                self.popup_actions['action_yes'](self.popup_actions['params_action_yes'])
+            else:
+                self.popup_actions['action_yes']()
+        else:
+            if self.popup_actions['params_action_no']:
+                self.popup_actions['action_no'](self.popup_actions['params_action_no'])
+            else:
+                self.popup_actions['action_no']()
 
     def _switch_main_page(self, key,  panel):
         # last_panel stores the previous window to know which panel to choose
@@ -160,3 +199,14 @@ class NavDrawer(NavigationDrawer):
 
 class AppArea(FloatLayout):
     pass
+
+class ConfirmPopup(GridLayout):
+    text = StringProperty()
+
+    def __init__(self, **kwargs):
+        self.register_event_type('on_answer')
+        super(ConfirmPopup, self).__init__(**kwargs)
+
+    def on_answer(self, *args):
+        pass
+

@@ -10,7 +10,8 @@ class Login(BoxLayout):
 
     def do_login(self, loginText, passwordText, dbPath):
         app = App.get_running_app()
-
+        app.db.create_and_connect(self.ids['dbpath'].text)
+        # TODO: agregar validacion de login
         app.username = loginText
         app.password = passwordText
 
