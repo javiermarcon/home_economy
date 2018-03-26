@@ -1,13 +1,10 @@
-"""
-This file has been automatically generated with workbench_alchemy v0.2.3
-For more details please check here:
-https://github.com/PiTiLeZarD/workbench_alchemy
-"""
+# -*- coding: utf-8 -*-
 
 #import os
 from sqlalchemy.orm import relationship
 from sqlalchemy import Column, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
+from kivy.app import App
 
 #if os.environ.get('DB_TYPE', 'MySQL') == 'MySQL':
 #    from sqlalchemy.dialects.mysql import FLOAT, VARCHAR, ENUM, CHAR, BLOB, DATE, INTEGER
@@ -28,7 +25,7 @@ class User(DECLARATIVE_BASE):
 
     id = Column(VARCHAR(32), autoincrement=False, primary_key=True, nullable=False)  # pylint: disable=invalid-name
     login = Column(VARCHAR(45), nullable=False)
-    password = Column(VARCHAR(45), nullable=False)
+    password = Column(VARCHAR(256), nullable=False)
     name = Column(VARCHAR(45), nullable=False)
     surname = Column(VARCHAR(45), nullable=False)
     default_account = Column(VARCHAR(32))
@@ -40,6 +37,21 @@ class User(DECLARATIVE_BASE):
 
     def __str__(self):
         return "<User(%(id)s)>" % self.__dict__
+
+    def verify_login(self, username, password):
+        """
+        Performs login verification
+        :param user: nombre de usuario
+        :param password: contraseña de usuario
+        :return: Booleano si se autentifica o no
+        """
+        app = App.get_running_app()
+        result = app.db.connection.query(User).filter_by(login=username).first()
+        print(result)
+        if not result:
+            return False
+        print (password)
+        return app.pwd_context.verify(password, result.password)
 
 
 class Acounttype(DECLARATIVE_BASE):

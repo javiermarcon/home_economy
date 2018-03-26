@@ -22,6 +22,9 @@ from hecore.model.base import Db
 from hegui.login import Login
 from hegui.menufunctions import MenuFunctions, SidePanel_AppMenu
 
+# para autenticacion de usuarios
+from passlib.context import CryptContext
+
 RootApp = None
 id_AppMenu_METHOD = 0
 id_AppMenu_PANEL = 1
@@ -31,7 +34,20 @@ class HeGuiApp(App, MenuFunctions):
     kv_directory = os.path.join(os.path.dirname(__file__), "hegui", 'kv')
     # login
     username = StringProperty('')
-    password = StringProperty('')
+    pwd_context = CryptContext(
+        # Replace this list with the hash(es) you wish to support.
+        # this example sets pbkdf2_sha256 as the default,
+        # with additional support for reading legacy des_crypt hashes.
+        schemes=["pbkdf2_sha256"], #"des_crypt"],
+        # Automatically mark all but first hasher in list as deprecated.
+        # (this will be the default in Passlib 2.0)
+        deprecated="auto",
+        # Optionally, set the number of rounds that should be used.
+        # Appropriate values may vary for different schemes,
+        # and the amount of time you wish it to take.
+        # Leaving this alone is usually safe, and will use passlib's defaults.
+        ## pbkdf2_sha256__rounds = 29000,
+        )
     # runs at server ot not
     runserver = False
     # database connection object
@@ -86,12 +102,10 @@ class HeGuiApp(App, MenuFunctions):
         print 'App quit'
         self.stop()
 
-    def open_popup(self, message, title='Confirmar', action_yes=None, params_action_yes=None,
-                   action_no=None, params_action_no=None, size=(480, 400), size_hint=(None, None)):
+    def open_popup(self, message, title='Confirmar', action_yes=None,
+                   action_no=None, size=(480, 400), size_hint=(None, None)):
         self.popup_actions = {'action_yes': action_yes,
-                              'params_action_yes': params_action_yes,
-                              'action_no': action_no,
-                              'params_action_no': params_action_no}
+                              'action_no': action_no}
         content = ConfirmPopup(text=message)
         content.bind(on_answer=self._on_popup_answer)
         self.popup = Popup(title=title,
@@ -104,15 +118,9 @@ class HeGuiApp(App, MenuFunctions):
     def _on_popup_answer(self, instance, answer):
         self.popup.dismiss()
         if answer:
-            if self.popup_actions['params_action_yes']:
-                self.popup_actions['action_yes'](self.popup_actions['params_action_yes'])
-            else:
-                self.popup_actions['action_yes']()
+            self.popup_actions['action_yes']()
         else:
-            if self.popup_actions['params_action_no']:
-                self.popup_actions['action_no'](self.popup_actions['params_action_no'])
-            else:
-                self.popup_actions['action_no']()
+            self.popup_actions['action_no']()
 
     def _switch_main_page(self, key,  panel):
         # last_panel stores the previous window to know which panel to choose

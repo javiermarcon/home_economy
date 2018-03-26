@@ -2,7 +2,7 @@
 
 import os
 
-from kivy.uix.floatlayout import FloatLayout
+from kivy.uix.boxlayout import BoxLayout
 
 from hegui.dbscreen import PaginaBd
 from hegui.mainscreen import MainPanel
@@ -62,11 +62,14 @@ class MenuFunctions:
         print 'DUE... exec'
         self._switch_main_page('Opciones', PaginaOpciones)
 
-class PaginaCuentas(FloatLayout):
+class PaginaCuentas(BoxLayout):
     pass
 
-class PaginaSincro(FloatLayout):
+class PaginaSincro(BoxLayout):
     pass
 
-class PaginaOpciones(FloatLayout):
+class PaginaOpciones(BoxLayout):
+    pass
+
+class PaginaCuentas(BoxLayout):
     pass
