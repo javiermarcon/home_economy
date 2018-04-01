@@ -3,8 +3,10 @@
 #import os
 from sqlalchemy.orm import relationship
 from sqlalchemy import Column, ForeignKey
-from sqlalchemy.ext.declarative import declarative_base
+
 from kivy.app import App
+
+from base import DB_CONN, DECLARATIVE_BASE, PWD_CONTEXT
 
 #if os.environ.get('DB_TYPE', 'MySQL') == 'MySQL':
 #    from sqlalchemy.dialects.mysql import FLOAT, VARCHAR, ENUM, CHAR, BLOB, DATE, INTEGER
@@ -15,12 +17,10 @@ class INTEGER(Integer):
     def __init__(self, *args, **kwargs):
         super(Integer, self).__init__()
 
-
-DECLARATIVE_BASE = declarative_base()
-
-
 class User(DECLARATIVE_BASE):
-
+    """
+    Maneja un usuario y sus acciones.
+    """
     __tablename__ = 'User'
 
     id = Column(VARCHAR(32), autoincrement=False, primary_key=True, nullable=False)  # pylint: disable=invalid-name
@@ -45,13 +45,12 @@ class User(DECLARATIVE_BASE):
         :param password: contraseña de usuario
         :return: Booleano si se autentifica o no
         """
-        app = App.get_running_app()
-        result = app.db.connection.query(User).filter_by(login=username).first()
+        result = DB_CONN.get_connection().query(User).filter_by(login=username).first()
         print(result)
         if not result:
             return False
         print (password)
-        return app.pwd_context.verify(password, result.password)
+        return PWD_CONTEXT.verify(password, result.password)
 
 
 class Acounttype(DECLARATIVE_BASE):
@@ -192,3 +191,27 @@ class Instrument(DECLARATIVE_BASE):
 
     def __str__(self):
         return "<Instrument(%(id)s)>" % self.__dict__
+
+"""
+class Department(Base):
+    __tablename__ = 'department'
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+
+
+class Employee(Base):
+    __tablename__ = 'employee'
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    # Use default=func.now() to set the default hiring time
+    # of an Employee to be the current time when an
+    # Employee record was created
+    hired_on = Column(DateTime, default=func.now())
+    department_id = Column(Integer, ForeignKey('department.id'))
+    # Use cascade='delete,all' to propagate the deletion of a Department onto its Employees
+    department = relationship(
+        Department,
+        backref=backref('employees',
+                        uselist=True,
+                        cascade='delete,all'))
+"""

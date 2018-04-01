@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from functools import partial
+
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 
 from hegui.mainscreen import MainPanel
-
 from hecore.model.model import User
 
 class Login(BoxLayout):
@@ -13,9 +14,19 @@ class Login(BoxLayout):
     def get_running_app(self):
         return App.get_running_app()
 
-    def do_login(self, loginText, passwordText, dbPath):
+    def do_login(self, loginText, passwordText, fileName):
         app = self.get_running_app()
-        app.db.create_and_connect(self.ids['dbpath'].text, loginText, passwordText)
+        #fileName = self.ids['dbpath'].text
+        if app.backend.check_file_exists(fileName):
+            self.finish_login(loginText, passwordText)
+        else:
+            strmsg = "La base de datos {} no existe, desea crearla?".format(fileName)
+            login_finish = self.make_db_and_finish_login
+            app.open_popup(strmsg, action_yes=partial(login_finish, loginText, passwordText, True, fileName),
+                                action_no=self.no_action)
+
+    def no_action(self):
+        pass
 
     def reset_form(self):
         self.ids['login'].text = ""
@@ -35,7 +46,7 @@ class Login(BoxLayout):
         '''
         app = self.get_running_app()
         if create:
-            app.db.create_and_connect_callback(fileName)
+            app.backend.db.create_and_connect_callback(fileName)
         self.finish_login(loginText, passwordText)
 
     def finish_login(self, loginText, passwordText):
@@ -43,20 +54,22 @@ class Login(BoxLayout):
         Si la autenticación es correcta finaliza el login
         y cambia a la pantalla principal, levantando la api
         de sincro si la app se corrio como server.
-        :param app: la aplicación kyvy que estoy ejecutando
+        Si la autenticacion no es correcta, te lleva de nuevo
+        a la pantalla de login
         :param loginText: texto ingresado en login
         :param passwordText: password ingresada en login
         :return: None
         '''
         app = self.get_running_app()
         verif = User().verify_login(loginText, passwordText)
+        print (verif)
         if verif:
             app.username = loginText
-
             if app.runserver:
-                from twisted.internet import reactor
-                from hesync.hesync import EchoServerFactory
-                reactor.listenTCP(8000, EchoServerFactory(self))
-
+                app.backend.launch_server()
+            print("Login Ok")
             app._switch_main_page('MainPanel', MainPanel)
-        print (verif)
+            return
+        print("Login Failed")
+        app._switch_main_page('Login', self)
+        return

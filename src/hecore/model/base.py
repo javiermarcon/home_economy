@@ -1,36 +1,54 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import os
 import uuid
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from functools import partial
+from sqlalchemy.ext.declarative import declarative_base
 
-from model import *
-from hegui.login import Login
+# para autenticacion de usuarios
+from passlib.context import CryptContext
+
+# The database connection object
+
+DECLARATIVE_BASE = declarative_base()
+
+PWD_CONTEXT = CryptContext(
+        # Replace this list with the hash(es) you wish to support.
+        # this example sets pbkdf2_sha256 as the default,
+        # with additional support for reading legacy des_crypt hashes.
+        schemes=["pbkdf2_sha256"],  # "des_crypt"],
+        # Automatically mark all but first hasher in list as deprecated.
+        # (this will be the default in Passlib 2.0)
+        deprecated="auto",
+        # Optionally, set the number of rounds that should be used.
+        # Appropriate values may vary for different schemes,
+        # and the amount of time you wish it to take.
+        # Leaving this alone is usually safe, and will use passlib's defaults.
+        ## pbkdf2_sha256__rounds = 29000,
+    )
 
 class Db:
     """Maneja las conexiones y model ode la base de datos con sqlalchemy"""
-    app = None
     connection = None
     engine = None
+    default_path = None
 
-    def __init__(self, app):
-        self.app = app
+    def set_default_path(self, filePath):
+        self.default_path = filePath
 
     def connect(self, fileName=None):
         """Se conecta a la base de datos"""
         if not fileName:
-            fileName = self.app.config.get('last_session', 'dbpath')
+            fileName = self.default_path
         cnnstr = "sqlite:///{}".format(fileName)
-        print (cnnstr)
+        #print (cnnstr)
         self.engine = create_engine(cnnstr)
         DBSession = sessionmaker()
         DBSession.configure(bind=self.engine)
         session = DBSession()
         self.connection = session
-        return True
+        return self.connection
 
     def create_db(self, fileName):
         """Crea la base de datos"""
@@ -38,27 +56,16 @@ class Db:
         DECLARATIVE_BASE.metadata.create_all(self.engine)
 
         # agrego un usuario llamado admin con clave admin
-        hash = self.app.pwd_context.hash("admin")
-        print(hash)
+        hash = PWD_CONTEXT.hash("admin")
+        #print(hash)
         id = str(uuid.uuid4())
+        from model import User
         user = User(id=id, login='admin', password=hash, name='', surname='',
                     default_account='', password_type='default', state='A')
         self.connection.add(user)
         self.connection.commit()
 
         # TODO: agregar los registros iniciales como usuario principal y cuentas x defecto
-
-    def no_action(self):
-        pass
-
-    def create_and_connect(self, fileName, loginText='', passwordText=''):
-        if self.check_file_exists(fileName):
-            self.get_connection()
-        else:
-            login = Login().make_db_and_finish_login
-            strmsg = "La base de datos {} no existe, desea crearla?".format(fileName)
-            self.app.open_popup(strmsg, action_yes=partial(login, loginText, passwordText, True, fileName),
-            action_no=self.no_action)
 
     def create_and_connect_callback(self, fileName):
         self.connect(fileName)
@@ -70,6 +77,4 @@ class Db:
         else:
             return self.connect()
 
-    def check_file_exists(self, filePath):
-        return os.path.isfile(filePath)
-
+DB_CONN = Db()

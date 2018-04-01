@@ -18,12 +18,10 @@ from kivy.properties import StringProperty
 
 import os
 
-from hecore.model.base import Db
 from hegui.login import Login
 from hegui.menufunctions import MenuFunctions, SidePanel_AppMenu
 
-# para autenticacion de usuarios
-from passlib.context import CryptContext
+from hecore.hecore import HecoreBackend
 
 RootApp = None
 id_AppMenu_METHOD = 0
@@ -34,24 +32,11 @@ class HeGuiApp(App, MenuFunctions):
     kv_directory = os.path.join(os.path.dirname(__file__), "hegui", 'kv')
     # login
     username = StringProperty('')
-    pwd_context = CryptContext(
-        # Replace this list with the hash(es) you wish to support.
-        # this example sets pbkdf2_sha256 as the default,
-        # with additional support for reading legacy des_crypt hashes.
-        schemes=["pbkdf2_sha256"], #"des_crypt"],
-        # Automatically mark all but first hasher in list as deprecated.
-        # (this will be the default in Passlib 2.0)
-        deprecated="auto",
-        # Optionally, set the number of rounds that should be used.
-        # Appropriate values may vary for different schemes,
-        # and the amount of time you wish it to take.
-        # Leaving this alone is usually safe, and will use passlib's defaults.
-        ## pbkdf2_sha256__rounds = 29000,
-        )
+
     # runs at server ot not
     runserver = False
     # database connection object
-    db = None
+    backend = HecoreBackend()
     # response of a popup
     popup_actions = None
 
@@ -66,9 +51,6 @@ class HeGuiApp(App, MenuFunctions):
 
         global RootApp
         RootApp = self
-
-        # The database connection object
-        self.db = Db(self)
 
         # NavigationDrawer
         self.navigationdrawer = NavDrawer()
@@ -86,8 +68,10 @@ class HeGuiApp(App, MenuFunctions):
         self.navigationdrawer.anim_type = 'slide_above_anim'
         self.navigationdrawer.add_widget(self.main_panel)
 
-        # configuration
-        self.main_panel.ids['dbpath'].text = self.config.get('last_session', 'dbpath')
+        # set defailt path for db
+        default_db_path = self.config.get('last_session', 'dbpath')
+        self.backend.db.set_default_path(default_db_path)
+        self.main_panel.ids['dbpath'].text = default_db_path
 
         return self.navigationdrawer
 
