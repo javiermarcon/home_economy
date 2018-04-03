@@ -57,9 +57,11 @@ class Acounttype(DECLARATIVE_BASE):
 
     __tablename__ = 'AcountType'
 
+    tipos = ['cash', 'bank', 'credit card', 'investment', 'stocks','currency_exchange']
+
     id = Column(VARCHAR(32), autoincrement=False, primary_key=True, nullable=False)  # pylint: disable=invalid-name
     name = Column(VARCHAR(45), nullable=False)
-    type = Column(ENUM('cash', 'bank', 'credit card', 'investment', 'currency_exchange'), nullable=False)
+    type = Column(ENUM(tipos), nullable=False)
     module = Column(VARCHAR(45))
 
     def __repr__(self):
@@ -67,20 +69,6 @@ class Acounttype(DECLARATIVE_BASE):
 
     def __str__(self):
         return "<Acounttype(%(id)s)>" % self.__dict__
-
-
-class Accountgroup(DECLARATIVE_BASE):
-
-    __tablename__ = 'AccountGroup'
-
-    id = Column(VARCHAR(32), autoincrement=False, primary_key=True, nullable=False)  # pylint: disable=invalid-name
-    name = Column(VARCHAR(45), nullable=False)
-
-    def __repr__(self):
-        return self.__str__()
-
-    def __str__(self):
-        return "<Accountgroup(%(id)s)>" % self.__dict__
 
 
 class Account(DECLARATIVE_BASE):
@@ -92,11 +80,10 @@ class Account(DECLARATIVE_BASE):
     parent = Column(VARCHAR(32))
     id_account_type = Column(VARCHAR(32), ForeignKey("AcountType.id"), index=True, nullable=False)
     id_currency = Column(VARCHAR(32), ForeignKey("Currency.id"), index=True, nullable=False)
-    id_account_group = Column(VARCHAR(32), ForeignKey("AccountGroup.id"), index=True, nullable=False)
 
     acounttype = relationship("Acounttype", foreign_keys=[id_account_type], backref="account")
     currency = relationship("Currency", foreign_keys=[id_currency], backref="account")
-    accountgroup = relationship("Accountgroup", foreign_keys=[id_account_group], backref="account")
+    balance = Column(FLOAT, nullable=False)
 
     def __repr__(self):
         return self.__str__()
@@ -131,6 +118,7 @@ class Transaction(DECLARATIVE_BASE):
     number = Column(VARCHAR(45), nullable=False)
     id_instrument = Column(VARCHAR(32), nullable=False)
     transaction_member = Column(VARCHAR(32))
+    ammount = Column(FLOAT, nullable=False)
     notes = Column(BLOB)
 
     def __repr__(self):

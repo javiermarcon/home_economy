@@ -52,17 +52,37 @@ class Db:
 
     def create_db(self, fileName):
         """Crea la base de datos"""
+
+        def create_id():
+            return str(uuid.uuid4())
+
         print ("creando la bd {}".format(fileName))
         DECLARATIVE_BASE.metadata.create_all(self.engine)
 
         # agrego un usuario llamado admin con clave admin
         hash = PWD_CONTEXT.hash("admin")
         #print(hash)
-        id = str(uuid.uuid4())
-        from model import User
-        user = User(id=id, login='admin', password=hash, name='', surname='',
+        from model import User, Account, Acounttype
+
+        user = User(id=create_id(), login='admin', password=hash, name='', surname='',
                     default_account='', password_type='default', state='A')
         self.connection.add(user)
+
+        account_types = { 'Efectivo': 'cash',
+                        'Banco': 'bank',
+                        'Tarjeta': 'credit_card',
+                        'Inveersion': 'investment',
+                        'Acciones Arg': 'stocks',
+                        'Acciones USA': 'stocks',
+                        'Cambio': 'currency_exchange' }
+        accounts = {
+
+        }
+
+        for acc_name, acc_type in account_types:
+            act = Acounttype(id=create_id(), name=acc_name, type=acc_type)
+            self.connection.add(act)
+
         self.connection.commit()
 
         # TODO: agregar los registros iniciales como usuario principal y cuentas x defecto
