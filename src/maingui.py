@@ -14,12 +14,14 @@ from kivy.uix.button import Button
 from kivy.uix.actionbar import ActionBar, ActionButton, ActionPrevious
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.popup import Popup
+from kivy.uix.settings import SettingsWithSidebar
 from kivy.properties import StringProperty
 
 import os
 
 from hegui.login import Login
 from hegui.menufunctions import MenuFunctions, SidePanel_AppMenu
+from hegui.settings_data import settings_data
 
 from hecore.hecore import HecoreBackend
 
@@ -47,7 +49,17 @@ class HeGuiApp(App, MenuFunctions):
             'keeplogged': False
         })
 
+    def build_settings(self, settings):
+        for panel_name in settings_data:
+            settings.add_json_panel(panel_name, self.config, data=settings_data[panel_name])
+
+    def on_config_change(self, config, section, key, value):
+        print config, section, key, value
+
     def build(self):
+        # settings
+        self.settings_cls = SettingsWithSidebar
+        #self.use_kivy_settings = False
 
         global RootApp
         RootApp = self

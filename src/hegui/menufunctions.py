@@ -59,8 +59,7 @@ class MenuFunctions:
         print 'TRE... exec'
         self._switch_main_page('Sincronizar',  PaginaSincro)
     def menu_opciones(self):
-        print 'DUE... exec'
-        self._switch_main_page('Opciones', PaginaOpciones)
+        self.open_settings()
 
 class PaginaCuentas(BoxLayout):
     pass
