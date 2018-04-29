@@ -4,7 +4,7 @@
 from sqlalchemy.orm import relationship
 from sqlalchemy import Column, ForeignKey
 
-from kivy.app import App
+#from kivy.app import App
 
 from base import DB_CONN, DECLARATIVE_BASE, PWD_CONTEXT
 
