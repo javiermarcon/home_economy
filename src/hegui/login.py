@@ -68,8 +68,10 @@ class Login(BoxLayout):
             if app.runserver:
                 app.backend.launch_server()
             print("Login Ok")
+            self.ids['loginErrors'].text = ""
             app._switch_main_page('MainPanel', MainPanel)
             return
         print("Login Failed")
+        self.ids['loginErrors'].text = "El usuario y/o contraseña no son correctos para la base de datos elegida."
         app._switch_main_page('Login', self)
         return
