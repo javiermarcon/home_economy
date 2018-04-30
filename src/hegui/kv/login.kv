@@ -1,65 +1,67 @@
 <Login>:
     id: login_layout
     orientation: 'vertical'
-    padding: [10,50,10,50]
-    spacing: 50
+    padding: [10,20,10,20]
+    spacing: 20
 
     Label:
         text: 'Welcome'
-        font_size: 32
+        font_size: 25
+
+    Label:
+        id: loginErrors
+        font_size: 14
+        halign: 'right'
 
     BoxLayout:
         orientation: 'vertical'
-
-        Label:
-            id: loginErrors
 
         BoxLayout:
             orientation: 'horizontal'
 
             Label:
                 text: 'Database'
-                font_size: 18
-                #halign: 'right'
+                font_size: 14
+                halign: 'right'
                 #text_size: root.width-20, 20
 
             Button:
                 text: 'Cambiar'
-                font_size: 18
+                font_size: 14
                 on_press: app.menu_basedatos(dbpath.text)
 
         TextInput:
             id: dbpath
             multiline:False
-            font_size: 18
+            font_size: 14
 
     BoxLayout:
         orientation: 'vertical'
 
         Label:
             text: 'Login'
-            font_size: 18
-            #halign: 'left'
+            font_size: 14
+            halign: 'left'
             #text_size: root.width-20, 20
 
         TextInput:
             id: login
             multiline:False
-            font_size: 18
+            font_size: 14
 
     BoxLayout:
         orientation: 'vertical'
         Label:
             text: 'Password'
-            #halign: 'left'
-            font_size: 18
+            halign: 'left'
+            font_size: 14
             #text_size: root.width-20, 20
 
         TextInput:
             id: password
             multiline:False
             password:True
-            font_size: 18
+            font_size: 14
 
     BoxLayout:
         orientation: 'horizontal'

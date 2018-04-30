@@ -1,8 +1,8 @@
-#:include hegui/kv/bd.kv
-
 <PaginaCuentas>:
     orientation: 'vertical'
     spacing: 1
+
+    main_cuentas: main_cuentas
 
     AppActionBar:
         size_hint: (1., 0.1)
@@ -10,4 +10,9 @@
     Label:
         text: 'Cuentas'
 
+    ScrollView:
+        pos: 0, 0
 
+        TreeView:
+            id: main_cuentas
+            hide_root: True

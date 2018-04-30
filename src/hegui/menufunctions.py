@@ -6,6 +6,7 @@ from kivy.uix.boxlayout import BoxLayout
 
 from hegui.dbscreen import PaginaBd
 from hegui.mainscreen import MainPanel
+from hegui.cuentas import PaginaCuentas
 
 #--------------------------------------------------------------------------
 '''dictionary that contains the correspondance between items descriptions
@@ -61,14 +62,8 @@ class MenuFunctions:
     def menu_opciones(self):
         self.open_settings()
 
-class PaginaCuentas(BoxLayout):
-    pass
-
 class PaginaSincro(BoxLayout):
     pass
 
 class PaginaOpciones(BoxLayout):
-    pass
-
-class PaginaCuentas(BoxLayout):
     pass
