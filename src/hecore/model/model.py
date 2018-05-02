@@ -137,13 +137,15 @@ class Currency(DECLARATIVE_BASE):
     name = Column(VARCHAR(45), nullable=False)
     bid = Column(FLOAT)
     ask = Column(FLOAT)
+    symbol = Column(VARCHAR(10))
+    conversion = Column(FLOAT)
+    dec_places = Column(INTEGER)
 
     def __repr__(self):
         return self.__str__()
 
     def __str__(self):
         return "<Currency(%(id)s)>" % self.__dict__
-
 
 class Currencyhistory(DECLARATIVE_BASE):
 
