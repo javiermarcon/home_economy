@@ -5,7 +5,7 @@ import kivy
 kivy.require('1.8.0')
 
 from kivy.app import App
-from kivy.properties import StringProperty
+#from kivy.properties import StringProperty
 
 from hegui.navigationdrawer import NavigationDrawer
 from kivy.uix.boxlayout import BoxLayout
@@ -47,6 +47,10 @@ class HeGuiApp(App, MenuFunctions):
             'dbpath': '',
             'lastuser': '',
             'keeplogged': False
+        })
+        config.setdefaults("mail_parser", {
+            "email": "",
+            "password": ""
         })
 
     def build_settings(self, settings):

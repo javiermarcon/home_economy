@@ -1,0 +1,25 @@
+<PaginaModificarCuentas>:
+    orientation: 'vertical'
+    spacing: 1
+
+    BoxLayout:
+        orientation: 'horizontal'
+
+        Label:
+            text: 'Nombre'
+            #font_size: 14
+            #halign: 'right'
+            #text_size: root.width-20, 20
+
+        TextInput:
+            id: dbpath
+            multiline:False
+
+#tipo
+#moneda
+#cuenta padre
+
+    Button:
+        text: 'Cambiar'
+        font_size: 14
+        #on_press: app.menu_basedatos(dbpath.text)

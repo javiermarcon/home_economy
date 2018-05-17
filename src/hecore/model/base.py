@@ -50,11 +50,11 @@ class Db:
         self.connection = session
         return self.connection
 
+    def create_id(self):
+        return str(uuid.uuid4())
+
     def create_db(self, fileName):
         """Crea la base de datos"""
-
-        def create_id():
-            return str(uuid.uuid4())
 
         from model import User, Acounttype, Account, Category, Transaction, Currency, Currencyhistory, Instrument
         print ("creando la bd {}".format(fileName))
@@ -65,24 +65,23 @@ class Db:
         print hashs
         #print(hash)
 
-
-        user = User(id=create_id(), login='admin', password=hash, name='', surname='',
+        user = User(id=self.create_id(), login='admin', password=hash, name='', surname='',
                     default_account='', password_type='default', state='A')
         self.connection.add(user)
 
-        account_types = { 'Efectivo': 'cash',
-                        'Banco': 'bank',
-                        'Tarjeta': 'credit_card',
-                        'Inveersion': 'investment',
-                        'Acciones Arg': 'stocks',
-                        'Acciones USA': 'stocks',
-                        'Cambio': 'currency_exchange' }
+        account_types = {'Efectivo': 'cash',
+                         'Banco': 'bank',
+                         'Tarjeta': 'credit card',
+                         'Inveersion': 'investment',
+                         'Acciones Arg': 'stock',
+                         'Acciones USA': 'stock',
+                         'Cambio': 'currency_exchange'}
         accounts = {
 
         }
 
-        for acc_name, acc_type in account_types:
-            act = Acounttype(id=create_id(), name=acc_name, type=acc_type)
+        for acc_name in account_types:
+            act = Acounttype(id=self.create_id(), name=acc_name, type=account_types[acc_name])
             self.connection.add(act)
 
         self.connection.commit()

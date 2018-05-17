@@ -57,7 +57,7 @@ class Acounttype(DECLARATIVE_BASE):
 
     __tablename__ = 'AcountType'
 
-    tipos = ['cash', 'bank', 'credit card', 'investment', 'stocks','currency_exchange']
+    tipos = ['cash', 'bank', 'credit card', 'investment', 'stock','currency_exchange']
 
     id = Column(VARCHAR(32), autoincrement=False, primary_key=True, nullable=False)  # pylint: disable=invalid-name
     name = Column(VARCHAR(45), nullable=False)

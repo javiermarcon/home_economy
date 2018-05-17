@@ -3,6 +3,7 @@
 
 import os
 from model.model import *
+from plugin import plugins_runner
 
 class HecoreBackend:
     """
@@ -25,4 +26,12 @@ class HecoreBackend:
 
     def check_file_exists(self, filePath):
         return os.path.isfile(filePath)
+
+    def run_plugins(self, options):
+        pluginrun = plugins_runner(options)
+        ret = pluginrun.run_plugins()
+        if ret:
+            for plugin_iter in ret:
+                for p in plugin_iter:
+                    print "zzz ", p
 

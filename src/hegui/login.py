@@ -65,8 +65,6 @@ class Login(BoxLayout):
         print (verif)
         if verif:
             app.username = loginText
-            if app.runserver:
-                app.backend.launch_server()
             print("Login Ok")
             self.ids['loginErrors'].text = ""
             app._switch_main_page('MainPanel', MainPanel)
