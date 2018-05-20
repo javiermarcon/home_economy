@@ -42,7 +42,10 @@ class MainPanel(BoxLayout):
             }}
         if app.runserver:
             app.backend.launch_server()
-        app.backend.run_plugins(options)
+        #app.backend.run_plugins(options)
+        #trigger = Clock.create_trigger(my_callback)
+        ## later
+        #trigger()
         print("Listo")
         self.pop_up.dismiss()
 

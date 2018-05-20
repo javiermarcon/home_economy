@@ -3,7 +3,7 @@
 
 import os
 from model.model import *
-from plugin import plugins_runner
+from plugin_logic import plugin_logic
 
 class HecoreBackend:
     """
@@ -13,6 +13,7 @@ class HecoreBackend:
 
     db = DB_CONN
     config = None
+    plugins = None
 
     def launch_server(self):
         """
@@ -28,7 +29,7 @@ class HecoreBackend:
         return os.path.isfile(filePath)
 
     def run_plugins(self, options):
-        pluginrun = plugins_runner(options)
+        pluginrun = plugin_logic(options)
         ret = pluginrun.run_plugins()
         if ret:
             for plugin_iter in ret:

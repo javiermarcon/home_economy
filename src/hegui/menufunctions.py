@@ -7,6 +7,7 @@ from kivy.uix.boxlayout import BoxLayout
 from hegui.dbscreen import PaginaBd
 from hegui.mainscreen import MainPanel
 from hegui.cuentas import PaginaCuentas
+from hegui.plugin_scr import PaginaPlugins
 
 #--------------------------------------------------------------------------
 '''dictionary that contains the correspondance between items descriptions
@@ -23,6 +24,7 @@ SidePanel_AppMenu = {'Login': ['Login', None],
                      'Categorías': ['menu_cuentas', None],
                      'Usuarios': ['menu_cuentas', None],
                      'Presupuestos': ['menu_cuentas', None],
+                     'Plugins': ['menu_plugins', None],
                      'Reportes': ['menu_cuentas', None],
                      'Opciones': ['menu_opciones', None],
                      'Ayuda General': ['menu_cuentas', None],
@@ -59,11 +61,14 @@ class MenuFunctions:
     def menu_sincro(self):
         print 'TRE... exec'
         self._switch_main_page('Sincronizar',  PaginaSincro)
+    def menu_plugins(self):
+        print 'TRE... exec'
+        self._switch_main_page('Plugins',  PaginaPlugins)
     def menu_opciones(self):
         self.open_settings()
 
 class PaginaSincro(BoxLayout):
     pass
 
-class PaginaOpciones(BoxLayout):
-    pass
+#class PaginaOpciones(BoxLayout):
+#    pass

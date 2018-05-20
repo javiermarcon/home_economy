@@ -4,7 +4,7 @@ from mail_reader import manage_email
 #import re
 import plugins
 
-class plugins_runner:
+class plugin_logic:
 
     def __init__(self, options):
         self.options = options
