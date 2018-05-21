@@ -6,6 +6,7 @@ kivy.require('1.8.0')
 
 from kivy.app import App
 #from kivy.properties import StringProperty
+from kivy.config import ConfigParser
 
 from hegui.navigationdrawer import NavigationDrawer
 from kivy.uix.boxlayout import BoxLayout
@@ -18,12 +19,15 @@ from kivy.uix.settings import SettingsWithSidebar
 from kivy.properties import StringProperty
 
 import os
+import random
+import string
 
 from hegui.login import Login
 from hegui.menufunctions import MenuFunctions, SidePanel_AppMenu
-from hegui.settings_data import settings_data
+from hegui.settings_data import settings_data, SettingPassword
 
 from hecore.hecore import HecoreBackend
+#from hecore.crypt_functions import password_file
 
 RootApp = None
 id_AppMenu_METHOD = 0
@@ -41,12 +45,14 @@ class HeGuiApp(App, MenuFunctions):
     backend = HecoreBackend()
     # response of a popup
     popup_actions = None
+    crypt_pwd_text = None
 
     def build_config(self, config):
         config.setdefaults('last_session', {
             'dbpath': '',
             'lastuser': '',
-            'keeplogged': False
+            'keeplogged': False,
+            'pwd_filename': ""
         })
         config.setdefaults("mail_parser", {
             "email": "",
@@ -54,6 +60,7 @@ class HeGuiApp(App, MenuFunctions):
         })
 
     def build_settings(self, settings):
+        settings.register_type('password', SettingPassword)
         for panel_name in settings_data:
             settings.add_json_panel(panel_name, self.config, data=settings_data[panel_name])
 
@@ -64,6 +71,7 @@ class HeGuiApp(App, MenuFunctions):
         # settings
         self.settings_cls = SettingsWithSidebar
         #self.use_kivy_settings = False
+        #self.set_crypt_pwd_path()
 
         global RootApp
         RootApp = self
@@ -163,6 +171,17 @@ class HeGuiApp(App, MenuFunctions):
             msg = "Kivy Rocks!!!"
         self.username += "responded: {}\n".format(msg)
         return msg.encode('utf-8')
+
+    def set_crypt_pwd_path(self):
+        pwpath = self.config.get('last_session', 'pwd_filename')
+        if not os.path.isfile(pwpath):
+            #Config = ConfigParser.get_configparser('kivy')
+            folder = os.path.dirname(ConfigParser.filename)
+            rand_name = ''.join(random.choice(string.ascii_letters) for x in range(10))
+            pwpath = os.path.join(folder, rand_name)
+            self.config.set('last_session', 'pwd_filename', pwpath)
+        self.crypt_pwd_path = pwpath
+        return
 
 class SidePanel(BoxLayout):
     pass

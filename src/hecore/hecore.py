@@ -28,6 +28,9 @@ class HecoreBackend:
     def check_file_exists(self, filePath):
         return os.path.isfile(filePath)
 
+    def set_ini_location(self, location):
+        self.ini_location = location
+
     def run_plugins(self, options):
         pluginrun = plugin_logic(options)
         ret = pluginrun.run_plugins()
@@ -35,4 +38,5 @@ class HecoreBackend:
             for plugin_iter in ret:
                 for p in plugin_iter:
                     print "zzz ", p
+
 
