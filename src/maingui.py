@@ -64,8 +64,8 @@ class HeGuiApp(App, MenuFunctions):
         for panel_name in settings_data:
             settings.add_json_panel(panel_name, self.config, data=settings_data[panel_name])
 
-    def on_config_change(self, config, section, key, value):
-        print config, section, key, value
+    #def on_config_change(self, config, section, key, value):
+    #    print config, section, key, value
 
     def build(self):
         # settings
@@ -107,7 +107,7 @@ class HeGuiApp(App, MenuFunctions):
         self._switch_main_page('Login', Login)
 
     def do_quit(self):
-        print 'App quit'
+        #print 'App quit'
         self.stop()
 
     def open_popup(self, message, title='Confirmar', action_yes=None,
@@ -192,7 +192,7 @@ class MenuItem(Button):
         self.bind(on_press=self.menuitem_selected)
 
     def menuitem_selected(self, *args):
-        print self.text, SidePanel_AppMenu[self.text], SidePanel_AppMenu[self.text][id_AppMenu_METHOD]
+        #print self.text, SidePanel_AppMenu[self.text], SidePanel_AppMenu[self.text][id_AppMenu_METHOD]
         try:
             function_to_call = SidePanel_AppMenu[self.text][id_AppMenu_METHOD]
         except:
@@ -207,7 +207,7 @@ class AppActionBar(ActionBar):
 
 class ActionMenu(ActionPrevious):
     def menu(self):
-        print 'ActionMenu'
+        #print 'ActionMenu'
         RootApp.toggle_sidepanel()
 
 class ActionQuit(ActionButton):

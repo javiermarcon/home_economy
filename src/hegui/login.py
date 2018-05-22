@@ -62,14 +62,14 @@ class Login(BoxLayout):
         '''
         app = self.get_running_app()
         verif = User().verify_login(loginText, passwordText)
-        print (verif)
+        #print (verif)
         if verif:
             app.username = loginText
-            print("Login Ok")
+            #print("Login Ok")
             self.ids['loginErrors'].text = ""
             app._switch_main_page('MainPanel', MainPanel)
             return
-        print("Login Failed")
+        #print("Login Failed")
         self.ids['loginErrors'].text = "El usuario y/o contraseña no son correctos para la base de datos elegida."
         app._switch_main_page('Login', self)
         return
