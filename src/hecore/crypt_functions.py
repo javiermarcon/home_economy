@@ -63,10 +63,15 @@ class password_file:
                 self.pwd_text = "".join(f.readlines())
                 return self.pwd_text
         else:
-            self.pwd_text = self.get_random_chars(16)
+            self.pwd_text = get_random_chars(16)
             with open(filename, "w") as f:
                 f.write(self.pwd_text)
                 return self.pwd_text
 
-    def get_random_chars(self, lenght):
-        return ''.join(random.choice(string.ascii_letters) for x in range(lenght))
+def get_random_chars(lenght):
+    """
+    Generates random characters
+    :param lenght: lenght of the returned characters
+    :return: random string of characters (lenght characters long)
+    """
+    return ''.join(random.choice(string.ascii_letters) for x in range(lenght))

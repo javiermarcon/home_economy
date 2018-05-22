@@ -5,7 +5,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.recycleview import RecycleView
 
 from kivy.app import App
-from kivy.lang import Builder
+#from kivy.lang import Builder
 #from kivy.uix.recycleview import RecycleView
 from kivy.uix.recycleview.views import RecycleDataViewBehavior
 from kivy.uix.label import Label
@@ -13,8 +13,10 @@ from kivy.properties import BooleanProperty
 from kivy.uix.recycleboxlayout import RecycleBoxLayout
 from kivy.uix.behaviors import FocusBehavior
 from kivy.uix.recycleview.layout import LayoutSelectionBehavior
-from kivy.metrics import dp
+#from kivy.metrics import dp
+from hecore.crypt_functions import AESCipher, password_file
 
+import os
 from random import sample
 from string import ascii_lowercase
 
@@ -29,10 +31,18 @@ class PaginaPlugins(BoxLayout):
 
     def run_all_plugins(self):
         app = App.get_running_app()
+        pwpath = app.config.get('last_session', 'pwd_filename')
+        if not os.path.isfile(pwpath):
+            print "Please configure pw path"
+            return
+        pwd_text = password_file().get(pwpath)
+        aci = AESCipher(pwd_text, 32)
+        password = aci.decrypt(app.config.get('mail_parser', 'password'))
         options = {"mail_plugins": {
             "email": app.config.get('mail_parser', 'email'),
-            "password": app.config.get('mail_parser', 'password')
+            "password": password
         }}
+        #print options
         app.backend.run_plugins(options)
 
     def run_selected_plugin(self):

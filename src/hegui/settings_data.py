@@ -2,14 +2,12 @@
 
 import json
 import os
-import random
-import string
 from kivy.app import App
 from kivy.uix.settings import SettingString
 from kivy.uix.label import Label
 from kivy.config import ConfigParser
 
-from hecore.crypt_functions import AESCipher, password_file
+from hecore.crypt_functions import AESCipher, password_file, get_random_chars
 
 # ver https://gist.github.com/kived/610386b5181219622e33 para entry tipo password
 
@@ -77,13 +75,10 @@ class SettingPassword(SettingString):
         if not os.path.isfile(pwpath):
             Config = ConfigParser.get_configparser("kivy")
             folder = os.path.dirname(Config.filename)
-            rand_name = self._get_random_chars(10)
+            rand_name = get_random_chars(10)
             pwpath = os.path.join(folder, rand_name)
             app.config.set('last_session', 'pwd_filename', pwpath)
         return pwpath
-
-    def _get_random_chars(self, lenght):
-        return ''.join(random.choice(string.ascii_letters) for x in range(lenght))
 
 
 class PasswordLabel(Label):
