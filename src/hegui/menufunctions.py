@@ -44,6 +44,8 @@ class MenuFunctions:
         self._switch_main_page('MainPanel', MainPanel)
 
     def menu_basedatos(self, dbPath=''):
+        # TODO: al hacer click en menu -> base de datos, se tiene que abrir popup de aviso, hacer logout y ponerte pantalla de login
+        # TODO: simplificar llamadas de menu y que cargue menu en forma dinamica
         pag_bd = PaginaBd()
         conf_path = self.config.get('last_session', 'dbpath')
         if not dbPath == conf_path and dbPath.startswith('/'):
