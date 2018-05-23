@@ -112,10 +112,14 @@ class manage_email:
         """
         atts = {}
         for part in msg.walk():
-            if part.get_content_type() == 'application/octet-stream':
-              filename = part.get_filename()
-              if filename:
-                atts[filename] = part.get_payload(decode=1)
+            #if part.get_content_type() == 'application/octet-stream':
+            if part.get_content_maintype() == 'multipart':
+                continue
+            if part.get('Content-Disposition') is None:
+                continue
+            fileName = part.get_filename()
+            if bool(fileName):
+                atts[fileName] = part.get_payload(decode=1)
         return atts
 
 
