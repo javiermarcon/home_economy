@@ -1,0 +1,3 @@
+[submodule "src/libs/kivy-datagrid-plugin"]
+	path = src/libs/kivy-datagrid-plugin
+	url = https://github.com/namkazt/Kivy-Datagrid-plugin.git
