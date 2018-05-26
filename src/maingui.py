@@ -13,7 +13,6 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.button import Button
 from kivy.uix.actionbar import ActionBar, ActionButton, ActionPrevious
-from kivy.uix.gridlayout import GridLayout
 from kivy.uix.popup import Popup
 from kivy.uix.settings import SettingsWithSidebar
 from kivy.properties import StringProperty
@@ -25,6 +24,7 @@ import string
 from hegui.login import Login
 from hegui.menufunctions import MenuFunctions, SidePanel_AppMenu
 from hegui.settings_data import settings_data, SettingPassword
+from hegui.popup import PopupActions
 
 from hecore.hecore import HecoreBackend
 #from hecore.crypt_functions import password_file
@@ -43,8 +43,7 @@ class HeGuiApp(App, MenuFunctions):
     runserver = False
     # database connection object
     backend = HecoreBackend()
-    # response of a popup
-    popup_actions = None
+    popups = PopupActions()
     crypt_pwd_text = None
 
     def build_config(self, config):
@@ -109,26 +108,6 @@ class HeGuiApp(App, MenuFunctions):
     def do_quit(self):
         #print 'App quit'
         self.stop()
-
-    def open_popup(self, message, title='Confirmar', action_yes=None,
-                   action_no=None, size=(480, 400), size_hint=(None, None)):
-        self.popup_actions = {'action_yes': action_yes,
-                              'action_no': action_no}
-        content = ConfirmPopup(text=message)
-        content.bind(on_answer=self._on_popup_answer)
-        self.popup = Popup(title=title,
-                           content=content,
-                           size_hint=size_hint,
-                           size=size,
-                           auto_dismiss=False)
-        self.popup.open()
-
-    def _on_popup_answer(self, instance, answer):
-        self.popup.dismiss()
-        if answer:
-            self.popup_actions['action_yes']()
-        else:
-            self.popup_actions['action_no']()
 
     def _switch_main_page(self, key,  panel):
         # last_panel stores the previous window to know which panel to choose
@@ -227,13 +206,4 @@ class NavDrawer(NavigationDrawer):
 class AppArea(FloatLayout):
     pass
 
-class ConfirmPopup(GridLayout):
-    text = StringProperty()
-
-    def __init__(self, **kwargs):
-        self.register_event_type('on_answer')
-        super(ConfirmPopup, self).__init__(**kwargs)
-
-    def on_answer(self, *args):
-        pass
 

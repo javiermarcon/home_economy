@@ -9,3 +9,18 @@
         Label:
             id: _pop_up_text
             text: ''
+
+<ConfirmPopup>:
+    cols:1
+	Label:
+		text: root.text
+	GridLayout:
+		cols: 2
+		size_hint_y: None
+		height: '44sp'
+		Button:
+			text: 'Si'
+			on_release: root.dispatch('on_answer', True)
+		Button:
+			text: 'No'
+			on_release: root.dispatch('on_answer', False)

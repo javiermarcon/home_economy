@@ -22,8 +22,9 @@ class Login(BoxLayout):
         else:
             strmsg = "La base de datos {} no existe, desea crearla?".format(fileName)
             login_finish = self.make_db_and_finish_login
-            app.open_popup(strmsg, action_yes=partial(login_finish, loginText, passwordText, True, fileName),
-                                action_no=self.no_action)
+            app.popups.open_confirm_popup(strmsg, action_yes=partial(login_finish, loginText,
+                                          passwordText, True, fileName),
+                                          action_no=self.no_action)
 
     def no_action(self):
         pass
