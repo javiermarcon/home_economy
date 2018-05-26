@@ -46,10 +46,10 @@ class User(DECLARATIVE_BASE):
         :return: Booleano si se autentifica o no
         """
         result = DB_CONN.get_connection().query(User).filter_by(login=username).first()
-        print(result)
+        #print(result)
         if not result:
             return False
-        print (password)
+        #print (password)
         return PWD_CONTEXT.verify(password, result.password)
 
 
@@ -140,6 +140,10 @@ class Currency(DECLARATIVE_BASE):
     symbol = Column(VARCHAR(10))
     conversion = Column(FLOAT)
     dec_places = Column(INTEGER)
+
+    def get_all(self):
+        result = DB_CONN.get_connection().query(Currency).order_by(Currency.denomination).all()
+        return result
 
     def __repr__(self):
         return self.__str__()

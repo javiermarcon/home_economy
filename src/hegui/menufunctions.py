@@ -7,6 +7,7 @@ from kivy.uix.boxlayout import BoxLayout
 from hegui.dbscreen import PaginaBd
 from hegui.mainscreen import MainPanel
 from hegui.cuentas import PaginaCuentas
+from hegui.monedas import PaginaMonedas
 from hegui.plugin_scr import PaginaPlugins
 
 #--------------------------------------------------------------------------
@@ -20,7 +21,7 @@ SidePanel_AppMenu = {'Login': ['Login', None],
                      'Base de datos': ['menu_basedatos', None],
                      'Sincronizar': ['menu_sincro', None],
                      'Cuentas': ['menu_cuentas', None],
-                     'Monedas': ['menu_cuentas', None],
+                     'Monedas': ['menu_monedas', None],
                      'Categorías': ['menu_cuentas', None],
                      'Usuarios': ['menu_cuentas', None],
                      'Presupuestos': ['menu_cuentas', None],
@@ -60,6 +61,9 @@ class MenuFunctions:
     def menu_cuentas(self):
         #print 'DUE... exec'
         self._switch_main_page('Cuentas', PaginaCuentas)
+    def menu_monedas(self):
+        #print 'TRE... exec'
+        self._switch_main_page('Monedas',  PaginaMonedas)
     def menu_sincro(self):
         #print 'TRE... exec'
         self._switch_main_page('Sincronizar',  PaginaSincro)
