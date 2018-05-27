@@ -68,7 +68,7 @@ class Acounttype(DECLARATIVE_BASE):
     def __str__(self):
         return "<Acounttype(%(id)s)>" % self.__dict__
 
-"""
+
 class Account(DECLARATIVE_BASE):
 
     __tablename__ = 'Account'
@@ -88,7 +88,7 @@ class Account(DECLARATIVE_BASE):
 
     def __str__(self):
         return "<Account(%(id)s)>" % self.__dict__
-"""
+
 
 class Category(DECLARATIVE_BASE):
 
@@ -148,7 +148,7 @@ class Currency(DECLARATIVE_BASE):
 
     def __str__(self):
         return "<Currency(%(id)s)>" % self.__dict__
-"""
+
 class Currencyhistory(DECLARATIVE_BASE):
 
     __tablename__ = 'CurrencyHistory'
@@ -166,7 +166,7 @@ class Currencyhistory(DECLARATIVE_BASE):
 
     def __str__(self):
         return "<Currencyhistory(%(id)s)>" % self.__dict__
-"""
+
 
 class Instrument(DECLARATIVE_BASE):
 
