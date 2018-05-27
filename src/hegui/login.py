@@ -49,6 +49,7 @@ class Login(BoxLayout):
         if not create:
             self.finish_login(loginText, passwordText)
         else:
+            # TODO: verificar opciones x defecto y crearlas
             app.backend.db.create_and_connect_callback(fileName)
             app.username = loginText
             app._switch_main_page('MainPanel', MainPanel)
