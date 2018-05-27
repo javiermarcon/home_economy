@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import uuid
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
@@ -35,47 +34,12 @@ class Db:
         self.connection = session
         return self.connection
 
-    def create_id(self):
-        return str(uuid.uuid4())
-
-    def create_db(self, fileName):
-        """Crea la base de datos"""
-
-        from model import User, Acounttype, Account, Category, Transaction, Currency, Currencyhistory, Instrument
-        print ("creando la bd {}".format(fileName))
-        DECLARATIVE_BASE.metadata.create_all(self.engine)
-
-        # agrego un usuario llamado admin con clave admin
-        hashs = PWD_CONTEXT.encrypt("admin")
-        print hashs
-        #print(hash)
-
-        user = User(id=self.create_id(), login='admin', password=hash, name='', surname='',
-                    default_account='', password_type='default', state='A')
-        self.connection.add(user)
-
-        account_types = {'Efectivo': 'cash',
-                         'Banco': 'bank',
-                         'Tarjeta': 'credit card',
-                         'Inveersion': 'investment',
-                         'Acciones Arg': 'stock',
-                         'Acciones USA': 'stock',
-                         'Cambio': 'currency_exchange'}
-        accounts = {
-
-        }
-
-        for acc_name in account_types:
-            act = Acounttype(id=self.create_id(), name=acc_name, type=account_types[acc_name])
-            self.connection.add(act)
-
-        self.connection.commit()
-
-        # TODO: agregar los registros iniciales como usuario principal y cuentas x defecto
-
     def create_and_connect_callback(self, fileName):
         self.connect(fileName)
-        self.create_db(fileName)
+        print ("creando la bd {}".format(fileName))
+        # crear base de datos
+        from db_creation import create_and_populate_db
+        create_and_populate_db(self.engine, self.connection)
 
     def get_connection(self):
         if self.connection:

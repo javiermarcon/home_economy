@@ -46,9 +46,12 @@ class Login(BoxLayout):
         :return: None
         '''
         app = self.get_running_app()
-        if create:
+        if not create:
+            self.finish_login(loginText, passwordText)
+        else:
             app.backend.db.create_and_connect_callback(fileName)
-        self.finish_login(loginText, passwordText)
+            app.username = loginText
+            app._switch_main_page('MainPanel', MainPanel)
 
     def finish_login(self, loginText, passwordText):
         '''

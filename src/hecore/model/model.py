@@ -6,7 +6,8 @@ from sqlalchemy import Column, ForeignKey
 
 #from kivy.app import App
 
-from base import DB_CONN, DECLARATIVE_BASE, PWD_CONTEXT
+from base import DB_CONN, DECLARATIVE_BASE
+from hecore.crypt_functions import PWD_CONTEXT
 
 #if os.environ.get('DB_TYPE', 'MySQL') == 'MySQL':
 #    from sqlalchemy.dialects.mysql import FLOAT, VARCHAR, ENUM, CHAR, BLOB, DATE, INTEGER
@@ -57,11 +58,8 @@ class Acounttype(DECLARATIVE_BASE):
 
     __tablename__ = 'AcountType'
 
-    tipos = ['cash', 'bank', 'credit card', 'investment', 'stock','currency_exchange']
-
     id = Column(VARCHAR(32), autoincrement=False, primary_key=True, nullable=False)  # pylint: disable=invalid-name
     name = Column(VARCHAR(45), nullable=False)
-    type = Column(ENUM(tipos), nullable=False)
     module = Column(VARCHAR(45))
 
     def __repr__(self):
@@ -70,7 +68,7 @@ class Acounttype(DECLARATIVE_BASE):
     def __str__(self):
         return "<Acounttype(%(id)s)>" % self.__dict__
 
-
+"""
 class Account(DECLARATIVE_BASE):
 
     __tablename__ = 'Account'
@@ -90,7 +88,7 @@ class Account(DECLARATIVE_BASE):
 
     def __str__(self):
         return "<Account(%(id)s)>" % self.__dict__
-
+"""
 
 class Category(DECLARATIVE_BASE):
 
@@ -150,7 +148,7 @@ class Currency(DECLARATIVE_BASE):
 
     def __str__(self):
         return "<Currency(%(id)s)>" % self.__dict__
-
+"""
 class Currencyhistory(DECLARATIVE_BASE):
 
     __tablename__ = 'CurrencyHistory'
@@ -168,7 +166,7 @@ class Currencyhistory(DECLARATIVE_BASE):
 
     def __str__(self):
         return "<Currencyhistory(%(id)s)>" % self.__dict__
-
+"""
 
 class Instrument(DECLARATIVE_BASE):
 
