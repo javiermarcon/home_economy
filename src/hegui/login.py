@@ -51,8 +51,8 @@ class Login(BoxLayout):
         else:
             # TODO: verificar opciones x defecto y crearlas
             app.backend.db.create_and_connect_callback(fileName)
-            app.username = loginText
-            app._switch_main_page('MainPanel', MainPanel)
+            self.save_dbpath(fileName, app)
+            self.switch_main(loginText, app)
 
     def finish_login(self, loginText, passwordText):
         '''
@@ -69,12 +69,19 @@ class Login(BoxLayout):
         verif = User().verify_login(loginText, passwordText)
         #print (verif)
         if verif:
-            app.username = loginText
-            #print("Login Ok")
-            self.ids['loginErrors'].text = ""
-            app._switch_main_page('MainPanel', MainPanel)
+            self.switch_main(loginText, app)
             return
         #print("Login Failed")
         self.ids['loginErrors'].text = "El usuario y/o contraseña no son correctos para la base de datos elegida."
         app._switch_main_page('Login', self)
         return
+
+    def switch_main(self, loginText, app):
+        app.username = loginText
+        # print("Login Ok")
+        self.ids['loginErrors'].text = ""
+        app._switch_main_page('MainPanel', MainPanel)
+
+    def save_dbpath(self, dbPath, app):
+        app.config.set('last_session', 'dbpath', dbPath)
+        app.config.write()
