@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
 #import os
-from sqlalchemy.orm import relationship
 from sqlalchemy import Column, ForeignKey
+from sqlalchemy.orm import Session, relationship, backref, joinedload_all
+from sqlalchemy.orm.collections import attribute_mapped_collection
 
 #from kivy.app import App
 
@@ -62,6 +63,14 @@ class Acounttype(DECLARATIVE_BASE):
     name = Column(VARCHAR(45), nullable=False)
     module = Column(VARCHAR(45))
 
+    def get_one(self, name):
+        result = DB_CONN.get_connection().query(Acounttype).filter(Acounttype.name == name).one()
+        return result
+
+    def get_all(self):
+        result = DB_CONN.get_connection().query(Acounttype).order_by(Acounttype.name).all()
+        return result
+
     def __repr__(self):
         return self.__str__()
 
@@ -75,13 +84,31 @@ class Account(DECLARATIVE_BASE):
 
     id = Column(VARCHAR(32), autoincrement=False, primary_key=True, nullable=False)  # pylint: disable=invalid-name
     name = Column(VARCHAR(45), nullable=False)
-    parent = Column(VARCHAR(32))
+    parent = Column(VARCHAR(32), ForeignKey(id))
     id_account_type = Column(VARCHAR(32), ForeignKey("AcountType.id"), index=True, nullable=False)
     id_currency = Column(VARCHAR(32), ForeignKey("Currency.id"), index=True, nullable=False)
 
     acounttype = relationship("Acounttype", foreign_keys=[id_account_type], backref="account")
     currency = relationship("Currency", foreign_keys=[id_currency], backref="account")
     balance = Column(FLOAT, nullable=False)
+    """
+    children = relationship(
+        "Account",
+        # cascade deletions
+        cascade="all, delete-orphan",
+
+        # many to one + adjacency list - remote_side
+        # is required to reference the 'remote'
+        # column in the join condition.
+        backref=backref("parent", remote_side=id),
+
+        # children will be represented as a dictionary
+        # on the "name" attribute.
+        collection_class=attribute_mapped_collection('name'),
+    ) """
+
+    #def get_tree(self):
+    #    return self.children.values()
 
     def __repr__(self):
         return self.__str__()
@@ -138,6 +165,10 @@ class Currency(DECLARATIVE_BASE):
     symbol = Column(VARCHAR(10))
     conversion = Column(FLOAT)
     dec_places = Column(INTEGER)
+
+    def get_one(self, denom):
+        result = DB_CONN.get_connection().query(Currency).filter(Currency.denomination == denom).one()
+        return result
 
     def get_all(self):
         result = DB_CONN.get_connection().query(Currency).order_by(Currency.denomination).all()
