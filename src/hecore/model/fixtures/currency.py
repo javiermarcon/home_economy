@@ -3,7 +3,7 @@
 # "denomination",u"name",bid,ask,u"symbol",conversion,dec_places
 
 currency_table_data = [
-    [u"USD",u"United States dollar",0.0,0.0,u"$",1.0,2],
+    [u"USD",u"United States dollar",0.0,0.0,u"U$S",1.0,2],
     [u"EUR",u"European euro",0.0,0.0,u"€",1.0,2],
     [u"GBP",u"UK Pound",0.0,0.0,u"£",1.0,2],
     [u"RUB",u"Russian Ruble",0.0,0.0,u"₽",1.0,2],

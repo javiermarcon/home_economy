@@ -12,7 +12,6 @@ def create_and_populate_db(engine, connection):
     create_currencies(connection)
     create_accounts(connection)
     connection.commit()
-    #print Account().get_tree()
 
     # TODO: agregar los registros iniciales como cuentas x defecto
 
@@ -28,7 +27,7 @@ def create_user(connection):
     connection.add(user)
 
 def create_account_types(connection):
-    account_types = ['Efectivo','Banco','Tarjeta','Inversion','Acciones','Moneda']
+    account_types = ['Efectivo','Banco','Tarjeta','Inversion','Moneda'] #,'Acciones'
     for acc_name in account_types:
         act = Acounttype(id=create_id(), name=acc_name)
         connection.add(act)
