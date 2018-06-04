@@ -13,7 +13,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.button import Button
 from kivy.uix.actionbar import ActionBar, ActionButton, ActionPrevious
-from kivy.uix.popup import Popup
+#from kivy.uix.popup import Popup
 from kivy.uix.settings import SettingsWithSidebar
 from kivy.properties import StringProperty
 
