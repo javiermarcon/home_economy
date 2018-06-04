@@ -3,23 +3,39 @@
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.treeview import TreeViewLabel
 
+from hecore.model.model import Account, Acounttype
+
 class PaginaCuentas(BoxLayout):
+
+    nodos_cuenta = {}
+    nodos_tipo = {}
 
     def __init__(self, **kwargs):
         super(PaginaCuentas, self).__init__(**kwargs)
         mc = self.main_cuentas
-        self.populate_treeview(mc)
         mc.bind(minimum_height=mc.setter('height'))
+        self.populate_treeview(mc)
 
     def populate_treeview(self, tv):
-        n = tv.add_node(TreeViewLabel(text='Item 1'))
-        for x in xrange(3):
-            tv.add_node(TreeViewLabel(text='Subitem %d' % x), n)
-        n = tv.add_node(TreeViewLabel(text='Item 2', is_open=True))
-        for x in xrange(3):
-            tv.add_node(TreeViewLabel(text='Subitem %d' % x), n)
-        n = tv.add_node(TreeViewLabel(text='Item 3'))
-        for x in xrange(3):
-            tv.add_node(TreeViewLabel(text='Subitem %d' % x), n)
+        """
+        Llena el tree view
+        :param tv:
+        :return:
+        """
+        tipos_cuenta = Acounttype().get_all()
+        for act in tipos_cuenta:
+            nodo = tv.add_node(TreeViewLabel(text=act.name, is_open=True))
+            self.nodos_tipo[act.id] = nodo
+        cuentas = Account().get_all()
+        for cuenta in cuentas:
+            txt_cuenta = u'{} ({} {} {})'.format(cuenta.name, cuenta.currency.symbol,
+                                                 cuenta.balance, cuenta.currency.name)
+            if cuenta.parent:
+                nodo = tv.add_node(TreeViewLabel(text=txt_cuenta, is_open=True),
+                                   self.nodos_cuenta[cuenta.parent])
+            else:
+                nodo = tv.add_node(TreeViewLabel(text=txt_cuenta, is_open=True),
+                                   self.nodos_tipo[cuenta.acounttype.id])
+            self.nodos_cuenta[cuenta.id] = nodo
         return tv
 

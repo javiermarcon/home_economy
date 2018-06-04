@@ -9,6 +9,7 @@
 
     Label:
         text: 'Cuentas'
+        size_hint_y: 0.3
 
     ScrollView:
         pos: 0, 0
@@ -16,8 +17,11 @@
         TreeView:
             id: main_cuentas
             hide_root: True
+            size_hint_y: None
+
     BoxLayout:
         orientation: 'horizontal'
+        size_hint_y: 0.2
 
         Button:
             text: 'Agregar'

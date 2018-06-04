@@ -64,7 +64,7 @@ class Acounttype(DECLARATIVE_BASE):
     module = Column(VARCHAR(45))
 
     def get_one(self, name):
-        result = DB_CONN.get_connection().query(Acounttype).filter(Acounttype.name == name).one()
+        result = DB_CONN.get_connection().query(Acounttype).filter(Acounttype.name == name).one_or_none()
         return result
 
     def get_all(self):
@@ -91,24 +91,10 @@ class Account(DECLARATIVE_BASE):
     acounttype = relationship("Acounttype", foreign_keys=[id_account_type], backref="account")
     currency = relationship("Currency", foreign_keys=[id_currency], backref="account")
     balance = Column(FLOAT, nullable=False)
-    """
-    children = relationship(
-        "Account",
-        # cascade deletions
-        cascade="all, delete-orphan",
 
-        # many to one + adjacency list - remote_side
-        # is required to reference the 'remote'
-        # column in the join condition.
-        backref=backref("parent", remote_side=id),
-
-        # children will be represented as a dictionary
-        # on the "name" attribute.
-        collection_class=attribute_mapped_collection('name'),
-    ) """
-
-    #def get_tree(self):
-    #    return self.children.values()
+    def get_all(self):
+        result = DB_CONN.get_connection().query(Account).order_by(Account.parent, Account.name).all()
+        return result
 
     def __repr__(self):
         return self.__str__()
@@ -167,7 +153,7 @@ class Currency(DECLARATIVE_BASE):
     dec_places = Column(INTEGER)
 
     def get_one(self, denom):
-        result = DB_CONN.get_connection().query(Currency).filter(Currency.denomination == denom).one()
+        result = DB_CONN.get_connection().query(Currency).filter(Currency.denomination == denom).one_or_none()
         return result
 
     def get_all(self):
@@ -214,27 +200,3 @@ class Instrument(DECLARATIVE_BASE):
 
     def __str__(self):
         return "<Instrument(%(id)s)>" % self.__dict__
-
-"""
-class Department(Base):
-    __tablename__ = 'department'
-    id = Column(Integer, primary_key=True)
-    name = Column(String)
-
-
-class Employee(Base):
-    __tablename__ = 'employee'
-    id = Column(Integer, primary_key=True)
-    name = Column(String)
-    # Use default=func.now() to set the default hiring time
-    # of an Employee to be the current time when an
-    # Employee record was created
-    hired_on = Column(DateTime, default=func.now())
-    department_id = Column(Integer, ForeignKey('department.id'))
-    # Use cascade='delete,all' to propagate the deletion of a Department onto its Employees
-    department = relationship(
-        Department,
-        backref=backref('employees',
-                        uselist=True,
-                        cascade='delete,all'))
-"""
