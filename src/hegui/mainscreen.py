@@ -5,6 +5,7 @@ from kivy.uix.treeview import TreeViewLabel
 from kivy.uix.recycleview import RecycleView
 #from kivy.clock import Clock
 from cuentas import TreeCuentas
+import pprint
 
 import time, threading
 
@@ -42,7 +43,59 @@ class MainPanel(TreeCuentas):
         app.popups.close_popup()
 
 class RV(RecycleView):
-    """ver: https://kivy.org/docs/api-kivy.uix.recycleview.html#kivy.uix.recycleview.RecycleView"""
+    """
+    Muestra mensajes en la pantalla, poniendo los ultimos arriba.
+    Si ingreso el mismo mensaje 2 veces, se muestra una sola vez, pero en la posicion que le corresponde
+    a la ultima vez que se ingreso.
+    ver:
+        para funcionamiento general:
+        https://kivy.org/docs/api-kivy.uix.recycleview.html#kivy.uix.recycleview.RecycleView
+        para ocultarlo si no hay mensajes:
+        https://stackoverflow.com/questions/41985573/hiding-and-showing-a-widget-in-kivy
+    """
+
+    messages = {} # the messages holded by the recicleview
+    last_msg_num = 0 # number of the last message holded
+
     def __init__(self, **kwargs):
         super(RV, self).__init__(**kwargs)
-        self.data = [{'text': 'Mensaje {}'.format(x)} for x in range(4)]
+        self.redraw_messages()
+        """
+        [ self.add_message("msg {}".format(x)) for x in range(4) ]
+        [self.add_message("ASD {}".format(x)) for x in range(3,6)]
+        num1 = self.add_message("weeeriz")
+        num2 = self.add_message("weeeriz1")
+        [self.add_message("msg {}".format(x)) for x in range(3,6)]
+        self.remove_message_by_text("msg 2")
+        self.remove_message_by_num(num1)
+        pprint.pprint(self.messages)
+        """
+
+    def add_message(self, message):
+        self.last_msg_num = self.last_msg_num + 1
+        self.messages[message] = self.last_msg_num
+        self.redraw_messages()
+        return self.last_msg_num
+
+    def remove_message_by_num(self, message_num):
+        message = self.get_message_by_number(message_num)
+        if message:
+            self.remove_message_by_text(message)
+
+    def remove_message_by_text(self, message):
+        del self.messages[message]
+        self.redraw_messages()
+
+    def redraw_messages(self):
+
+        if self.messages:
+            dt = [{'text': x} for x in sorted(self.messages,
+                                              key=self.messages.__getitem__,
+                                              reverse=True)]
+            self.data = dt
+        else:
+            self.data = []
+
+    def get_message_by_number(self, number):
+        val = [k for k, v in self.messages.iteritems() if v == number][0]
+        return val
