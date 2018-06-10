@@ -5,16 +5,11 @@ from kivy.uix.treeview import TreeViewLabel
 
 from hecore.model.model import Account, Acounttype
 
-class PaginaCuentas(BoxLayout):
+
+class TreeCuentas(BoxLayout):
 
     nodos_cuenta = {}
     nodos_tipo = {}
-
-    def __init__(self, **kwargs):
-        super(PaginaCuentas, self).__init__(**kwargs)
-        mc = self.main_cuentas
-        mc.bind(minimum_height=mc.setter('height'))
-        self.populate_treeview(mc)
 
     def populate_treeview(self, tv):
         """
@@ -39,3 +34,11 @@ class PaginaCuentas(BoxLayout):
             self.nodos_cuenta[cuenta.id] = nodo
         return tv
 
+
+class PaginaCuentas(TreeCuentas):
+
+    def __init__(self, **kwargs):
+        super(PaginaCuentas, self).__init__(**kwargs)
+        mc = self.main_cuentas
+        mc.bind(minimum_height=mc.setter('height'))
+        self.populate_treeview(mc)
