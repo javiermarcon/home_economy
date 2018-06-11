@@ -97,5 +97,7 @@ class RV(RecycleView):
             self.data = []
 
     def get_message_by_number(self, number):
-        val = [k for k, v in self.messages.iteritems() if v == number][0]
-        return val
+        val = [k for k, v in self.messages.iteritems() if v == number]
+        if val:
+            return val[0]
+        return None
