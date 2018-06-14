@@ -22,15 +22,15 @@ SidePanel_AppMenu = {'Login': ['Login', None],
                      'Sincronizar': ['menu_sincro', None],
                      'Cuentas': ['menu_cuentas', None],
                      'Monedas': ['menu_monedas', None],
-                     'Categorías': ['menu_cuentas', None],
-                     'Usuarios': ['menu_cuentas', None],
-                     'Presupuestos': ['menu_cuentas', None],
+                     'Categorías': ['menu_categorias', None],
+                     'Usuarios': ['menu_usuarios', None],
+                     'Presupuestos': ['menu_presupuestos', None],
                      'Plugins': ['menu_plugins', None],
-                     'Reportes': ['menu_cuentas', None],
+                     'Reportes': ['menu_reportes', None],
                      'Opciones': ['menu_opciones', None],
-                     'Ayuda General': ['menu_cuentas', None],
-                     'Preguntas frecuentes': ['menu_cuentas', None],
-                     'Acerca de...': ['menu_cuentas', None],
+                     'Ayuda General': ['menu_ayuda', None],
+                     'Preguntas frecuentes': ['menu_preguntas', None],
+                     'Acerca de...': ['menu_acercade', None],
                      'Cerrar sesión': ['do_logout', None],
                      'Salir': ['do_quit', None],
 
@@ -72,9 +72,22 @@ class MenuFunctions:
         self._switch_main_page('Plugins',  PaginaPlugins)
     def menu_opciones(self):
         self.open_settings()
+    def menu_categorias(self):
+        pass
+    def menu_usuarios(self):
+        pass
+    def menu_presupuestos(self):
+        pass
+    def menu_reportes(self):
+        pass
+    def menu_ayuda(self):
+        pass
+    def menu_preguntas(self):
+        pass
+    def menu_acercade(self):
+        pass
+
 
 class PaginaSincro(BoxLayout):
     pass
 
-#class PaginaOpciones(BoxLayout):
-#    pass
