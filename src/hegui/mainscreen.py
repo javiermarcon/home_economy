@@ -1,20 +1,22 @@
 # -*- coding: utf-8 -*-
 
 from kivy.app import App
-from kivy.uix.treeview import TreeViewLabel
 from kivy.uix.recycleview import RecycleView
 #from kivy.clock import Clock
-from cuentas import TreeCuentas
-import pprint
-
+from treeviewdb import TreeViewDb
+from hecore.model.model import Account, Acounttype
 import time, threading
 
-class MainPanel(TreeCuentas):
+class MainPanel(TreeViewDb):
 
     def __init__(self, **kwargs):
         super(MainPanel, self).__init__(**kwargs)
         #self.execute_initial_tasks()
         mc = self.main_cuentas
+        self.set_data(Account, ['name', 'currency.symbol',
+                                'balance', 'currency.name'], u'{} ({} {} {})',
+                      Acounttype, ['name'], u'{}'
+                      )
         self.populate_treeview(mc)
         mc.bind(minimum_height=mc.setter('height'))
         # Open the pop up
