@@ -7,6 +7,7 @@ from kivy.uix.boxlayout import BoxLayout
 from hegui.dbscreen import PaginaBd
 from hegui.mainscreen import MainPanel
 from hegui.cuentas import PaginaCuentas
+from hegui.categorias import PaginaCategorias
 from hegui.monedas import PaginaMonedas
 from hegui.plugin_scr import PaginaPlugins
 
@@ -73,7 +74,7 @@ class MenuFunctions:
     def menu_opciones(self):
         self.open_settings()
     def menu_categorias(self):
-        pass
+        self._switch_main_page('Categorías', PaginaCategorias)
     def menu_usuarios(self):
         pass
     def menu_presupuestos(self):

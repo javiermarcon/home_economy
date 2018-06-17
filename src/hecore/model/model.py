@@ -4,15 +4,14 @@
 from sqlalchemy import Column, ForeignKey
 from sqlalchemy.orm import Session, relationship, backref, joinedload_all
 from sqlalchemy.orm.collections import attribute_mapped_collection
-
+#from sqlalchemy.ext.orderinglist import ordering_list
+import itertools
 #from kivy.app import App
 
 from base import DB_CONN, DECLARATIVE_BASE
 from hecore.crypt_functions import PWD_CONTEXT
 
-#if os.environ.get('DB_TYPE', 'MySQL') == 'MySQL':
-#    from sqlalchemy.dialects.mysql import FLOAT, VARCHAR, ENUM, CHAR, BLOB, DATE, INTEGER
-#else:
+from sqlalchemy.sql.expression import func
 from sqlalchemy import Enum as ENUM, String as BLOB, Float as FLOAT, String as VARCHAR, Date as DATE, Integer
 
 class INTEGER(Integer):
@@ -108,8 +107,43 @@ class Category(DECLARATIVE_BASE):
     __tablename__ = 'Category'
 
     id = Column(VARCHAR(32), autoincrement=False, primary_key=True, nullable=False)  # pylint: disable=invalid-name
-    parent = Column(VARCHAR(32), nullable=False)
+    parent = Column(VARCHAR(32), ForeignKey(id))
     name = Column(VARCHAR(45), nullable=False)
+    balance = Column(FLOAT, nullable=False)
+    children = relationship(
+        "Category",
+        # cascade deletions
+        cascade="all, delete-orphan",
+
+        # many to one + adjacency list - remote_side
+        # is required to reference the 'remote'
+        # column in the join condition.
+        backref=backref("r_parent", remote_side=id),
+
+        # children will be represented as a dictionary
+        # on the "name" attribute.
+        #order_by="Category.name",
+        #collection_class=ordering_list('name'))
+        collection_class=attribute_mapped_collection('name'))
+
+    def get_all(self):
+        result = []
+        rootNodes = DB_CONN.get_connection().query(Category). \
+            options(joinedload_all("children", "children",
+                                   "children", "children")). \
+            filter(Category.parent == None).all()
+        for node in rootNodes:
+            result.extend(node.get_with_childrens())
+
+        return result
+
+    def get_with_childrens(self):
+        res = [self]
+        childs = [c.get_with_childrens() for c in self.children.values()]
+        if childs:
+            ret_flat = list(itertools.chain.from_iterable(childs))
+            res.extend(ret_flat)
+        return res
 
     def __repr__(self):
         return self.__str__()

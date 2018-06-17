@@ -1,0 +1,28 @@
+<PaginaCategorias>:
+    orientation: 'vertical'
+    spacing: 1
+
+    main_categorias: main_categorias
+
+    AppActionBar:
+        size_hint: (1., 0.1)
+
+    Label:
+        text: 'Categorias'
+        size_hint_y: 0.3
+
+    ScrollView:
+        pos: 0, 0
+
+        TreeView:
+            id: main_categorias
+            hide_root: True
+            size_hint_y: None
+
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: 0.2
+
+        Button:
+            text: 'Agregar'
+

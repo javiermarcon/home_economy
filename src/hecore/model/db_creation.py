@@ -3,6 +3,7 @@
 from model import * #User, Acounttype, Account, Category, Transaction, Currency, Currencyhistory, Instrument
 from fixtures.currency import currency_table_data
 from fixtures.acount import acount_table_data
+from fixtures.category import category_table_data
 import uuid
 
 def create_and_populate_db(engine, connection):
@@ -11,6 +12,7 @@ def create_and_populate_db(engine, connection):
     create_account_types(connection)
     create_currencies(connection)
     create_accounts(connection)
+    create_categories(connection)
     connection.commit()
 
     # TODO: agregar los registros iniciales como cuentas x defecto
@@ -51,6 +53,17 @@ def create_accounts(connection):
         else:
             ac = Account(id=unicode(acount_table_data[linea][0]), name=linea,
                          id_account_type=id_acc_type, id_currency=id_currency,
+                         balance=0)
+        connection.add(ac)
+
+def create_categories(connection):
+    for linea in category_table_data:
+        if category_table_data[linea][1] is not None:
+            ac = Category(id=unicode(category_table_data[linea][0]), name=linea,
+                     parent=unicode(category_table_data[linea][1]),
+                     balance=0)
+        else:
+            ac = Category(id=unicode(category_table_data[linea][0]), name=linea,
                          balance=0)
         connection.add(ac)
 

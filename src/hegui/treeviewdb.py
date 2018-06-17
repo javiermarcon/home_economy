@@ -28,9 +28,11 @@ class TreeViewDb(BoxLayout):
                 nodo = tv.add_node(TreeViewLabel(text=txt_act, is_open=True))
                 self.nodos_tipo[act.id] = nodo
         cuentas = self.dbchildclass.get_all()
+
         for cuenta in cuentas:
             c_params = [rec_getattr(cuenta, attr) for attr in self.dbchildargs]
             txt_cuenta = self.dbchildtext.format(*c_params)
+
             if cuenta.parent:
                 nodo = tv.add_node(TreeViewLabel(text=txt_cuenta, is_open=True),
                                    self.nodos_cuenta[cuenta.parent])
