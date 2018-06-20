@@ -18,6 +18,31 @@ class INTEGER(Integer):
     def __init__(self, *args, **kwargs):
         super(Integer, self).__init__()
 
+def sort_db(obj):
+    return obj.name
+
+
+class TreeClass():
+    def get_all(self):
+        result = []
+        rootNodes = sorted(DB_CONN.get_connection().query(self.__class__). \
+            options(joinedload_all("children", "children",
+                                   "children", "children")). \
+            filter(self.__class__.parent == None).all(), key=sort_db)
+        for node in rootNodes:
+            result.extend(node.get_with_childrens())
+
+        return result
+
+    def get_with_childrens(self):
+        res = [self]
+        childs = [c.get_with_childrens() for c in sorted(self.children.values(), key=sort_db)]
+        if childs:
+            ret_flat = list(itertools.chain.from_iterable(childs))
+            res.extend(ret_flat)
+        return res
+
+
 class User(DECLARATIVE_BASE):
     """
     Maneja un usuario y sus acciones.
@@ -77,7 +102,7 @@ class Acounttype(DECLARATIVE_BASE):
         return "<Acounttype(%(id)s)>" % self.__dict__
 
 
-class Account(DECLARATIVE_BASE):
+class Account(DECLARATIVE_BASE, TreeClass):
 
     __tablename__ = 'Account'
 
@@ -90,10 +115,17 @@ class Account(DECLARATIVE_BASE):
     acounttype = relationship("Acounttype", foreign_keys=[id_account_type], backref="account")
     currency = relationship("Currency", foreign_keys=[id_currency], backref="account")
     balance = Column(FLOAT, nullable=False)
-
-    def get_all(self):
-        result = DB_CONN.get_connection().query(Account).order_by(Account.parent, Account.name).all()
-        return result
+    children = relationship(
+        "Account",
+        # cascade deletions
+        cascade="all, delete-orphan",
+        # many to one + adjacency list - remote_side
+        # is required to reference the 'remote'
+        # column in the join condition.
+        backref=backref("r_parent", remote_side=id),
+        # children will be represented as a dictionary
+        # on the "name" attribute.
+        collection_class=attribute_mapped_collection('name'))
 
     def __repr__(self):
         return self.__str__()
@@ -102,7 +134,7 @@ class Account(DECLARATIVE_BASE):
         return "<Account(%(id)s)>" % self.__dict__
 
 
-class Category(DECLARATIVE_BASE):
+class Category(DECLARATIVE_BASE, TreeClass):
 
     __tablename__ = 'Category'
 
@@ -114,36 +146,13 @@ class Category(DECLARATIVE_BASE):
         "Category",
         # cascade deletions
         cascade="all, delete-orphan",
-
         # many to one + adjacency list - remote_side
         # is required to reference the 'remote'
         # column in the join condition.
         backref=backref("r_parent", remote_side=id),
-
         # children will be represented as a dictionary
         # on the "name" attribute.
-        #order_by="Category.name",
-        #collection_class=ordering_list('name'))
         collection_class=attribute_mapped_collection('name'))
-
-    def get_all(self):
-        result = []
-        rootNodes = DB_CONN.get_connection().query(Category). \
-            options(joinedload_all("children", "children",
-                                   "children", "children")). \
-            filter(Category.parent == None).all()
-        for node in rootNodes:
-            result.extend(node.get_with_childrens())
-
-        return result
-
-    def get_with_childrens(self):
-        res = [self]
-        childs = [c.get_with_childrens() for c in self.children.values()]
-        if childs:
-            ret_flat = list(itertools.chain.from_iterable(childs))
-            res.extend(ret_flat)
-        return res
 
     def __repr__(self):
         return self.__str__()
