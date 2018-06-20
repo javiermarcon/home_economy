@@ -22,7 +22,18 @@ def sort_db(obj):
     return obj.name
 
 
-class TreeClass():
+class repr_table:
+    """Metodos base para representar las clases de tabla"""
+    def __repr__(self):
+        return self.__str__()
+
+    def __str__(self):
+        return '<{} {}>'.format(self.__class__.__name__, self.id)
+
+class TreeClass:
+    """
+    Metodos base para obtener datos de una tabla tipo tree
+    """
     def get_all(self):
         result = []
         rootNodes = sorted(DB_CONN.get_connection().query(self.__class__). \
@@ -43,7 +54,7 @@ class TreeClass():
         return res
 
 
-class User(DECLARATIVE_BASE):
+class User(DECLARATIVE_BASE, repr_table):
     """
     Maneja un usuario y sus acciones.
     """
@@ -57,12 +68,6 @@ class User(DECLARATIVE_BASE):
     default_account = Column(VARCHAR(32))
     password_type = Column(VARCHAR(32))
     state = Column(VARCHAR(1))
-
-    def __repr__(self):
-        return self.__str__()
-
-    def __str__(self):
-        return "<User(%(id)s)>" % self.__dict__
 
     def verify_login(self, username, password):
         """
@@ -79,7 +84,7 @@ class User(DECLARATIVE_BASE):
         return PWD_CONTEXT.verify(password, result.password)
 
 
-class Acounttype(DECLARATIVE_BASE):
+class Acounttype(DECLARATIVE_BASE, repr_table):
 
     __tablename__ = 'AcountType'
 
@@ -95,14 +100,8 @@ class Acounttype(DECLARATIVE_BASE):
         result = DB_CONN.get_connection().query(Acounttype).order_by(Acounttype.name).all()
         return result
 
-    def __repr__(self):
-        return self.__str__()
 
-    def __str__(self):
-        return "<Acounttype(%(id)s)>" % self.__dict__
-
-
-class Account(DECLARATIVE_BASE, TreeClass):
+class Account(DECLARATIVE_BASE, TreeClass, repr_table):
 
     __tablename__ = 'Account'
 
@@ -127,14 +126,8 @@ class Account(DECLARATIVE_BASE, TreeClass):
         # on the "name" attribute.
         collection_class=attribute_mapped_collection('name'))
 
-    def __repr__(self):
-        return self.__str__()
 
-    def __str__(self):
-        return "<Account(%(id)s)>" % self.__dict__
-
-
-class Category(DECLARATIVE_BASE, TreeClass):
+class Category(DECLARATIVE_BASE, TreeClass, repr_table):
 
     __tablename__ = 'Category'
 
@@ -154,14 +147,8 @@ class Category(DECLARATIVE_BASE, TreeClass):
         # on the "name" attribute.
         collection_class=attribute_mapped_collection('name'))
 
-    def __repr__(self):
-        return self.__str__()
 
-    def __str__(self):
-        return "<Category(%(id)s)>" % self.__dict__
-
-
-class Transaction(DECLARATIVE_BASE):
+class Transaction(DECLARATIVE_BASE, repr_table):
 
     __tablename__ = 'transaction'
 
@@ -175,14 +162,8 @@ class Transaction(DECLARATIVE_BASE):
     ammount = Column(FLOAT, nullable=False)
     notes = Column(BLOB)
 
-    def __repr__(self):
-        return self.__str__()
 
-    def __str__(self):
-        return "<Transaction(%(id)s)>" % self.__dict__
-
-
-class Currency(DECLARATIVE_BASE):
+class Currency(DECLARATIVE_BASE, repr_table):
 
     __tablename__ = 'Currency'
 
@@ -203,13 +184,8 @@ class Currency(DECLARATIVE_BASE):
         result = DB_CONN.get_connection().query(Currency).order_by(Currency.denomination).all()
         return result
 
-    def __repr__(self):
-        return self.__str__()
 
-    def __str__(self):
-        return "<Currency(%(id)s)>" % self.__dict__
-
-class Currencyhistory(DECLARATIVE_BASE):
+class Currencyhistory(DECLARATIVE_BASE, repr_table):
 
     __tablename__ = 'CurrencyHistory'
 
@@ -221,14 +197,8 @@ class Currencyhistory(DECLARATIVE_BASE):
 
     currency = relationship("Currency", foreign_keys=[id_currency], backref="currencyhistory")
 
-    def __repr__(self):
-        return self.__str__()
 
-    def __str__(self):
-        return "<Currencyhistory(%(id)s)>" % self.__dict__
-
-
-class Instrument(DECLARATIVE_BASE):
+class Instrument(DECLARATIVE_BASE, repr_table):
 
     __tablename__ = 'Instrument'
 
@@ -237,9 +207,3 @@ class Instrument(DECLARATIVE_BASE):
     denomination = Column(VARCHAR(45))
     notes = Column(VARCHAR(200))
     id_currency = Column(VARCHAR(32), nullable=False)
-
-    def __repr__(self):
-        return self.__str__()
-
-    def __str__(self):
-        return "<Instrument(%(id)s)>" % self.__dict__
