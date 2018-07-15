@@ -39,12 +39,24 @@ class Db:
         print ("creando la bd {}".format(fileName))
         # crear base de datos
         from db_creation import create_and_populate_db
-        create_and_populate_db(self.engine, self.connection)
+        create_and_populate_db(self)
 
     def get_connection(self):
         if self.connection:
             return self.connection
         else:
             return self.connect()
+
+    def check_empty_table(self, table):
+        resp = self.get_connection().query(table).first()
+        return not bool(resp)
+
+    #def get_tables(self):
+    #    mdata = DECLARATIVE_BASE.metadata
+    #    return mdata.tables.keys()
+
+    #def get_table_classes(self):
+    #    return [c for c in DECLARATIVE_BASE._decl_class_registry.values() if hasattr(c, '__tablename__')]
+
 
 DB_CONN = Db()

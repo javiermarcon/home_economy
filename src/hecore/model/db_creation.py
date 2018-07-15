@@ -4,16 +4,35 @@ from model import * #User, Acounttype, Account, Category, Transaction, Currency,
 from fixtures.currency import currency_table_data
 from fixtures.acount import acount_table_data
 from fixtures.category import category_table_data
+from collections import OrderedDict
+import sys
 import uuid
 
-def create_and_populate_db(engine, connection):
-    create_database(engine)
-    create_user(connection)
-    create_account_types(connection)
-    create_currencies(connection)
-    create_accounts(connection)
-    create_categories(connection)
-    connection.commit()
+def get_table_creation_funcs():
+    ret = OrderedDict()
+    ret["User"] = create_user
+    ret["Acounttype"] = create_account_types
+    ret["Currency"] = create_currencies
+    ret["Account"] = create_accounts
+    ret["Category"] = create_categories
+    ret["Instrument"] = dummy_function
+    ret["Transaction"] = dummy_function
+    ret["Currencyhistory"] = dummy_function
+    return ret
+
+def create_and_populate_db(dbclass):
+    create_database(dbclass.engine)
+    populate_db(dbclass, False)
+
+def populate_db(dbclass, only_empty_tables=True):
+    print("Lenando las tablas iniciales..")
+    funcs = get_table_creation_funcs()
+    for func in funcs:
+        tbl_func = getattr(sys.modules[__name__], func)
+        if not only_empty_tables or dbclass.check_empty_table(tbl_func):
+            print("llenando la tabla {}".format(func))
+            funcs[func](dbclass.connection)
+    dbclass.connection.commit()
 
     # TODO: agregar los registros iniciales como cuentas x defecto
 
@@ -69,3 +88,6 @@ def create_categories(connection):
 
 def create_id():
     return str(uuid.uuid4())
+
+def dummy_function(connection):
+    pass

@@ -2,6 +2,7 @@
 
 import os
 
+from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 
 from hegui.dbscreen import PaginaBd
@@ -10,6 +11,8 @@ from hegui.cuentas import PaginaCuentas
 from hegui.categorias import PaginaCategorias
 from hegui.monedas import PaginaMonedas
 from hegui.plugin_scr import PaginaPlugins
+
+from hecore.model.db_creation import populate_db
 
 #--------------------------------------------------------------------------
 '''dictionary that contains the correspondance between items descriptions
@@ -29,6 +32,7 @@ SidePanel_AppMenu = {'Login': ['Login', None],
                      'Plugins': ['menu_plugins', None],
                      'Reportes': ['menu_reportes', None],
                      'Opciones': ['menu_opciones', None],
+                     'Tareas de mantenimiento': ['menu_mantenimiento', None],
                      'Ayuda General': ['menu_ayuda', None],
                      'Preguntas frecuentes': ['menu_preguntas', None],
                      'Acerca de...': ['menu_acercade', None],
@@ -77,6 +81,12 @@ class MenuFunctions:
         self._switch_main_page('Categorías', PaginaCategorias)
     def menu_usuarios(self):
         pass
+
+    def menu_mantenimiento(self):
+        # llenar las tablas vacias si se upgradeo de version
+        app = App.get_running_app()
+        populate_db(app.backend.db, True)
+
     def menu_presupuestos(self):
         pass
     def menu_reportes(self):

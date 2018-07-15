@@ -5,7 +5,6 @@ from kivy.uix.recycleview import RecycleView
 #from kivy.clock import Clock
 from treeviewdb import TreeViewDb
 from hecore.model.model import Account, Acounttype
-import time, threading
 
 class MainPanel(TreeViewDb):
 
@@ -25,8 +24,7 @@ class MainPanel(TreeViewDb):
 
         # Call some method that may take a while to run.
         # I'm using a thread to simulate this
-        mythread = threading.Thread(target=self.execute_initial_tasks)
-        mythread.start()
+        self.execute_initial_tasks()
 
     def execute_initial_tasks(self):
         print("Ejecutando tareas iniciales")
