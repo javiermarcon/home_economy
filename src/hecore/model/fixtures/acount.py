@@ -3,7 +3,7 @@ import uuid
 
 ad = {}
 
-ad[u"Efectivo dolares"] = [unicode(uuid.uuid4()), None, u'Efectivo', u'USD']
+ad[u"Efectivo dolares"] = [uuid.uuid4(), None, u'Efectivo', u'USD']
 ad[u"Efectivo encima"] = [uuid.uuid4(), None, u'Efectivo', u'ARS']
 ad[u"Efectivo esther"] = [uuid.uuid4(), None, u'Efectivo', u'ARS']
 ad[u"Efectivo guardado"] = [uuid.uuid4(), None, u'Efectivo', u'USD']

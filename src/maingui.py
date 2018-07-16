@@ -106,7 +106,7 @@ class HeGuiApp(App, MenuFunctions):
         self._switch_main_page('Login', Login)
 
     def do_quit(self):
-        #print 'App quit'
+        #print('App quit')
         self.stop()
 
     def _switch_main_page(self, key,  panel):
@@ -175,7 +175,7 @@ class MenuItem(Button):
         try:
             function_to_call = SidePanel_AppMenu[self.text][id_AppMenu_METHOD]
         except:
-            print 'errore de configuracion del diccionario de menu'
+            print('error de configuracion del diccionario de menu')
             return
         getattr(RootApp, function_to_call)()
 
@@ -186,7 +186,7 @@ class AppActionBar(ActionBar):
 
 class ActionMenu(ActionPrevious):
     def menu(self):
-        #print 'ActionMenu'
+        #print('ActionMenu')
         RootApp.toggle_sidepanel()
 
 class ActionQuit(ActionButton):

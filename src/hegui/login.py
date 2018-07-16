@@ -67,7 +67,7 @@ class Login(BoxLayout):
         '''
         app = self.get_running_app()
         verif = User().verify_login(loginText, passwordText)
-        #print (verif)
+        #print(verif)
         if verif:
             self.switch_main(loginText, app)
             return

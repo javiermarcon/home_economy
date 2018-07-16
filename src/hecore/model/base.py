@@ -6,7 +6,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
 # para autenticacion de usuarios
-from hecore.crypt_functions import PWD_CONTEXT
+#from hecore.crypt_functions import PWD_CONTEXT
 
 # The database connection object
 
@@ -26,7 +26,7 @@ class Db:
         if not fileName:
             fileName = self.default_path
         cnnstr = "sqlite:///{}".format(fileName)
-        #print (cnnstr)
+        #print(cnnstr)
         self.engine = create_engine(cnnstr)
         DBSession = sessionmaker()
         DBSession.configure(bind=self.engine)
@@ -36,9 +36,9 @@ class Db:
 
     def create_and_connect_callback(self, fileName):
         self.connect(fileName)
-        print ("creando la bd {}".format(fileName))
+        print("creando la bd {}".format(fileName))
         # crear base de datos
-        from db_creation import create_and_populate_db
+        from hecore.model.db_creation import create_and_populate_db
         create_and_populate_db(self)
 
     def get_connection(self):

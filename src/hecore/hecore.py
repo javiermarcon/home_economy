@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+# absolute_import para compatibilidad entre python 2 y 3
+from __future__ import absolute_import
+from hecore.model.model import *
+from hecore.plugin_logic import plugin_logic
 import os
-from model.model import *
-from plugin_logic import plugin_logic
 
 class HecoreBackend:
     """
@@ -37,6 +39,6 @@ class HecoreBackend:
         if ret:
             for plugin_iter in ret:
                 for p in plugin_iter:
-                    print "zzz ", p
+                    print("zzz {} ".format(p))
 
 

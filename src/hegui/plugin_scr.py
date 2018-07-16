@@ -27,13 +27,13 @@ class PaginaPlugins(BoxLayout):
         self.rvp.layout_manager.bind(selected_nodes=self.selectionChange)
 
     def selectionChange(self, inst, val):
-        print inst, val
+        print("{} {}".format(inst, val))
 
     def run_all_plugins(self):
         app = App.get_running_app()
         pwpath = app.config.get('last_session', 'pwd_filename')
         if not os.path.isfile(pwpath):
-            print "Please configure pw path"
+            print("Please configure pw path")
             return
         pwd_text = password_file().get(pwpath)
         aci = AESCipher(pwd_text, 32)
@@ -46,7 +46,7 @@ class PaginaPlugins(BoxLayout):
         app.backend.run_plugins(options)
 
     def run_selected_plugin(self):
-        print "Not implemented..."
+        print("Not implemented...")
 
 class SelectableRecycleBoxLayout(FocusBehavior, LayoutSelectionBehavior,
                                  RecycleBoxLayout):

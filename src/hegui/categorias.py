@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from hecore.model.model import Category
-from treeviewdb import TreeViewDb
+from hegui.treeviewdb import TreeViewDb
 
 
 class PaginaCategorias(TreeViewDb):

@@ -23,7 +23,6 @@ def main():
 
     args = parser.parse_args()
     # print(parser.format_help())
-    print args
 
     # gui
     from maingui import HeGuiApp

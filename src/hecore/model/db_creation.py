@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
 
-from model import * #User, Acounttype, Account, Category, Transaction, Currency, Currencyhistory, Instrument
-from fixtures.currency import currency_table_data
-from fixtures.acount import acount_table_data
-from fixtures.category import category_table_data
+from hecore.model.model import User, Acounttype, Account, Category, Currency, Transaction, Currencyhistory, Instrument
+from hecore.model.base import DECLARATIVE_BASE
+from hecore.crypt_functions import PWD_CONTEXT
+from hecore.model.fixtures.currency import currency_table_data
+from hecore.model.fixtures.acount import acount_table_data
+from hecore.model.fixtures.category import category_table_data
 from collections import OrderedDict
 import sys
 import uuid
+# para compatibilidad de unicode con python 3
+from builtins import str as unicode
 
 def get_table_creation_funcs():
     ret = OrderedDict()

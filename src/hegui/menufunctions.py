@@ -46,7 +46,6 @@ SidePanel_AppMenu = {'Login': ['Login', None],
 class MenuFunctions:
 
     def menu_inicio(self):
-        #print 'UNO... exec'
         self._switch_main_page('MainPanel', MainPanel)
 
     def menu_basedatos(self, dbPath=''):
@@ -64,16 +63,12 @@ class MenuFunctions:
         self._switch_main_page('Base de datos', pag_bd)
 
     def menu_cuentas(self):
-        #print 'DUE... exec'
         self._switch_main_page('Cuentas', PaginaCuentas)
     def menu_monedas(self):
-        #print 'TRE... exec'
         self._switch_main_page('Monedas',  PaginaMonedas)
     def menu_sincro(self):
-        #print 'TRE... exec'
         self._switch_main_page('Sincronizar',  PaginaSincro)
     def menu_plugins(self):
-        #print 'TRE... exec'
         self._switch_main_page('Plugins',  PaginaPlugins)
     def menu_opciones(self):
         self.open_settings()

@@ -8,7 +8,7 @@ from sqlalchemy.orm.collections import attribute_mapped_collection
 import itertools
 #from kivy.app import App
 
-from base import DB_CONN, DECLARATIVE_BASE
+from hecore.model.base import DB_CONN, DECLARATIVE_BASE
 from hecore.crypt_functions import PWD_CONTEXT
 
 from sqlalchemy.sql.expression import func
@@ -80,7 +80,7 @@ class User(DECLARATIVE_BASE, repr_table):
         #print(result)
         if not result:
             return False
-        #print (password)
+        #print(password)
         return PWD_CONTEXT.verify(password, result.password)
 
 

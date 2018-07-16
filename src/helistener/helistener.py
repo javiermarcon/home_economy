@@ -60,7 +60,7 @@ class SpeechDetector:
             average intensities while you're talking and/or silent. The average
             is the avg of the .2 of the largest intensities recorded.
         """
-        print "Getting intensity values from mic."
+        print("Getting intensity values from mic.")
         p = pyaudio.PyAudio()
         stream = p.open(format=self.FORMAT,
                         channels=self.CHANNELS,
@@ -72,8 +72,8 @@ class SpeechDetector:
                   for x in range(num_samples)]
         values = sorted(values, reverse=True)
         r = sum(values[:int(num_samples * 0.2)]) / int(num_samples * 0.2)
-        print " Finished "
-        print " Average audio intensity is ", r
+        print(" Finished ")
+        print(" Average audio intensity is {}".format(r))
         stream.close()
         p.terminate()
 
@@ -126,7 +126,7 @@ class SpeechDetector:
                         rate=self.RATE,
                         input=True,
                         frames_per_buffer=self.CHUNK)
-        print "* Mic set up and listening. "
+        print("* Mic set up and listening. ")
 
         audio2send = []
         cur_data = ''  # current chunk of audio data
@@ -143,15 +143,15 @@ class SpeechDetector:
 
             if sum([x > self.THRESHOLD for x in slid_win]) > 0:
                 if started == False:
-                    print "Starting recording of phrase"
+                    print("Starting recording of phrase")
                     started = True
                 audio2send.append(cur_data)
 
             elif started:
-                print "Finished recording, decoding phrase"
+                print("Finished recording, decoding phrase")
                 filename = self.save_speech(list(prev_audio) + audio2send, p)
                 r = self.decode_phrase(filename)
-                print "DETECTED: ", r
+                print("DETECTED: {}".format(r))
                 listened.append(r)
 
                 # Removes temp audio file
@@ -161,7 +161,7 @@ class SpeechDetector:
                 slid_win = deque(maxlen=self.SILENCE_LIMIT * rel)
                 prev_audio = deque(maxlen=0.5 * rel)
                 audio2send = []
-                print "Listening ..."
+                print("Listening ...")
 
                 # update exit for loop
                 if runs:
@@ -170,7 +170,7 @@ class SpeechDetector:
             else:
                 prev_audio.append(cur_data)
 
-        print "* Done listening"
+        print("* Done listening")
         stream.close()
         p.terminate()
         return listened
@@ -180,4 +180,4 @@ if __name__ == "__main__":
     sd = SpeechDetector()
     sd.setup_mic()
     ret = sd.run(2)
-    print ret
+    print(ret)

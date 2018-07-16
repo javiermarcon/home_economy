@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from mail_reader import manage_email
+# absolute_import para compatibilidad entre python 2 y 3
+from __future__ import absolute_import
+from hecore.mail_reader import manage_email
 #import re
 import plugins
 
@@ -49,5 +51,5 @@ class plugin_logic:
 
     def parse_http_plugin(self, plugin_output):
         #plugin_return = run()
-        print plugin_output
+        print(plugin_output)
         yield
