@@ -16,7 +16,7 @@ source.dir = src
 source.include_exts = py,png,jpg,kv,atlas
 
 # (list) List of inclusions using pattern matching
-source.include_patterns = plugins/speech_lang/*
+#source.include_patterns = plugins/speech_lang/*
 #assets/*,images/*.png model/*/*,
 
 # (list) Source files to exclude (let empty to not exclude anything)
@@ -37,7 +37,8 @@ version.filename = %(source.dir)s/main.py
 
 # (list) Application requirements
 # comma seperated e.g. requirements = sqlite3,kivy
-requirements = kivy, sqlite3
+requirements = python2, kivy, sqlite3, passlib, pytest, SQLAlchemy, twisted, lxml, pycrypto, future
+#, python3crystax, openssl
 #kivy==master,git+https://gitlab.com/kivymd/KivyMD.git
 
 
@@ -55,7 +56,7 @@ requirements = kivy, sqlite3
 #icon.filename = %(source.dir)s/data/icon.png
 
 # (str) Supported orientation (one of landscape, portrait or all)
-orientation = portrait
+orientation = all
 
 # (list) List of service to declare
 #services = NAME:ENTRYPOINT_TO_PY,NAME2:ENTRYPOINT2_TO_PY
@@ -68,10 +69,10 @@ orientation = portrait
 # author = © Copyright Info
 
 # change the major version of python used by the app
-osx.python_version = 3
+osx.python_version = 2
 
 # Kivy version to use
-osx.kivy_version = 1.9.1
+#osx.kivy_version = 1.10.0
 
 #
 # Android specific
@@ -91,22 +92,23 @@ fullscreen = 0
 #android.permissions = INTERNET
 
 # (int) Android API to use
-#android.api = 19
+android.api = 19
 
 # (int) Minimum API required
-#android.minapi = 9
+android.minapi = 19
 
 # (int) Android SDK version to use
-#android.sdk = 20
+android.sdk = 23
 
 # (str) Android NDK version to use
-#android.ndk = 9c
+android.ndk = 9d
+#10.3.2
 
 # (bool) Use --private data storage (True) or --dir public storage (False)
 #android.private_storage = True
 
 # (str) Android NDK directory (if empty, it will be automatically downloaded.)
-#android.ndk_path =
+#android.ndk_path = /home/javier/proyectos/crystax-ndk-10.3.2
 
 # (str) Android SDK directory (if empty, it will be automatically downloaded.)
 #android.sdk_path =
@@ -186,7 +188,7 @@ fullscreen = 0
 #android.copy_libs = 1
 
 # (str) The Android arch to build for, choices: armeabi-v7a, arm64-v8a, x86
-android.arch = armeabi-v7a
+#android.arch = armeabi-v7a
 
 #
 # Python for android (p4a) specific
@@ -229,6 +231,7 @@ log_level = 2
 warn_on_root = 1
 
 # (str) Path to build artifact storage, absolute or relative to spec file
+#build_dir = /build/home_economy
 # build_dir = ./.buildozer
 
 # (str) Path to build output (i.e. .apk, .ipa) storage
