@@ -45,8 +45,8 @@ class TreeViewDb(BoxLayout):
             self.nodos_cuenta[cuenta.id] = nodo
         return tv
 
-    def set_data(self, dbchildclass, dbchildargs, dbchildtext,
-                      dbparentclass=None, dbparentargs=None, dbparenttext=None):
+    def set_treeview_data(self, dbchildclass, dbchildargs, dbchildtext,
+                          dbparentclass=None, dbparentargs=None, dbparenttext=None):
         self.dbchildclass = dbchildclass()
         self.dbchildargs = dbchildargs
         self.dbchildtext = dbchildtext

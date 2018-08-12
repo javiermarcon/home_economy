@@ -10,5 +10,5 @@ class PaginaCategorias(TreeViewDb):
         super(PaginaCategorias, self).__init__(**kwargs)
         mc = self.main_categorias
         mc.bind(minimum_height=mc.setter('height'))
-        self.set_data(Category, ['name'], u'{}')
+        self.set_treeview_data(Category, ['name'], u'{}')
         self.populate_treeview(mc)

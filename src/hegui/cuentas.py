@@ -10,8 +10,8 @@ class PaginaCuentas(TreeViewDb):
         super(PaginaCuentas, self).__init__(**kwargs)
         mc = self.main_cuentas
         mc.bind(minimum_height=mc.setter('height'))
-        self.set_data(Account, ['name', 'currency.symbol',
+        self.set_treeview_data(Account, ['name', 'currency.symbol',
                       'balance', 'currency.name'], u'{} ({} {} {})',
-                      Acounttype, ['name'], u'{}'
-                      )
+                               Acounttype, ['name'], u'{}'
+                               )
         self.populate_treeview(mc)
