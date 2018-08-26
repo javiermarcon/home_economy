@@ -37,6 +37,7 @@ SidePanel_AppMenu = {'Login': ['Login', None],
                      'Preguntas frecuentes': ['menu_preguntas', None],
                      'Acerca de...': ['menu_acercade', None],
                      'Cerrar sesión': ['do_logout', None],
+                     'Transaction': ['menu_transaction', None],
                      'Salir': ['do_quit', None],
 
                      }

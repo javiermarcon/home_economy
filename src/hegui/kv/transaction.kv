@@ -1,0 +1,74 @@
+<Transaction>:
+    orientation: 'vertical'
+
+    AppActionBar:
+        size_hint: (1., 0.1)
+
+    Label:
+        text: 'Add Transaction'
+        font_size: 25
+
+    Label:
+        id: error_msg
+        text: ''
+
+    BoxLayout:
+        orientation: 'horizontal'
+
+        Label:
+            text: 'Date'
+
+        DatePicker:
+            pHint: 1,1
+            #size_hint_x: .4
+            id: tr_date
+
+    BoxLayout:
+        orientation: 'horizontal'
+
+        Label:
+            text: 'Account'
+
+        HVSpinner:
+            id: spAccount
+            text: '< Select >'
+
+    BoxLayout:
+        orientation: 'horizontal'
+
+        Label:
+            text: 'Ammount'
+
+        FloatInput:
+            id: ammount
+            multiline:False
+
+    BoxLayout:
+        orientation: 'horizontal'
+
+        Label:
+            text: 'Category'
+
+        HVSpinner:
+            id: spCategory
+            text: '< Select >'
+
+    BoxLayout:
+        orientation: 'horizontal'
+
+        Label:
+            text: 'Notes'
+
+        TextInput:
+            id: notes
+            multiline:False
+
+    BoxLayout:
+        orientation: 'horizontal'
+
+        Button:
+            text: 'Add'
+            on_press: root.do_add(tr_date.text, ammount.text, notes.text, spAccount.selected_value, spCategory.selected_value)
+
+        Button:
+            text: 'Cancel'

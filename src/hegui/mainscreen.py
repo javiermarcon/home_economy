@@ -3,7 +3,8 @@
 from kivy.app import App
 from kivy.uix.recycleview import RecycleView
 #from kivy.clock import Clock
-from hegui.treeviewdb import TreeViewDb
+from hegui.transaction import Transaction
+from libs.treeviewdb import TreeViewDb
 from hecore.model.model import Account, Acounttype
 
 class MainPanel(TreeViewDb):
@@ -28,7 +29,7 @@ class MainPanel(TreeViewDb):
 
     def execute_initial_tasks(self):
         print("Ejecutando tareas iniciales")
-        app = App.get_running_app()
+        app = self.get_running_app()
         options = { "mail_plugins": {
             "email": app.config.get('mail_parser', 'email'),
             "password": app.config.get('mail_parser', 'password')
@@ -41,6 +42,16 @@ class MainPanel(TreeViewDb):
         #trigger()
         print("Listo")
         app.popups.close_popup()
+
+    def add_transaction(self):
+        trans = Transaction()
+        app = self.get_running_app()
+        app._switch_main_page('Transaction', trans)
+        print("transaction")
+
+    def get_running_app(self):
+        return App.get_running_app()
+
 
 class RV(RecycleView):
     """

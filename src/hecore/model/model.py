@@ -8,6 +8,8 @@ from sqlalchemy.orm.collections import attribute_mapped_collection
 import itertools
 #from kivy.app import App
 
+from util.recursive_attributes import rec_getattr
+
 from hecore.model.base import DB_CONN, DECLARATIVE_BASE
 from hecore.crypt_functions import PWD_CONTEXT
 
@@ -52,6 +54,24 @@ class TreeClass:
             ret_flat = list(itertools.chain.from_iterable(childs))
             res.extend(ret_flat)
         return res
+
+    def get_lists_of_ids_and_names(self, formatting, fields, add_text_indentation=False):
+        """
+        Generates a list of ids and a list of names
+        :param format:
+        :param fields:
+        :param add_text_indentation:
+        :return: two lists, one containing strings with the ids and the other one containing strings wit fields formatted
+        """
+        ids = []
+        texts = []
+        res = self.get_all()
+        for row in res:
+            #c_params = [ rec_getattr(row, fields) for attr in self ]
+            #txt_cuenta = formatting.format(*c_params)
+            ids.append(row.id)
+            texts.append(row.name)
+        return (ids, texts)
 
 
 class User(DECLARATIVE_BASE, repr_table):
