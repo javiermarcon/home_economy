@@ -37,7 +37,7 @@ version.filename = %(source.dir)s/main.py
 
 # (list) Application requirements
 # comma seperated e.g. requirements = sqlite3,kivy
-requirements = python2, kivy, sqlite3, passlib, pytest, SQLAlchemy, twisted, lxml, pycrypto, future
+requirements = python2, kivy, sqlite3, passlib, pytest, SQLAlchemy, incremental, twisted, lxml, pycrypto, future, KivyCalendar, openssl, requests
 #, python3crystax, openssl
 #kivy==master,git+https://gitlab.com/kivymd/KivyMD.git
 
