@@ -23,7 +23,6 @@ class INTEGER(Integer):
 def sort_db(obj):
     return obj.name
 
-
 class repr_table:
     """Metodos base para representar las clases de tabla"""
     def __repr__(self):
@@ -173,15 +172,23 @@ class Transaction(DECLARATIVE_BASE, repr_table):
     __tablename__ = 'transaction'
 
     id = Column(VARCHAR(32), autoincrement=False, primary_key=True, nullable=False)  # pylint: disable=invalid-name
-    origin = Column(VARCHAR(32), nullable=False)
+    date = Column(DATE, nullable=False)
+    origin = Column(VARCHAR(32), nullable=True)
     destiny = Column(VARCHAR(32), nullable=False)
     id_category = Column(VARCHAR(32), nullable=False)
-    number = Column(VARCHAR(45), nullable=False)
-    id_instrument = Column(VARCHAR(32), nullable=False)
+    number = Column(VARCHAR(45), nullable=True)
+    id_instrument = Column(VARCHAR(32), nullable=True)
     transaction_member = Column(VARCHAR(32))
     ammount = Column(FLOAT, nullable=False)
     notes = Column(BLOB)
 
+    def validate_required(self):
+        req_fields = ['id', 'date', 'destiny', 'id_category', 'ammount']
+        errors = []
+        for field in req_fields:
+            if not getattr(self, field):
+                errors.append(field)
+        return errors if errors else None
 
 class Currency(DECLARATIVE_BASE, repr_table):
 

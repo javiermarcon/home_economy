@@ -3,7 +3,7 @@
 from kivy.app import App
 from kivy.uix.recycleview import RecycleView
 #from kivy.clock import Clock
-from hegui.transaction import Transaction
+from hegui.transaction import GuiTransaction
 from libs.treeviewdb import TreeViewDb
 from hecore.model.model import Account, Acounttype
 
@@ -44,7 +44,7 @@ class MainPanel(TreeViewDb):
         app.popups.close_popup()
 
     def add_transaction(self):
-        trans = Transaction()
+        trans = GuiTransaction()
         app = self.get_running_app()
         app._switch_main_page('Transaction', trans)
         print("transaction")
