@@ -51,7 +51,6 @@ class TreeViewDb(BoxLayout):
                 else:
                     nodo = tv.add_node(IdTreeViewLabel(text=txt_cuenta, value=cuenta.id, is_open=True))
             self.nodos_cuenta[cuenta.id] = nodo
-            print cuenta.id
             if cuenta.id == selected_id:
                 tv.select_node(nodo)
         return tv

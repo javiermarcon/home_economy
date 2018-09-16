@@ -9,6 +9,8 @@ from hecore.model.model import Account, Acounttype
 
 class MainPanel(TreeViewDb):
 
+    transaction_screen = None
+
     def __init__(self, **kwargs):
         super(MainPanel, self).__init__(**kwargs)
         #self.execute_initial_tasks()
@@ -43,11 +45,15 @@ class MainPanel(TreeViewDb):
         print("Listo")
         app.popups.close_popup()
 
+
     def add_transaction(self):
-        trans = GuiTransaction()
+        if not self.transaction_screen:
+            self.transaction_screen = GuiTransaction()
         app = self.get_running_app()
-        app._switch_main_page('Transaction', trans)
-        print("transaction")
+        app._switch_main_page('Transaction', self.transaction_screen)
+        sn =  self.ids.main_cuentas.selected_node
+        if sn:
+            self.transaction_screen.ids.spAccount.select_by_id(sn.value)
 
     def get_running_app(self):
         return App.get_running_app()

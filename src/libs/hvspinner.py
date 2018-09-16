@@ -105,6 +105,12 @@ class HVSpinner(Spinner):
         self.selected_value = data[1]
         self.is_open = False
 
+    def select_by_id(self, id):
+        """Selects an item from a spinner by its id"""
+        for tv, hv in itertools.izip(self.values, self.hidden_values):
+            if hv == id:
+                self._dropdown.select((tv, hv))
+
 Factory.register('HVSpinner', cls=HVSpinner)
 
 if __name__ == '__main__':
