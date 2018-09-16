@@ -15,6 +15,24 @@
     BoxLayout:
         orientation: 'horizontal'
 
+        ToggleButton:
+            text: "Gasto"
+            group: "tipo"
+            on_press: root.change_trans_type("Gasto")
+
+        ToggleButton:
+            text: "Ingreso"
+            group: "tipo"
+            on_press: root.change_trans_type("Ingreso")
+
+        #ToggleButton:
+        #    text: "Transferencia"
+        #    group: "tipo"
+        #    on_press: root.change_trans_type("Transferencia")
+
+    BoxLayout:
+        orientation: 'horizontal'
+
         Label:
             text: 'Date'
 

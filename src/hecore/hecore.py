@@ -11,8 +11,8 @@ import uuid
 class CommonOperations:
     """Hace las operaciones comunes como transacciones en db por ejemplo"""
 
-    def add_transaction(self, tr_date, destiny, id_category, ammount, origin=None, number=None, id_instrument=None,
-                        transaction_member=None, notes=None):
+    def add_transaction(self, tr_date, destiny, id_category, ammount, operation='Gasto', origin=None, number=None,
+                        id_instrument=None, transaction_member=None, notes=None):
 
         """Agrega una transaccion a la base de datos"""
         conn = DB_CONN.get_connection()
@@ -26,6 +26,11 @@ class CommonOperations:
         trans.number = number
         trans.id_instrument = id_instrument
         trans.transaction_member = transaction_member
+        # Si es gasto es negativo, si es ingreso es positivo
+        if operation == "Gasto":
+            ammount = abs(float(ammount)) * -1.0
+        elif operation == "Ingreso":
+            ammount = abs(float(ammount))
         trans.ammount = ammount
         trans.notes = notes
         errors = trans.validate_required()

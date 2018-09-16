@@ -17,6 +17,8 @@ import datetime
 
 class GuiTransaction(BoxLayout):
 
+    trans_type = None
+
     def __init__(self):
         super(GuiTransaction, self).__init__()
         self.fill_spinners()
@@ -30,11 +32,12 @@ class GuiTransaction(BoxLayout):
         self.ids.spCategory.values = names
 
     def do_add(self, tr_date, ammount, notes, account_id, category_id):
-        #print tr_date, ammount, notes, account_id, category_id
+        print self.trans_type
         app = App.get_running_app()
         common_operations = app.backend.common_operations
         t_date = datetime.datetime.strptime(tr_date, "%d.%m.%Y")
-        errors = common_operations.add_transaction(t_date, account_id, category_id, ammount, notes=notes)
+        errors = common_operations.add_transaction(t_date, account_id, category_id, ammount,
+                                                   operation=self.trans_type, notes=notes)
         if errors:
             msg = 'Error al agregar la transaccion. Complete los campos: {}'.format(' '.join(errors))
             self.ids['error_msg'].text = msg
@@ -57,3 +60,6 @@ class GuiTransaction(BoxLayout):
     def return_previous_page(self):
         app = App.get_running_app()
         app.change_panel(app.last_panel)
+
+    def change_trans_type(self, trans_type):
+        self.trans_type = trans_type
