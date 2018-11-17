@@ -67,7 +67,7 @@ Todavia no hay nada hecho que sea usable.
 
 ## Diseño y desarrollo
 
-La aplicación se desarrollará en capas utilizando los métodos SCRUM y BDD utilizando el lenguaje Python. Se empaquetará con Kivy para que sea multiplataforma.
+La aplicación se desarrollará en capas utilizando el lenguaje Python. Se empaquetará con Kivy para que sea multiplataforma.
 
 La aplicación tendrá distintas partes que interactuarán:
 - **Core**: parte central que permitirá hacer los asientos, cálculos que se guarden, lógica de usuarios, manejo de plugins, etc.
