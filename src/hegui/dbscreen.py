@@ -13,7 +13,7 @@ class PaginaBd(BoxLayout):
     """
 
     def open(self, path, filename):
-        #print filename
+        #print(filename)
         if len(filename) > 0:
             filePath = os.path.join(path, filename[0])
             self.change_db_label(filePath)

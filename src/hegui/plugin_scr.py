@@ -42,7 +42,7 @@ class PaginaPlugins(BoxLayout):
             "email": app.config.get('mail_parser', 'email'),
             "password": password
         }}
-        #print options
+        #print(options)
         app.backend.run_plugins(options)
 
     def run_selected_plugin(self):

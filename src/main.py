@@ -43,7 +43,7 @@ def main():
     #    sd = SpeechDetector()
     #    sd.setup_mic()
     #    ret = sd.run(num)
-    #    print ret
+    #    print(ret)
 
 
 if __name__ in ('__main__', '__android__'):

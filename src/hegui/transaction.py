@@ -32,7 +32,7 @@ class GuiTransaction(BoxLayout):
         self.ids.spCategory.values = names
 
     def do_add(self, tr_date, ammount, notes, account_id, category_id):
-        print self.trans_type
+        print(self.trans_type)
         app = App.get_running_app()
         common_operations = app.backend.common_operations
         t_date = datetime.datetime.strptime(tr_date, "%d.%m.%Y")

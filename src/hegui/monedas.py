@@ -23,7 +23,7 @@ class PaginaMonedas(BoxLayout):
                         {'text': str(currency.conversion), 'type': 'BorderLabel'},
                         {'text': 'Modificar', 'type': 'BorderButton'},
                         {'text': 'Eliminar', 'type': 'BorderButton'}]
-            #print tempData
+            #print(tempData)
             self.tabla.addRow(tempData)
 
 class tablaMonedas(DataGrid):

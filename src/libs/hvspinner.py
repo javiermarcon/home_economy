@@ -53,7 +53,7 @@ class HVSpinner(Spinner):
         from kivy.uix.gridlayout import GridLayout
         from kivy.uix.boxlayout import BoxLayout
         def print_current_val(obj, *largs):
-            print "Spinner {} has text [{}], selected_text [{}] and hidden value [{}]".format(obj, obj.text, obj.selected_text, obj.selected_value)
+            print("Spinner {} has text [{}], selected_text [{}] and hidden value [{}]".format(obj, obj.text, obj.selected_text, obj.selected_value))
 
         def transformator(caller, text, value):
             return "Now at >{}< ({})".format(text, value)
@@ -120,7 +120,7 @@ if __name__ == '__main__':
     from kivy.uix.button import Button
     
     def print_current_val(obj, *largs):
-        print "Spinner {} has text [{}], selected_text [{}] and hidden value [{}]".format(obj, obj.text, obj.selected_text, obj.selected_value)
+        print("Spinner {} has text [{}], selected_text [{}] and hidden value [{}]".format(obj, obj.text, obj.selected_text, obj.selected_value))
 
     def transformator(caller, text, value):
         return "Now at >{}< ({})".format(text, value)

@@ -46,7 +46,7 @@ def create_database(engine):
 def create_user(connection):
     # agrego un usuario llamado admin con clave admin
     hashs = PWD_CONTEXT.encrypt("admin")
-    # print hashs
+    # print(hashs)
     user = User(id=create_id(), login='admin', password=hashs, name='', surname='',
                 default_account='', password_type='default', state='A')
     connection.add(user)
