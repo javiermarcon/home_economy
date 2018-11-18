@@ -17,6 +17,7 @@ from kivy.uix.actionbar import ActionBar, ActionButton, ActionPrevious
 from kivy.uix.settings import SettingsWithSidebar
 from kivy.properties import StringProperty
 
+import json
 import os
 import random
 import string
@@ -47,21 +48,21 @@ class HeGuiApp(App, MenuFunctions):
     crypt_pwd_text = None
 
     def build_config(self, config):
-        config.setdefaults('last_session', {
-            'dbpath': '',
-            'lastuser': '',
-            'keeplogged': False,
-            'pwd_filename': ""
-        })
-        config.setdefaults("mail_parser", {
-            "email": "",
-            "password": ""
-        })
+        '''sets a default value for every section/value of the configuration'''
+        default_type_mappings = {"path": "","bool": False,"string": "","password": "","optionmapping": ""}
+        for panel_name in settings_data:
+            defaults = {}
+            for setting in settings_data[panel_name]:
+                if setting["type"] == "title":
+                    continue
+                section = setting["section"]
+                defaults[setting["key"]]= default_type_mappings[setting["type"]]
+            config.setdefaults(section, defaults)
 
     def build_settings(self, settings):
         settings.register_type('password', SettingPassword)
         for panel_name in settings_data:
-            settings.add_json_panel(panel_name, self.config, data=settings_data[panel_name])
+            settings.add_json_panel(panel_name, self.config, data=json.dumps(settings_data[panel_name]))
 
     #def on_config_change(self, config, section, key, value):
     #    print(config, section, key, value)
@@ -69,6 +70,7 @@ class HeGuiApp(App, MenuFunctions):
     def build(self):
         # settings
         self.settings_cls = SettingsWithSidebar
+        #SettingsWithTabbedPanel
         #self.use_kivy_settings = False
         #self.set_crypt_pwd_path()
 

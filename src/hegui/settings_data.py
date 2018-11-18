@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import json
 import os
 from kivy.app import App
 from kivy.uix.settings import SettingString
@@ -12,7 +11,7 @@ from hecore.crypt_functions import AESCipher, password_file, get_random_chars
 # ver https://gist.github.com/kived/610386b5181219622e33 para entry tipo password
 
 settings_data = {
-    "Session Settings": json.dumps([
+    "Session Settings": [
         {"type": "path",
          "title": "database",
          "desc": "Path to the database to use to store data.",
@@ -31,8 +30,8 @@ settings_data = {
          "section": "last_session",
          "key": "pwd_filename"
          },
-    ]),
-    "Email Parser Settings": json.dumps([
+    ],
+    "Email Parser Settings": [
         {"type": "string",
          "title": "mail account",
          "desc": "Specify the mail account for the email parsing plugins.",
@@ -45,7 +44,7 @@ settings_data = {
          "section": "mail_parser",
          "key": "password"
          }
-    ]),
+    ],
 }
 
 
