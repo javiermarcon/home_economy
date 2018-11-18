@@ -17,7 +17,7 @@ import datetime
 
 class GuiTransaction(BoxLayout):
 
-    trans_type = None
+    trans_type = "Gasto"
 
     def __init__(self):
         super(GuiTransaction, self).__init__()
