@@ -72,6 +72,10 @@ class TreeClass:
             texts.append(row.name)
         return (ids, texts)
 
+    def get_dict_of_ids_and_names(self, formatting, fields, add_text_indentation=False):
+        '''Generates a dictionary with the id and the names '''
+        (ids, texts) = self.get_lists_of_ids_and_names(formatting, fields, add_text_indentation)
+        return dict(zip(ids, texts))
 
 class User(DECLARATIVE_BASE, repr_table):
     """

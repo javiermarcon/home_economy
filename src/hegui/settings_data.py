@@ -7,6 +7,7 @@ from kivy.uix.label import Label
 from kivy.config import ConfigParser
 
 from hecore.crypt_functions import AESCipher, password_file, get_random_chars
+from hecore.model.model import Account, Category
 
 # ver https://gist.github.com/kived/610386b5181219622e33 para entry tipo password
 
@@ -44,6 +45,26 @@ settings_data = {
          "section": "mail_parser",
          "key": "password"
          }
+    ],
+    "Transaction Settings": [
+        {
+        "type": "title",
+        "title": "Default Values"
+        },
+        {"type": "optionmapping",
+         "title": "default account",
+         "desc": "Specify the account to default in a transaction.",
+         "section": "transaction",
+         "key": "account",
+         "options": Account
+         },
+         {"type": "optionmapping",
+         "title": "default category",
+         "desc": "Specify the category to default in a transaction.",
+         "section": "transaction",
+         "key": "category",
+         "options": Category
+         },
     ],
 }
 

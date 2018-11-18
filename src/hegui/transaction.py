@@ -23,6 +23,13 @@ class GuiTransaction(BoxLayout):
         super(GuiTransaction, self).__init__()
         self.fill_spinners()
 
+    def select_default_value_in_spinners(self):
+        app = App.get_running_app()
+        default_account = app.config.get('transaction', 'account')
+        default_category = app.config.get('transaction', 'category')
+        self.ids['spAccount'].select_by_id(default_account)
+        self.ids['spCategory'].select_by_id(default_category)
+
     def fill_spinners(self):
         (ids, names) = Account().get_lists_of_ids_and_names("{}", ["name"])
         self.ids.spAccount.hidden_values = ids
@@ -30,6 +37,7 @@ class GuiTransaction(BoxLayout):
         (ids, names) = Category().get_lists_of_ids_and_names("{}", ["name"])
         self.ids.spCategory.hidden_values = ids
         self.ids.spCategory.values = names
+        self.select_default_value_in_spinners()
 
     def do_add(self, tr_date, ammount, notes, account_id, category_id):
         print(self.trans_type)
@@ -50,12 +58,9 @@ class GuiTransaction(BoxLayout):
 
     def clear(self):
         text_ids = ['error_msg', 'ammount', 'notes']
-        spn_ids = ['spAccount', 'spCategory']
         for tid in text_ids:
             self.ids[tid].text = ''
-        for sid in spn_ids:
-            self.ids[sid].selected_value = ''
-            self.ids[sid].text = '< Select >'
+        self.select_default_value_in_spinners()
 
     def return_previous_page(self):
         app = App.get_running_app()

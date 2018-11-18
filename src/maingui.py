@@ -25,10 +25,12 @@ import string
 from hegui.login import Login
 from hegui.menufunctions import MenuFunctions, SidePanel_AppMenu
 from hegui.settings_data import settings_data, SettingPassword
+from libs.setting_option_mapping import SettingOptionMapping
 from hegui.popup import PopupActions
 
 from hecore.hecore import HecoreBackend
 #from hecore.crypt_functions import password_file
+
 
 RootApp = None
 id_AppMenu_METHOD = 0
@@ -61,8 +63,15 @@ class HeGuiApp(App, MenuFunctions):
 
     def build_settings(self, settings):
         settings.register_type('password', SettingPassword)
+        settings.register_type("optionmapping", SettingOptionMapping)
         for panel_name in settings_data:
-            settings.add_json_panel(panel_name, self.config, data=json.dumps(settings_data[panel_name]))
+            entries = []
+            menu_entries = settings_data[panel_name]
+            for menu_entry in menu_entries:
+                if menu_entry["type"] == "optionmapping":
+                    menu_entry["options"] = menu_entry["options"]().get_dict_of_ids_and_names("{}", ["name"])
+                entries.append(menu_entry)
+            settings.add_json_panel(panel_name, self.config, data=json.dumps(entries))
 
     #def on_config_change(self, config, section, key, value):
     #    print(config, section, key, value)
