@@ -23,7 +23,7 @@ class FileExistsTest(unittest.TestCase):
         self.assertTrue(hb.check_file_exists(spath))
 
     @mock.patch('hecore.hecore.os.path.isfile')
-    def test_file_exists_should_succeed(self, mock_isfile):
+    def test_file_exists_should_fail(self, mock_isfile):
         mock_isfile.return_value = False
         spath = '/tmp/testfile.txt'
         hb = HecoreBackend()
