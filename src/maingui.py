@@ -163,13 +163,13 @@ class HeGuiApp(App, MenuFunctions):
         return msg.encode('utf-8')
 
     def set_crypt_pwd_path(self):
-        pwpath = self.config.get('last_session', 'pwd_filename')
+        pwpath = self.config.get('configuration', 'pwd_filename')
         if not os.path.isfile(pwpath):
             #Config = ConfigParser.get_configparser('kivy')
             folder = os.path.dirname(ConfigParser.filename)
             rand_name = ''.join(random.choice(string.ascii_letters) for x in range(10))
             pwpath = os.path.join(folder, rand_name)
-            self.config.set('last_session', 'pwd_filename', pwpath)
+            self.config.set('configuration', 'pwd_filename', pwpath)
         self.crypt_pwd_path = pwpath
         return
 

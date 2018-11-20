@@ -19,18 +19,23 @@ settings_data = {
          "section": "last_session",
          "key": "dbpath"
          },
+    ],
+    "Automatic login": [
         {"type": "bool",
-         "title": "keep me logged in",
+         "title": "Automatically login",
          "desc": "If you switch on this option, you will automatically login.",
-         "section": "last_session",
+         "section": "autologin",
          "key": "keeplogged"
          },
+    ],
+    "Configuration": [
         {"type": "path",
          "title": "password filename",
          "desc": "Path to the file to use to store password for encrypted ini settings.",
-         "section": "last_session",
+         "section": "configuration",
          "key": "pwd_filename"
          },
+
     ],
     "Email Parser Settings": [
         {"type": "string",
@@ -91,13 +96,13 @@ class SettingPassword(SettingString):
 
     def _get_pw_path(self):
         app = App.get_running_app()
-        pwpath = app.config.get('last_session', 'pwd_filename')
+        pwpath = app.config.get('configuration', 'pwd_filename')
         if not os.path.isfile(pwpath):
             Config = ConfigParser.get_configparser("kivy")
             folder = os.path.dirname(Config.filename)
             rand_name = get_random_chars(10)
             pwpath = os.path.join(folder, rand_name)
-            app.config.set('last_session', 'pwd_filename', pwpath)
+            app.config.set('configuration', 'pwd_filename', pwpath)
         return pwpath
 
 

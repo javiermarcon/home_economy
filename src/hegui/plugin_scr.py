@@ -31,7 +31,7 @@ class PaginaPlugins(BoxLayout):
 
     def run_all_plugins(self):
         app = App.get_running_app()
-        pwpath = app.config.get('last_session', 'pwd_filename')
+        pwpath = app.config.get('configuration', 'pwd_filename')
         if not os.path.isfile(pwpath):
             print("Please configure pw path")
             return
