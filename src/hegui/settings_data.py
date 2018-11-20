@@ -6,7 +6,7 @@ from kivy.uix.settings import SettingString
 from kivy.uix.label import Label
 from kivy.config import ConfigParser
 
-from hecore.crypt_functions import AESCipher, password_file, get_random_chars
+from hecore.crypt_functions import encryptDecrypt, get_random_chars
 from hecore.model.model import Account, Category
 
 # ver https://gist.github.com/kived/610386b5181219622e33 para entry tipo password
@@ -25,8 +25,20 @@ settings_data = {
          "title": "Automatically login",
          "desc": "If you switch on this option, you will automatically login.",
          "section": "autologin",
-         "key": "keeplogged"
+         "key": "do_autologin"
          },
+        {"type": "string",
+         "title": "Autologin username",
+         "desc": "Specify the username to login automatically.",
+         "section": "autologin",
+         "key": "username"
+         },
+        {"type": "password",
+         "title": "Autologin password",
+         "desc": "Specify user password to login automatically.",
+         "section": "autologin",
+         "key": "password"
+         }
     ],
     "Configuration": [
         {"type": "path",
@@ -83,9 +95,7 @@ class SettingPassword(SettingString):
     def _validate(self, instance):
         self._dismiss()
         value = self.textinput.text.strip()
-        pwd_text = password_file().get(self._get_pw_path())
-        aci = AESCipher(pwd_text, 32)
-        self.value = aci.encrypt(value)
+        self.value = encryptDecrypt(self._get_pw_path()).encrypt(value)
         print(self.value)  # Just for debugging
 
     def add_widget(self, widget, *largs):

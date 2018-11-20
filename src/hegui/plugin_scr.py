@@ -14,7 +14,7 @@ from kivy.uix.recycleboxlayout import RecycleBoxLayout
 from kivy.uix.behaviors import FocusBehavior
 from kivy.uix.recycleview.layout import LayoutSelectionBehavior
 #from kivy.metrics import dp
-from hecore.crypt_functions import AESCipher, password_file
+from hecore.crypt_functions import encryptDecrypt
 
 import os
 from random import sample
@@ -35,9 +35,7 @@ class PaginaPlugins(BoxLayout):
         if not os.path.isfile(pwpath):
             print("Please configure pw path")
             return
-        pwd_text = password_file().get(pwpath)
-        aci = AESCipher(pwd_text, 32)
-        password = aci.decrypt(app.config.get('mail_parser', 'password'))
+        password = encryptDecrypt(pwpath).decrypt(app.config.get('mail_parser', 'password'))
         options = {"mail_plugins": {
             "email": app.config.get('mail_parser', 'email'),
             "password": password

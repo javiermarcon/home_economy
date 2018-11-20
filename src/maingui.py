@@ -7,6 +7,7 @@ kivy.require('1.8.0')
 from kivy.app import App
 #from kivy.properties import StringProperty
 from kivy.config import ConfigParser
+from kivy.clock import Clock
 
 from hegui.navigationdrawer import NavigationDrawer
 from kivy.uix.boxlayout import BoxLayout
@@ -172,6 +173,10 @@ class HeGuiApp(App, MenuFunctions):
             self.config.set('configuration', 'pwd_filename', pwpath)
         self.crypt_pwd_path = pwpath
         return
+
+    def on_start(self):
+        # como no se cuando va a terminar de dibujar la pantalla, lamo a autologin con el clock
+        Clock.schedule_once(self.main_panel.run_autologin, 1)
 
 class SidePanel(BoxLayout):
     pass

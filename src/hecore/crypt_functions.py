@@ -68,6 +68,7 @@ class password_file:
                 f.write(self.pwd_text)
                 return self.pwd_text
 
+
 def get_random_chars(lenght):
     """
     Generates random characters
@@ -75,3 +76,16 @@ def get_random_chars(lenght):
     :return: random string of characters (lenght characters long)
     """
     return ''.join(random.choice(string.ascii_letters) for x in range(lenght))
+
+
+class encryptDecrypt:
+
+    def __init__(self, passwd_file):
+        pwd_text = password_file().get(passwd_file)
+        self.aci = AESCipher(pwd_text, 32)
+
+    def encrypt(self, value):
+        return self.aci.encrypt(value)
+
+    def decrypt(self, encrypted_text):
+        return self.aci.decrypt(encrypted_text)
