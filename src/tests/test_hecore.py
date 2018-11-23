@@ -8,26 +8,22 @@ class FileExistsTest(unittest.TestCase):
     '''Verifica la funcionalidad de hecore'''
 
     def setUp(self):
-        # Create a temporary directory
-        self.test_dir = tempfile.mkdtemp()
+        self.hb = HecoreBackend()
+        self.spath = '/tmp/testfile.txt'
 
-    def tearDown(self):
-        # Remove the directory after the test
-        shutil.rmtree(self.test_dir)
 
     @mock.patch('hecore.hecore.os.path.isfile')
     def test_file_exists_should_succeed(self, mock_isfile):
         mock_isfile.return_value = True
-        spath = '/tmp/testfile.txt'
-        hb = HecoreBackend()
-        self.assertTrue(hb.check_file_exists(spath))
+        self.assertTrue(self.hb.check_file_exists(self.spath))
 
     @mock.patch('hecore.hecore.os.path.isfile')
     def test_file_exists_should_fail(self, mock_isfile):
         mock_isfile.return_value = False
         spath = '/tmp/testfile.txt'
-        hb = HecoreBackend()
-        self.assertFalse(hb.check_file_exists(spath))
+        self.assertFalse(self.hb.check_file_exists(self.spath))
+
+
 
     # TODO: Crear test para launch de server.
 
