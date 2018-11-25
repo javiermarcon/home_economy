@@ -16,23 +16,16 @@ from hecore.crypt_functions import encryptDecrypt
 
 class Login(BoxLayout):
 
-    #def __init__(self, **kwargs):
-    #    super(Login, self).__init__(**kwargs)
-
-
     def run_autologin(self, placeholder=None):
         '''runs the automatic login'''
         app = self.get_running_app()
-        print "entro......."
-        print placeholder
         if app.config.get('autologin', 'do_autologin'):
-            print "naa"
             username = app.config.get('autologin', 'username')
             encrypted_password = app.config.get('autologin', 'password')
             db_filename = app.config.get('last_session', 'dbpath')
             pwpath = app.config.get('configuration', 'pwd_filename')
             if not os.path.isfile(pwpath):
-                print("Please configure pw path")
+                self.ids['loginErrors'].text = "Please configure password path to use autologin"
                 return
             password = encryptDecrypt(pwpath).decrypt(encrypted_password)
             self.do_login(username, password, db_filename)
@@ -41,7 +34,6 @@ class Login(BoxLayout):
         return App.get_running_app()
 
     def do_login(self, loginText, passwordText, fileName):
-        print "do login {} {} {}".format(loginText, passwordText, fileName)
         app = self.get_running_app()
         #fileName = self.ids['dbpath'].text
         if app.backend.check_file_exists(fileName):
