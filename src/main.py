@@ -4,8 +4,6 @@
 from argparse import ArgumentParser
 import os
 
-__version__ = "0.0.1"
-
 def main():
     ## inicializo parametros
     # para que kivy no acapare las opciones de linea de comando
