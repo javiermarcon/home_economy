@@ -32,8 +32,8 @@ source.include_exts = py,png,jpg,kv,atlas
 #version = 0.1
 
 # (str) Application versioning (method 2)
-version.regex = __version__ = ['"](.*)['"]
-version.filename = %(source.dir)s/version.py
+version.regex = current_version = (.*)
+version.filename = .bumpversion.cfg
 
 # (list) Application requirements
 # comma seperated e.g. requirements = sqlite3,kivy
