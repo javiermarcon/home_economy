@@ -1,6 +1,6 @@
 all: help
 
-.PHONY: check_git_tree next_version
+.PHONY: check_git_tree next_version docs
 
 help:
 	@echo "Comandos android:"
@@ -8,7 +8,9 @@ help:
 	@echo "    android_deploy - instala el apk en el celular"
 	@echo "    android_run - corre el apk en el celular"
 	@echo "    android_logcat - captura salida de la aplicacion en el celular"
-	@echo "     - "
+	@echo ""
+	@echo "Documentacion:"
+	@echo "    docs - Genera documentación HTML con sphinx y luego la abre"
 
 check_git_tree:
 	@if [ "`git status --untracked-files=no --porcelain`" != "" ]; then \
@@ -36,3 +38,7 @@ android_run: android_deploy
 # captura salida de la aplicacion en el celular
 android_logcat: android_deploy
 	buildozer android logcat
+
+docs:
+	$(MAKE) -C docs html
+	xdg-open docs/build/html/index.html
