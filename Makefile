@@ -4,13 +4,17 @@ all: help
 
 help:
 	@echo "Comandos android:"
-	@echo "    apk - Compila la aplicación generando un archivo apk en la carpeta bin"
-	@echo "    android_deploy - instala el apk en el celular"
-	@echo "    android_run - corre el apk en el celular"
-	@echo "    android_logcat - captura salida de la aplicacion en el celular"
+	@echo "    apk - Compila la aplicación generando un archivo apk en la carpeta bin."
+	@echo "    android_deploy - instala el apk en el celular."
+	@echo "    android_run - corre el apk en el celular."
+	@echo "    android_logcat - captura salida de la aplicacion en el celular."
 	@echo ""
 	@echo "Documentacion:"
-	@echo "    docs - Genera documentación HTML con sphinx y luego la abre"
+	@echo "    docs - Genera documentación HTML con sphinx y luego la abre."
+	@echo ""
+	@echo "Git:"
+	@echo "    commit - Hace commit agregando archivos .py y .kv e incrementando la version de la app."
+	@echo "             hay que pasarle la variable msg. make commit msg="mensaje de commit"
 
 check_git_tree:
 	@if [ "`git status --untracked-files=no --porcelain`" != "" ]; then \
@@ -19,12 +23,12 @@ check_git_tree:
 	fi
 
 # Compila la aplicación generando un archivo apk en la carpeta bin
-apk: check_git_tree next_version
+apk: next_version
 	@echo "compilando apk"
 	buildozer android debug
 
 # incrementa la versión de la aplicación
-next_version:
+next_version: check_git_tree
 	bumpversion patch
 
 # instala el apk en el celular
@@ -42,3 +46,25 @@ android_logcat: android_deploy
 docs:
 	$(MAKE) -C docs html
 	xdg-open docs/build/html/index.html
+
+check_msg_var:
+	@:$(call check_defined, msg)
+
+# Check that given variables are set and all have non-empty values,
+# die with an error otherwise.
+#
+# Params:
+#   1. Variable name(s) to test.
+#   2. (optional) Error message to print.
+check_defined = \
+    $(strip $(foreach 1,$1, \
+        $(call __check_defined,$1,$(strip $(value 2)))))
+__check_defined = \
+    $(if $(value $1),, \
+      $(error Variable $1$(if $2, ($2)) no definida. Por favor corra el makefile con $1$(if $2, ($2))="..."))
+
+git_commit: check_msg_var
+	@find src -iname "*.py" -type f -exec git add {} \;
+	git commit -m "$(msg)"
+
+commit: | git_commit next_version
