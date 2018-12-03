@@ -1,6 +1,6 @@
 all: help
 
-.PHONY: check_git_tree next_version docs
+.PHONY: check_git_tree patchversion docs
 
 help:
 	@echo "Comandos android:"
@@ -23,13 +23,13 @@ check_git_tree:
 	fi
 
 # Compila la aplicación generando un archivo apk en la carpeta bin
-apk: next_version
+apk: patchversion
 	@echo "compilando apk"
 	buildozer android debug
 
 # incrementa la versión de la aplicación
-next_version: check_git_tree
-	bumpversion patch
+patchversion majorversion minorversion: check_git_tree
+	bumpversion $(subst version,,$@)
 
 # instala el apk en el celular
 android_deploy: apk
@@ -67,4 +67,4 @@ git_commit: check_msg_var
 	@find src -iname "*.py" -type f -exec git add {} \;
 	git commit -m "$(msg)"
 
-commit: | git_commit next_version
+commit: | git_commit patchversion
