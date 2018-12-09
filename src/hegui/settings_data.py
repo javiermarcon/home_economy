@@ -6,7 +6,7 @@ from kivy.uix.settings import SettingString
 from kivy.uix.label import Label
 from kivy.config import ConfigParser
 
-from hecore.crypt_functions import encryptDecrypt, get_random_chars
+from hecore.crypt_functions import encryptDecrypt, get_random_chars, password_file
 from hecore.model.model import Account, Category
 
 # ver https://gist.github.com/kived/610386b5181219622e33 para entry tipo password
@@ -95,7 +95,7 @@ class SettingPassword(SettingString):
     def _validate(self, instance):
         self._dismiss()
         value = self.textinput.text.strip()
-        self.value = encryptDecrypt(self.get_pw_path()).encrypt(value)
+        self.value = encryptDecrypt(get_pw_path()).encrypt(value)
         print(self.value)  # Just for debugging
 
     def add_widget(self, widget, *largs):
@@ -104,16 +104,20 @@ class SettingPassword(SettingString):
         if isinstance(widget, PasswordLabel):
             return self.content.add_widget(widget, *largs)
 
-    def get_pw_path(self):
-        app = App.get_running_app()
-        pwpath = app.config.get('configuration', 'pwd_filename')
-        if not os.path.isfile(pwpath):
-            Config = ConfigParser.get_configparser("kivy")
-            folder = os.path.dirname(Config.filename)
-            rand_name = get_random_chars(10)
-            pwpath = os.path.join(folder, rand_name)
-            app.config.set('configuration', 'pwd_filename', pwpath)
-        return pwpath
+def get_pw_path():
+    app = App.get_running_app()
+    print("look pw")
+    pwpath = app.config.get('configuration', 'pwd_filename')
+    if not os.path.isfile(pwpath):
+        print("nofo pw")
+        Config = ConfigParser.get_configparser("kivy")
+        folder = os.path.dirname(Config.filename)
+        rand_name = get_random_chars(10)
+        pwpath = os.path.join(folder, rand_name)
+        password_file().get(pwpath)
+        print pwpath
+        app.config.set('configuration', 'pwd_filename', pwpath)
+    return pwpath
 
 
 class PasswordLabel(Label):

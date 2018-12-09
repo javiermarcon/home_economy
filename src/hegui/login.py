@@ -12,6 +12,7 @@ from hecore.model.model import User
 import os
 
 from hecore.crypt_functions import encryptDecrypt
+from hegui.settings_data import get_pw_path
 
 
 class Login(BoxLayout):
@@ -23,7 +24,7 @@ class Login(BoxLayout):
             username = app.config.get('autologin', 'username')
             encrypted_password = app.config.get('autologin', 'password')
             db_filename = app.config.get('last_session', 'dbpath')
-            pwpath = app.config.get('configuration', 'pwd_filename')
+            pwpath = get_pw_path()
             if not os.path.isfile(pwpath):
                 self.ids['loginErrors'].text = "Please configure password path to use autologin"
                 return

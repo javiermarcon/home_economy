@@ -88,4 +88,7 @@ class encryptDecrypt:
         return self.aci.encrypt(value)
 
     def decrypt(self, encrypted_text):
-        return self.aci.decrypt(encrypted_text)
+        try:
+            return self.aci.decrypt(encrypted_text)
+        except UnicodeDecodeError:
+            return None
