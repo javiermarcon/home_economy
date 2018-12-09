@@ -95,7 +95,7 @@ class SettingPassword(SettingString):
     def _validate(self, instance):
         self._dismiss()
         value = self.textinput.text.strip()
-        self.value = encryptDecrypt(self._get_pw_path()).encrypt(value)
+        self.value = encryptDecrypt(self.get_pw_path()).encrypt(value)
         print(self.value)  # Just for debugging
 
     def add_widget(self, widget, *largs):
@@ -104,7 +104,7 @@ class SettingPassword(SettingString):
         if isinstance(widget, PasswordLabel):
             return self.content.add_widget(widget, *largs)
 
-    def _get_pw_path(self):
+    def get_pw_path(self):
         app = App.get_running_app()
         pwpath = app.config.get('configuration', 'pwd_filename')
         if not os.path.isfile(pwpath):
