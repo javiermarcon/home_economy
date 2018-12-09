@@ -1,0 +1,5 @@
+# Mac OSX hidden files
+.DS_Store
+
+*.py[cod]
+src/.buildozer
