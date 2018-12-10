@@ -11,6 +11,8 @@ from hegui.cuentas import PaginaCuentas
 from hegui.categorias import PaginaCategorias
 from hegui.monedas import PaginaMonedas
 from hegui.plugin_scr import PaginaPlugins
+from kivy.garden.filebrowser import FileBrowser
+from kivy.uix.popup import Popup
 
 from hecore.model.db_creation import populate_db
 
@@ -52,16 +54,39 @@ class MenuFunctions:
     def menu_basedatos(self, dbPath=''):
         # TODO: al hacer click en menu -> base de datos, se tiene que abrir popup de aviso, hacer logout y ponerte pantalla de login
         # TODO: simplificar llamadas de menu y que cargue menu en forma dinamica
-        pag_bd = PaginaBd()
-        conf_path = self.config.get('last_session', 'dbpath')
-        if not dbPath == conf_path and dbPath.startswith('/'):
-            conf_path = dbPath
-        if not conf_path:
-            conf_path = os.path.dirname(os.path.expanduser('~'))
-        pag_bd.ids['lvl_bd'].text = conf_path
-        pag_bd.ids['filechooser'].path = conf_path
+        #pag_bd = PaginaBd()
+        #conf_path = self.config.get('last_session', 'dbpath')
+        #if not dbPath == conf_path and dbPath.startswith('/'):
+        #    conf_path = dbPath
+        #if not conf_path:
+        #    conf_path = os.path.dirname(os.path.expanduser('~'))
+        #pag_bd.ids['lvl_bd'].text = conf_path
+        #pag_bd.ids['filechooser'].path = conf_path
 
-        self._switch_main_page('Base de datos', pag_bd)
+        #self._switch_main_page('Base de datos', pag_bd)
+
+        self._fbrowser = FileBrowser(select_string='Open')
+        self._fbrowser.bind(on_success=self._file_load,
+                            on_canceled=self._cancel_popup)
+
+        self._popup = Popup(title='Open File', content=self._fbrowser,
+                            size_hint=(0.9, 0.9), auto_dismiss=False)
+
+        self._popup.open()
+
+    def _cancel_popup(self, *args):
+        '''To dismiss popup when cancel is pressed.
+        '''
+
+        self._popup.dismiss()
+
+    def _file_load(self, instance):
+        '''To set the text of text_file, to the file selected.
+        '''
+
+        self._popup.dismiss()
+        if instance.selection:
+            self.text_file.text = instance.selection[0]
 
     def menu_cuentas(self):
         self._switch_main_page('Cuentas', PaginaCuentas)
