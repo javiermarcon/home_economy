@@ -117,9 +117,10 @@ class HeGuiApp(App, MenuFunctions):
         Login().reset_form()
         self._switch_main_page('Login', Login)
 
-    def do_quit(self):
+    def do_quit(self, *largs):
         #print('App quit')
-        self.stop()
+        self.root_window.close()  # Fix app exit on Android.
+        return super(HeGuiApp, self).stop(*largs)
 
     def _switch_main_page(self, key,  panel):
         # last_panel stores the previous window to know which panel to choose
