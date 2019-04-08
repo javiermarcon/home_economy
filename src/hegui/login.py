@@ -28,8 +28,11 @@ class Login(BoxLayout):
             if not os.path.isfile(pwpath):
                 self.ids['loginErrors'].text = "Please configure password path to use autologin"
                 return
-            password = encryptDecrypt(pwpath).decrypt(encrypted_password)
-            self.do_login(username, password, db_filename)
+            if not app.backend.check_file_exists(db_filename):
+                password = encryptDecrypt(pwpath).decrypt(encrypted_password)
+                self.do_db_create_msg(app, db_filename, username, password)
+            #enters as a user
+            self.switch_main(username, app)
 
     def get_running_app(self):
         return App.get_running_app()
@@ -40,14 +43,17 @@ class Login(BoxLayout):
         if app.backend.check_file_exists(fileName):
             self.finish_login(loginText, passwordText)
         else:
-            strmsg = "La base de datos {} no existe, desea crearla?".format(fileName)
-            login_finish = self.make_db_and_finish_login
-            app.popups.open_confirm_popup(strmsg, action_yes=partial(login_finish, loginText,
-                                          passwordText, True, fileName),
-                                          action_no=self.no_action)
+            self.do_db_create_msg(app, fileName, loginText, passwordText)
 
     def no_action(self):
         pass
+
+    def do_db_create_msg(self, app, fileName, loginText, passwordText):
+        strmsg = "La base de datos {} no existe, desea crearla?".format(fileName)
+        login_finish = self.make_db_and_finish_login
+        app.popups.open_confirm_popup(strmsg, action_yes=partial(login_finish, loginText,
+                                                                 passwordText, True, fileName),
+                                                                 action_no=self.no_action)
 
     def reset_form(self):
         self.ids['login'].text = ""
