@@ -1,0 +1,465 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>src.hecore package &mdash; Home Economy 0.0.5 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Home Economy 0.0.5 documentation" href="index.html" />
+    <link rel="next" title="src.hegui package" href="hegui.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="readme.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="hegui.html" title="src.hegui package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="readme.html" title="&lt;no title&gt;"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Home Economy 0.0.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="src-hecore-package">
+<h1>src.hecore package<a class="headerlink" href="#src-hecore-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul class="simple">
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-hecore.crypt_functions">
+<span id="src-hecore-crypt-functions-module"></span><h2>src.hecore.crypt_functions module<a class="headerlink" href="#module-hecore.crypt_functions" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="hecore.crypt_functions.AESCipher">
+<em class="property">class </em><tt class="descclassname">hecore.crypt_functions.</tt><tt class="descname">AESCipher</tt><big>(</big><em>key</em>, <em>blk_sz</em><big>)</big><a class="headerlink" href="#hecore.crypt_functions.AESCipher" title="Permalink to this definition">¶</a></dt>
+<dd><p>Usage:
+aes = AESCipher( settings.SECRET_KEY[:16], 32)
+encryp_msg = aes.encrypt( &#8216;ppppppppppppppppppppppppppppppppppppppppppppppppppppppp&#8217; )
+msg = aes.decrypt( encryp_msg )
+print(&#8220;&#8217;{}&#8217;&#8221;.format(msg))</p>
+<dl class="method">
+<dt id="hecore.crypt_functions.AESCipher.decrypt">
+<tt class="descname">decrypt</tt><big>(</big><em>enc</em><big>)</big><a class="headerlink" href="#hecore.crypt_functions.AESCipher.decrypt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hecore.crypt_functions.AESCipher.encrypt">
+<tt class="descname">encrypt</tt><big>(</big><em>raw</em><big>)</big><a class="headerlink" href="#hecore.crypt_functions.AESCipher.encrypt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hecore.crypt_functions.encryptDecrypt">
+<em class="property">class </em><tt class="descclassname">hecore.crypt_functions.</tt><tt class="descname">encryptDecrypt</tt><big>(</big><em>passwd_file</em><big>)</big><a class="headerlink" href="#hecore.crypt_functions.encryptDecrypt" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="hecore.crypt_functions.encryptDecrypt.decrypt">
+<tt class="descname">decrypt</tt><big>(</big><em>encrypted_text</em><big>)</big><a class="headerlink" href="#hecore.crypt_functions.encryptDecrypt.decrypt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hecore.crypt_functions.encryptDecrypt.encrypt">
+<tt class="descname">encrypt</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#hecore.crypt_functions.encryptDecrypt.encrypt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="hecore.crypt_functions.get_random_chars">
+<tt class="descclassname">hecore.crypt_functions.</tt><tt class="descname">get_random_chars</tt><big>(</big><em>lenght</em><big>)</big><a class="headerlink" href="#hecore.crypt_functions.get_random_chars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates random characters
+:param lenght: lenght of the returned characters
+:return: random string of characters (lenght characters long)</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="hecore.crypt_functions.password_file">
+<em class="property">class </em><tt class="descclassname">hecore.crypt_functions.</tt><tt class="descname">password_file</tt><a class="headerlink" href="#hecore.crypt_functions.password_file" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="hecore.crypt_functions.password_file.get">
+<tt class="descname">get</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#hecore.crypt_functions.password_file.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.crypt_functions.password_file.pwd_text">
+<tt class="descname">pwd_text</tt><em class="property"> = ''</em><a class="headerlink" href="#hecore.crypt_functions.password_file.pwd_text" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-hecore.hecore">
+<span id="src-hecore-hecore-module"></span><h2>src.hecore.hecore module<a class="headerlink" href="#module-hecore.hecore" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="hecore.hecore.CommonOperations">
+<em class="property">class </em><tt class="descclassname">hecore.hecore.</tt><tt class="descname">CommonOperations</tt><a class="headerlink" href="#hecore.hecore.CommonOperations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hace las operaciones comunes como transacciones en db por ejemplo</p>
+<dl class="method">
+<dt id="hecore.hecore.CommonOperations.add_transaction">
+<tt class="descname">add_transaction</tt><big>(</big><em>tr_date</em>, <em>destiny</em>, <em>id_category</em>, <em>ammount</em>, <em>operation='Gasto'</em>, <em>origin=None</em>, <em>number=None</em>, <em>id_instrument=None</em>, <em>transaction_member=None</em>, <em>notes=None</em><big>)</big><a class="headerlink" href="#hecore.hecore.CommonOperations.add_transaction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Agrega una transaccion a la base de datos</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hecore.hecore.HecoreBackend">
+<em class="property">class </em><tt class="descclassname">hecore.hecore.</tt><tt class="descname">HecoreBackend</tt><a class="headerlink" href="#hecore.hecore.HecoreBackend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Esta clase se encarga de hacer todas las operaciones que pide la gui
+coordinado las acciones de todos los módulos.</p>
+<dl class="method">
+<dt id="hecore.hecore.HecoreBackend.check_file_exists">
+<tt class="descname">check_file_exists</tt><big>(</big><em>filePath</em><big>)</big><a class="headerlink" href="#hecore.hecore.HecoreBackend.check_file_exists" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.hecore.HecoreBackend.common_operations">
+<tt class="descname">common_operations</tt><em class="property"> = &lt;hecore.hecore.CommonOperations instance at 0x7fc0c431b5f0&gt;</em><a class="headerlink" href="#hecore.hecore.HecoreBackend.common_operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.hecore.HecoreBackend.config">
+<tt class="descname">config</tt><em class="property"> = None</em><a class="headerlink" href="#hecore.hecore.HecoreBackend.config" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.hecore.HecoreBackend.db">
+<tt class="descname">db</tt><em class="property"> = &lt;hecore.model.base.Db instance at 0x7fc0c440e638&gt;</em><a class="headerlink" href="#hecore.hecore.HecoreBackend.db" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hecore.hecore.HecoreBackend.launch_server">
+<tt class="descname">launch_server</tt><big>(</big><big>)</big><a class="headerlink" href="#hecore.hecore.HecoreBackend.launch_server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lanza el servidor twisted para escuchar pedidos de syncro
+:return: None</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.hecore.HecoreBackend.plugins">
+<tt class="descname">plugins</tt><em class="property"> = None</em><a class="headerlink" href="#hecore.hecore.HecoreBackend.plugins" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hecore.hecore.HecoreBackend.run_plugins">
+<tt class="descname">run_plugins</tt><big>(</big><em>options</em><big>)</big><a class="headerlink" href="#hecore.hecore.HecoreBackend.run_plugins" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hecore.hecore.HecoreBackend.set_ini_location">
+<tt class="descname">set_ini_location</tt><big>(</big><em>location</em><big>)</big><a class="headerlink" href="#hecore.hecore.HecoreBackend.set_ini_location" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-hecore.mail_reader">
+<span id="src-hecore-mail-reader-module"></span><h2>src.hecore.mail_reader module<a class="headerlink" href="#module-hecore.mail_reader" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="hecore.mail_reader.manage_email">
+<em class="property">class </em><tt class="descclassname">hecore.mail_reader.</tt><tt class="descname">manage_email</tt><big>(</big><em>user</em>, <em>password</em>, <em>server='imap.gmail.com'</em>, <em>port=993</em>, <em>use_ssl=True</em><big>)</big><a class="headerlink" href="#hecore.mail_reader.manage_email" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="hecore.mail_reader.manage_email.get_attachments">
+<tt class="descname">get_attachments</tt><big>(</big><em>msg</em><big>)</big><a class="headerlink" href="#hecore.mail_reader.manage_email.get_attachments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lee un attachment de un mail
+:param msg: message content
+:return: a dictionary with filenames and file contents of the attachments that the message has</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="hecore.mail_reader.manage_email.get_emails">
+<tt class="descname">get_emails</tt><big>(</big><em>mail_list</em><big>)</big><a class="headerlink" href="#hecore.mail_reader.manage_email.get_emails" title="Permalink to this definition">¶</a></dt>
+<dd><p>fetches the email
+:param mail_list:
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="hecore.mail_reader.manage_email.get_first_text_block">
+<tt class="descname">get_first_text_block</tt><big>(</big><em>email_message_instance</em><big>)</big><a class="headerlink" href="#hecore.mail_reader.manage_email.get_first_text_block" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hecore.mail_reader.manage_email.get_mail_folders">
+<tt class="descname">get_mail_folders</tt><big>(</big><big>)</big><a class="headerlink" href="#hecore.mail_reader.manage_email.get_mail_folders" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.mail_reader.manage_email.mail_obj">
+<tt class="descname">mail_obj</tt><em class="property"> = None</em><a class="headerlink" href="#hecore.mail_reader.manage_email.mail_obj" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hecore.mail_reader.manage_email.mark_read">
+<tt class="descname">mark_read</tt><big>(</big><em>num</em><big>)</big><a class="headerlink" href="#hecore.mail_reader.manage_email.mark_read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Marca el mensaje colo leido
+:param num: numero de mensaje
+:return: retorna &#8220;ok&#8221; si anduvo bien</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="hecore.mail_reader.manage_email.normalize_patterns">
+<tt class="descname">normalize_patterns</tt><big>(</big><em>patterns</em><big>)</big><a class="headerlink" href="#hecore.mail_reader.manage_email.normalize_patterns" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns patterns to search in a string
+:param patterns: patterns to search
+:return: string with patterns normalized</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="hecore.mail_reader.manage_email.search_messages">
+<tt class="descname">search_messages</tt><big>(</big><em>last_message=None</em>, <em>patterns=None</em><big>)</big><a class="headerlink" href="#hecore.mail_reader.manage_email.search_messages" title="Permalink to this definition">¶</a></dt>
+<dd><p>searchs messages using a pattern or list of patterns
+all patterns are described in: <a class="reference external" href="https://tools.ietf.org/html/rfc3501#page-49">https://tools.ietf.org/html/rfc3501#page-49</a>
+:param patterns: string or list of patterns to search ex: (UNSEEN SUBJECT &#8220;zz&#8221;)
+:param last_message: last message searched, to return only messages after that id
+:return: list of message ids</p>
+<p>Pattern examples:
+messages since yesterday:
+date = (datetime.date.today() - datetime.timedelta(1)).strftime(&#8220;%d-%b-%Y&#8221;)
+&#8216;(SENTSINCE {0})&#8217;.format(date)
+From someone: (FROM {0})&#8217;.format(<a class="reference external" href="mailto:'sarasa&#37;&#52;&#48;gmail&#46;com">'sarasa<span>&#64;</span>gmail<span>&#46;</span>com</a>&#8216;.strip())
+Unread messages: &#8216;(UNSEEN)&#8217;
+Subject containing zz: &#8216;(SUBJECT &#8220;zz&#8221;)&#8217;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="hecore.mail_reader.manage_email.select_folder">
+<tt class="descname">select_folder</tt><big>(</big><em>folder='inbox'</em><big>)</big><a class="headerlink" href="#hecore.mail_reader.manage_email.select_folder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects a mail folder
+:param folder: folder to select
+:return: True or false</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-hecore.plugin_logic">
+<span id="src-hecore-plugin-logic-module"></span><h2>src.hecore.plugin_logic module<a class="headerlink" href="#module-hecore.plugin_logic" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="hecore.plugin_logic.plugin_logic">
+<em class="property">class </em><tt class="descclassname">hecore.plugin_logic.</tt><tt class="descname">plugin_logic</tt><big>(</big><em>options</em><big>)</big><a class="headerlink" href="#hecore.plugin_logic.plugin_logic" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="hecore.plugin_logic.plugin_logic.get_plugin_names">
+<tt class="descname">get_plugin_names</tt><big>(</big><big>)</big><a class="headerlink" href="#hecore.plugin_logic.plugin_logic.get_plugin_names" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hecore.plugin_logic.plugin_logic.parse_http_plugin">
+<tt class="descname">parse_http_plugin</tt><big>(</big><em>plugin_output</em><big>)</big><a class="headerlink" href="#hecore.plugin_logic.plugin_logic.parse_http_plugin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hecore.plugin_logic.plugin_logic.parse_mail_plugins">
+<tt class="descname">parse_mail_plugins</tt><big>(</big><em>plugin_output</em><big>)</big><a class="headerlink" href="#hecore.plugin_logic.plugin_logic.parse_mail_plugins" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hecore.plugin_logic.plugin_logic.run_plugins">
+<tt class="descname">run_plugins</tt><big>(</big><big>)</big><a class="headerlink" href="#hecore.plugin_logic.plugin_logic.run_plugins" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-hecore">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-hecore" title="Permalink to this headline">¶</a></h2>
+<p>Clases que va a exponer el módulo core:</p>
+<p>Login: (user, password)
+- do_login
+- is_authenticated</p>
+<p>User: (id, login, password, name, surname, default_account, pass_type, state)
+- add
+- remove
+- modify
+- list
+- info</p>
+<p>Account_Type:
+- add
+- remove
+- modify
+- list
+- info</p>
+<p>Account:
+- add
+- remove
+- modify
+- list
+- info</p>
+<p>Category: (id, parent, name)
+- add
+- remove
+- modify
+- list
+- info</p>
+<p>Transaction: (id, parent, origin, destiny, category, notes, number)
+- add
+- remove
+- modify
+- list
+- info</p>
+<p>Currenciy: (id, name, bid, ask)
+- add
+- remove
+- modify
+- list
+- info</p>
+<p>Instrument:
+- add
+- remove
+- modify
+- list
+- info</p>
+<p>Instrument_option:
+- add
+- remove
+- modify
+- list
+- info</p>
+<p>Instrument_value:
+- add
+- remove
+- modify
+- list
+- info</p>
+<p>Transaction:
+- add
+- remove
+- modify
+- list
+- info</p>
+<p>Currency:
+- add
+- remove
+- modify
+- list
+- info</p>
+<p>Configuration:
+- read_all
+- set
+- get</p>
+<p>Plugin:
+- list
+- add
+- remove
+- info
+- enable
+- disable
+- is_enabled
+- module_plugins</p>
+<p>Translation:
+- add
+- remove
+- modify
+- list
+- info</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">src.hecore package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-hecore.crypt_functions">src.hecore.crypt_functions module</a></li>
+<li><a class="reference internal" href="#module-hecore.hecore">src.hecore.hecore module</a></li>
+<li><a class="reference internal" href="#module-hecore.mail_reader">src.hecore.mail_reader module</a></li>
+<li><a class="reference internal" href="#module-hecore.plugin_logic">src.hecore.plugin_logic module</a></li>
+<li><a class="reference internal" href="#module-hecore">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="readme.html"
+                        title="previous chapter">&lt;no title&gt;</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="hegui.html"
+                        title="next chapter">src.hegui package</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/hecore.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="hegui.html" title="src.hegui package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="readme.html" title="&lt;no title&gt;"
+             >previous</a> |</li>
+        <li><a href="index.html">Home Economy 0.0.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2018, Javier Marcon.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

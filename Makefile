@@ -64,7 +64,16 @@ __check_defined = \
       $(error Variable $1$(if $2, ($2)) no definida. Por favor corra el makefile con $1$(if $2, ($2))="..."))
 
 git_commit: check_msg_var
+	# root files 
+	git add ./Makefile ./readme.md ./buildozer.spec
+	# requirements
+	git add ./src/requirements*.txt
+	# documents
+	git add ./doc/*
+	git add ./docs/build/html/*
+	# python files
 	@find src -iname "*.py" -type f -exec git add {} \;
+	# perform commit
 	git commit -m "$(msg)"
 
 commit: | git_commit patchversion

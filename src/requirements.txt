@@ -1,5 +1,6 @@
-SQLAlchemy
+mock
 Twisted
+SQLAlchemy
 lxml
 passlib
 pytest

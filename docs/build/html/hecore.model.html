@@ -1,0 +1,643 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>src.hecore.model package &mdash; Home Economy 0.0.5 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Home Economy 0.0.5 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Home Economy 0.0.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="src-hecore-model-package">
+<h1>src.hecore.model package<a class="headerlink" href="#src-hecore-model-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="hecore.model.fixtures.html">src.hecore.model.fixtures package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hecore.model.fixtures.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hecore.model.fixtures.html#module-hecore.model.fixtures.acount">src.hecore.model.fixtures.acount module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hecore.model.fixtures.html#module-hecore.model.fixtures.category">src.hecore.model.fixtures.category module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hecore.model.fixtures.html#module-hecore.model.fixtures.currency">src.hecore.model.fixtures.currency module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hecore.model.fixtures.html#module-hecore.model.fixtures">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-hecore.model.base">
+<span id="src-hecore-model-base-module"></span><h2>src.hecore.model.base module<a class="headerlink" href="#module-hecore.model.base" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="hecore.model.base.Db">
+<em class="property">class </em><tt class="descclassname">hecore.model.base.</tt><tt class="descname">Db</tt><a class="headerlink" href="#hecore.model.base.Db" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maneja las conexiones y model ode la base de datos con sqlalchemy</p>
+<dl class="method">
+<dt id="hecore.model.base.Db.check_empty_table">
+<tt class="descname">check_empty_table</tt><big>(</big><em>table</em><big>)</big><a class="headerlink" href="#hecore.model.base.Db.check_empty_table" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hecore.model.base.Db.connect">
+<tt class="descname">connect</tt><big>(</big><em>fileName=None</em><big>)</big><a class="headerlink" href="#hecore.model.base.Db.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Se conecta a la base de datos</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.base.Db.connection">
+<tt class="descname">connection</tt><em class="property"> = None</em><a class="headerlink" href="#hecore.model.base.Db.connection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hecore.model.base.Db.create_and_connect_callback">
+<tt class="descname">create_and_connect_callback</tt><big>(</big><em>fileName</em><big>)</big><a class="headerlink" href="#hecore.model.base.Db.create_and_connect_callback" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.base.Db.default_path">
+<tt class="descname">default_path</tt><em class="property"> = None</em><a class="headerlink" href="#hecore.model.base.Db.default_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.base.Db.engine">
+<tt class="descname">engine</tt><em class="property"> = None</em><a class="headerlink" href="#hecore.model.base.Db.engine" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hecore.model.base.Db.get_connection">
+<tt class="descname">get_connection</tt><big>(</big><big>)</big><a class="headerlink" href="#hecore.model.base.Db.get_connection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hecore.model.base.Db.set_default_path">
+<tt class="descname">set_default_path</tt><big>(</big><em>filePath</em><big>)</big><a class="headerlink" href="#hecore.model.base.Db.set_default_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-hecore.model.db_creation">
+<span id="src-hecore-model-db-creation-module"></span><h2>src.hecore.model.db_creation module<a class="headerlink" href="#module-hecore.model.db_creation" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="hecore.model.db_creation.create_account_types">
+<tt class="descclassname">hecore.model.db_creation.</tt><tt class="descname">create_account_types</tt><big>(</big><em>connection</em><big>)</big><a class="headerlink" href="#hecore.model.db_creation.create_account_types" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="hecore.model.db_creation.create_accounts">
+<tt class="descclassname">hecore.model.db_creation.</tt><tt class="descname">create_accounts</tt><big>(</big><em>connection</em><big>)</big><a class="headerlink" href="#hecore.model.db_creation.create_accounts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="hecore.model.db_creation.create_and_populate_db">
+<tt class="descclassname">hecore.model.db_creation.</tt><tt class="descname">create_and_populate_db</tt><big>(</big><em>dbclass</em><big>)</big><a class="headerlink" href="#hecore.model.db_creation.create_and_populate_db" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="hecore.model.db_creation.create_categories">
+<tt class="descclassname">hecore.model.db_creation.</tt><tt class="descname">create_categories</tt><big>(</big><em>connection</em><big>)</big><a class="headerlink" href="#hecore.model.db_creation.create_categories" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="hecore.model.db_creation.create_currencies">
+<tt class="descclassname">hecore.model.db_creation.</tt><tt class="descname">create_currencies</tt><big>(</big><em>connection</em><big>)</big><a class="headerlink" href="#hecore.model.db_creation.create_currencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="hecore.model.db_creation.create_database">
+<tt class="descclassname">hecore.model.db_creation.</tt><tt class="descname">create_database</tt><big>(</big><em>engine</em><big>)</big><a class="headerlink" href="#hecore.model.db_creation.create_database" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="hecore.model.db_creation.create_id">
+<tt class="descclassname">hecore.model.db_creation.</tt><tt class="descname">create_id</tt><big>(</big><big>)</big><a class="headerlink" href="#hecore.model.db_creation.create_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="hecore.model.db_creation.create_user">
+<tt class="descclassname">hecore.model.db_creation.</tt><tt class="descname">create_user</tt><big>(</big><em>connection</em><big>)</big><a class="headerlink" href="#hecore.model.db_creation.create_user" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="hecore.model.db_creation.dummy_function">
+<tt class="descclassname">hecore.model.db_creation.</tt><tt class="descname">dummy_function</tt><big>(</big><em>connection</em><big>)</big><a class="headerlink" href="#hecore.model.db_creation.dummy_function" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="hecore.model.db_creation.get_table_creation_funcs">
+<tt class="descclassname">hecore.model.db_creation.</tt><tt class="descname">get_table_creation_funcs</tt><big>(</big><big>)</big><a class="headerlink" href="#hecore.model.db_creation.get_table_creation_funcs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="hecore.model.db_creation.populate_db">
+<tt class="descclassname">hecore.model.db_creation.</tt><tt class="descname">populate_db</tt><big>(</big><em>dbclass</em>, <em>only_empty_tables=True</em><big>)</big><a class="headerlink" href="#hecore.model.db_creation.populate_db" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-hecore.model.model">
+<span id="src-hecore-model-model-module"></span><h2>src.hecore.model.model module<a class="headerlink" href="#module-hecore.model.model" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="hecore.model.model.Account">
+<em class="property">class </em><tt class="descclassname">hecore.model.model.</tt><tt class="descname">Account</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#hecore.model.model.Account" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">sqlalchemy.ext.declarative.api.Base</span></tt>, <a class="reference internal" href="#hecore.model.model.TreeClass" title="hecore.model.model.TreeClass"><tt class="xref py py-class docutils literal"><span class="pre">hecore.model.model.TreeClass</span></tt></a>, <a class="reference internal" href="#hecore.model.model.repr_table" title="hecore.model.model.repr_table"><tt class="xref py py-class docutils literal"><span class="pre">hecore.model.model.repr_table</span></tt></a></p>
+<dl class="attribute">
+<dt id="hecore.model.model.Account.acounttype">
+<tt class="descname">acounttype</tt><a class="headerlink" href="#hecore.model.model.Account.acounttype" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Account.balance">
+<tt class="descname">balance</tt><a class="headerlink" href="#hecore.model.model.Account.balance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Account.children">
+<tt class="descname">children</tt><a class="headerlink" href="#hecore.model.model.Account.children" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Account.currency">
+<tt class="descname">currency</tt><a class="headerlink" href="#hecore.model.model.Account.currency" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Account.id">
+<tt class="descname">id</tt><a class="headerlink" href="#hecore.model.model.Account.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Account.id_account_type">
+<tt class="descname">id_account_type</tt><a class="headerlink" href="#hecore.model.model.Account.id_account_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Account.id_currency">
+<tt class="descname">id_currency</tt><a class="headerlink" href="#hecore.model.model.Account.id_currency" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Account.name">
+<tt class="descname">name</tt><a class="headerlink" href="#hecore.model.model.Account.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Account.parent">
+<tt class="descname">parent</tt><a class="headerlink" href="#hecore.model.model.Account.parent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hecore.model.model.Acounttype">
+<em class="property">class </em><tt class="descclassname">hecore.model.model.</tt><tt class="descname">Acounttype</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#hecore.model.model.Acounttype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">sqlalchemy.ext.declarative.api.Base</span></tt>, <a class="reference internal" href="#hecore.model.model.repr_table" title="hecore.model.model.repr_table"><tt class="xref py py-class docutils literal"><span class="pre">hecore.model.model.repr_table</span></tt></a></p>
+<dl class="method">
+<dt id="hecore.model.model.Acounttype.get_all">
+<tt class="descname">get_all</tt><big>(</big><big>)</big><a class="headerlink" href="#hecore.model.model.Acounttype.get_all" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hecore.model.model.Acounttype.get_one">
+<tt class="descname">get_one</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#hecore.model.model.Acounttype.get_one" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Acounttype.id">
+<tt class="descname">id</tt><a class="headerlink" href="#hecore.model.model.Acounttype.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Acounttype.module">
+<tt class="descname">module</tt><a class="headerlink" href="#hecore.model.model.Acounttype.module" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Acounttype.name">
+<tt class="descname">name</tt><a class="headerlink" href="#hecore.model.model.Acounttype.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hecore.model.model.Category">
+<em class="property">class </em><tt class="descclassname">hecore.model.model.</tt><tt class="descname">Category</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#hecore.model.model.Category" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">sqlalchemy.ext.declarative.api.Base</span></tt>, <a class="reference internal" href="#hecore.model.model.TreeClass" title="hecore.model.model.TreeClass"><tt class="xref py py-class docutils literal"><span class="pre">hecore.model.model.TreeClass</span></tt></a>, <a class="reference internal" href="#hecore.model.model.repr_table" title="hecore.model.model.repr_table"><tt class="xref py py-class docutils literal"><span class="pre">hecore.model.model.repr_table</span></tt></a></p>
+<dl class="attribute">
+<dt id="hecore.model.model.Category.balance">
+<tt class="descname">balance</tt><a class="headerlink" href="#hecore.model.model.Category.balance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Category.children">
+<tt class="descname">children</tt><a class="headerlink" href="#hecore.model.model.Category.children" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Category.id">
+<tt class="descname">id</tt><a class="headerlink" href="#hecore.model.model.Category.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Category.name">
+<tt class="descname">name</tt><a class="headerlink" href="#hecore.model.model.Category.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Category.parent">
+<tt class="descname">parent</tt><a class="headerlink" href="#hecore.model.model.Category.parent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hecore.model.model.Currency">
+<em class="property">class </em><tt class="descclassname">hecore.model.model.</tt><tt class="descname">Currency</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#hecore.model.model.Currency" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">sqlalchemy.ext.declarative.api.Base</span></tt>, <a class="reference internal" href="#hecore.model.model.repr_table" title="hecore.model.model.repr_table"><tt class="xref py py-class docutils literal"><span class="pre">hecore.model.model.repr_table</span></tt></a></p>
+<dl class="attribute">
+<dt id="hecore.model.model.Currency.ask">
+<tt class="descname">ask</tt><a class="headerlink" href="#hecore.model.model.Currency.ask" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Currency.bid">
+<tt class="descname">bid</tt><a class="headerlink" href="#hecore.model.model.Currency.bid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Currency.conversion">
+<tt class="descname">conversion</tt><a class="headerlink" href="#hecore.model.model.Currency.conversion" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Currency.dec_places">
+<tt class="descname">dec_places</tt><a class="headerlink" href="#hecore.model.model.Currency.dec_places" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Currency.denomination">
+<tt class="descname">denomination</tt><a class="headerlink" href="#hecore.model.model.Currency.denomination" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hecore.model.model.Currency.get_all">
+<tt class="descname">get_all</tt><big>(</big><big>)</big><a class="headerlink" href="#hecore.model.model.Currency.get_all" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hecore.model.model.Currency.get_one">
+<tt class="descname">get_one</tt><big>(</big><em>denom</em><big>)</big><a class="headerlink" href="#hecore.model.model.Currency.get_one" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Currency.id">
+<tt class="descname">id</tt><a class="headerlink" href="#hecore.model.model.Currency.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Currency.name">
+<tt class="descname">name</tt><a class="headerlink" href="#hecore.model.model.Currency.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Currency.symbol">
+<tt class="descname">symbol</tt><a class="headerlink" href="#hecore.model.model.Currency.symbol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hecore.model.model.Currencyhistory">
+<em class="property">class </em><tt class="descclassname">hecore.model.model.</tt><tt class="descname">Currencyhistory</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#hecore.model.model.Currencyhistory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">sqlalchemy.ext.declarative.api.Base</span></tt>, <a class="reference internal" href="#hecore.model.model.repr_table" title="hecore.model.model.repr_table"><tt class="xref py py-class docutils literal"><span class="pre">hecore.model.model.repr_table</span></tt></a></p>
+<dl class="attribute">
+<dt id="hecore.model.model.Currencyhistory.ask">
+<tt class="descname">ask</tt><a class="headerlink" href="#hecore.model.model.Currencyhistory.ask" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Currencyhistory.bid">
+<tt class="descname">bid</tt><a class="headerlink" href="#hecore.model.model.Currencyhistory.bid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Currencyhistory.currency">
+<tt class="descname">currency</tt><a class="headerlink" href="#hecore.model.model.Currencyhistory.currency" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Currencyhistory.date">
+<tt class="descname">date</tt><a class="headerlink" href="#hecore.model.model.Currencyhistory.date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Currencyhistory.id">
+<tt class="descname">id</tt><a class="headerlink" href="#hecore.model.model.Currencyhistory.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Currencyhistory.id_currency">
+<tt class="descname">id_currency</tt><a class="headerlink" href="#hecore.model.model.Currencyhistory.id_currency" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hecore.model.model.INTEGER">
+<em class="property">class </em><tt class="descclassname">hecore.model.model.</tt><tt class="descname">INTEGER</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#hecore.model.model.INTEGER" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">sqlalchemy.sql.sqltypes.Integer</span></tt></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="hecore.model.model.Instrument">
+<em class="property">class </em><tt class="descclassname">hecore.model.model.</tt><tt class="descname">Instrument</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#hecore.model.model.Instrument" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">sqlalchemy.ext.declarative.api.Base</span></tt>, <a class="reference internal" href="#hecore.model.model.repr_table" title="hecore.model.model.repr_table"><tt class="xref py py-class docutils literal"><span class="pre">hecore.model.model.repr_table</span></tt></a></p>
+<dl class="attribute">
+<dt id="hecore.model.model.Instrument.denomination">
+<tt class="descname">denomination</tt><a class="headerlink" href="#hecore.model.model.Instrument.denomination" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Instrument.id">
+<tt class="descname">id</tt><a class="headerlink" href="#hecore.model.model.Instrument.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Instrument.id_currency">
+<tt class="descname">id_currency</tt><a class="headerlink" href="#hecore.model.model.Instrument.id_currency" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Instrument.name">
+<tt class="descname">name</tt><a class="headerlink" href="#hecore.model.model.Instrument.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Instrument.notes">
+<tt class="descname">notes</tt><a class="headerlink" href="#hecore.model.model.Instrument.notes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hecore.model.model.Transaction">
+<em class="property">class </em><tt class="descclassname">hecore.model.model.</tt><tt class="descname">Transaction</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#hecore.model.model.Transaction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">sqlalchemy.ext.declarative.api.Base</span></tt>, <a class="reference internal" href="#hecore.model.model.repr_table" title="hecore.model.model.repr_table"><tt class="xref py py-class docutils literal"><span class="pre">hecore.model.model.repr_table</span></tt></a></p>
+<dl class="attribute">
+<dt id="hecore.model.model.Transaction.ammount">
+<tt class="descname">ammount</tt><a class="headerlink" href="#hecore.model.model.Transaction.ammount" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Transaction.date">
+<tt class="descname">date</tt><a class="headerlink" href="#hecore.model.model.Transaction.date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Transaction.destiny">
+<tt class="descname">destiny</tt><a class="headerlink" href="#hecore.model.model.Transaction.destiny" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Transaction.id">
+<tt class="descname">id</tt><a class="headerlink" href="#hecore.model.model.Transaction.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Transaction.id_category">
+<tt class="descname">id_category</tt><a class="headerlink" href="#hecore.model.model.Transaction.id_category" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Transaction.id_instrument">
+<tt class="descname">id_instrument</tt><a class="headerlink" href="#hecore.model.model.Transaction.id_instrument" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Transaction.notes">
+<tt class="descname">notes</tt><a class="headerlink" href="#hecore.model.model.Transaction.notes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Transaction.number">
+<tt class="descname">number</tt><a class="headerlink" href="#hecore.model.model.Transaction.number" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Transaction.origin">
+<tt class="descname">origin</tt><a class="headerlink" href="#hecore.model.model.Transaction.origin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.Transaction.transaction_member">
+<tt class="descname">transaction_member</tt><a class="headerlink" href="#hecore.model.model.Transaction.transaction_member" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hecore.model.model.Transaction.validate_required">
+<tt class="descname">validate_required</tt><big>(</big><big>)</big><a class="headerlink" href="#hecore.model.model.Transaction.validate_required" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hecore.model.model.TreeClass">
+<em class="property">class </em><tt class="descclassname">hecore.model.model.</tt><tt class="descname">TreeClass</tt><a class="headerlink" href="#hecore.model.model.TreeClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Metodos base para obtener datos de una tabla tipo tree</p>
+<dl class="method">
+<dt id="hecore.model.model.TreeClass.get_all">
+<tt class="descname">get_all</tt><big>(</big><big>)</big><a class="headerlink" href="#hecore.model.model.TreeClass.get_all" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hecore.model.model.TreeClass.get_dict_of_ids_and_names">
+<tt class="descname">get_dict_of_ids_and_names</tt><big>(</big><em>formatting</em>, <em>fields</em>, <em>add_text_indentation=False</em><big>)</big><a class="headerlink" href="#hecore.model.model.TreeClass.get_dict_of_ids_and_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a dictionary with the id and the names</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="hecore.model.model.TreeClass.get_lists_of_ids_and_names">
+<tt class="descname">get_lists_of_ids_and_names</tt><big>(</big><em>formatting</em>, <em>fields</em>, <em>add_text_indentation=False</em><big>)</big><a class="headerlink" href="#hecore.model.model.TreeClass.get_lists_of_ids_and_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a list of ids and a list of names
+:param format:
+:param fields:
+:param add_text_indentation:
+:return: two lists, one containing strings with the ids and the other one containing strings wit fields formatted</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="hecore.model.model.TreeClass.get_with_childrens">
+<tt class="descname">get_with_childrens</tt><big>(</big><big>)</big><a class="headerlink" href="#hecore.model.model.TreeClass.get_with_childrens" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hecore.model.model.User">
+<em class="property">class </em><tt class="descclassname">hecore.model.model.</tt><tt class="descname">User</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#hecore.model.model.User" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">sqlalchemy.ext.declarative.api.Base</span></tt>, <a class="reference internal" href="#hecore.model.model.repr_table" title="hecore.model.model.repr_table"><tt class="xref py py-class docutils literal"><span class="pre">hecore.model.model.repr_table</span></tt></a></p>
+<p>Maneja un usuario y sus acciones.</p>
+<dl class="attribute">
+<dt id="hecore.model.model.User.default_account">
+<tt class="descname">default_account</tt><a class="headerlink" href="#hecore.model.model.User.default_account" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.User.id">
+<tt class="descname">id</tt><a class="headerlink" href="#hecore.model.model.User.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.User.login">
+<tt class="descname">login</tt><a class="headerlink" href="#hecore.model.model.User.login" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.User.name">
+<tt class="descname">name</tt><a class="headerlink" href="#hecore.model.model.User.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.User.password">
+<tt class="descname">password</tt><a class="headerlink" href="#hecore.model.model.User.password" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.User.password_type">
+<tt class="descname">password_type</tt><a class="headerlink" href="#hecore.model.model.User.password_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.User.state">
+<tt class="descname">state</tt><a class="headerlink" href="#hecore.model.model.User.state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hecore.model.model.User.surname">
+<tt class="descname">surname</tt><a class="headerlink" href="#hecore.model.model.User.surname" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hecore.model.model.User.verify_login">
+<tt class="descname">verify_login</tt><big>(</big><em>username</em>, <em>password</em><big>)</big><a class="headerlink" href="#hecore.model.model.User.verify_login" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs login verification
+:param user: nombre de usuario
+:param password: contraseña de usuario
+:return: Booleano si se autentifica o no</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hecore.model.model.repr_table">
+<em class="property">class </em><tt class="descclassname">hecore.model.model.</tt><tt class="descname">repr_table</tt><a class="headerlink" href="#hecore.model.model.repr_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Metodos base para representar las clases de tabla</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hecore.model.model.sort_db">
+<tt class="descclassname">hecore.model.model.</tt><tt class="descname">sort_db</tt><big>(</big><em>obj</em><big>)</big><a class="headerlink" href="#hecore.model.model.sort_db" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-hecore.model">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-hecore.model" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">src.hecore.model package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-hecore.model.base">src.hecore.model.base module</a></li>
+<li><a class="reference internal" href="#module-hecore.model.db_creation">src.hecore.model.db_creation module</a></li>
+<li><a class="reference internal" href="#module-hecore.model.model">src.hecore.model.model module</a></li>
+<li><a class="reference internal" href="#module-hecore.model">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/hecore.model.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Home Economy 0.0.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2018, Javier Marcon.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

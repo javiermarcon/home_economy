@@ -1,0 +1,531 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>src.libs.kivydatagridplugin package &mdash; Home Economy 0.0.5 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Home Economy 0.0.5 documentation" href="index.html" />
+    <link rel="up" title="src.libs package" href="libs.html" />
+    <link rel="next" title="src.libs_copy package" href="libs_copy.html" />
+    <link rel="prev" title="src.libs package" href="libs.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="libs_copy.html" title="src.libs_copy package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="libs.html" title="src.libs package"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Home Economy 0.0.5 documentation</a> &raquo;</li>
+          <li><a href="libs.html" accesskey="U">src.libs package</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="src-libs-kivydatagridplugin-package">
+<h1>src.libs.kivydatagridplugin package<a class="headerlink" href="#src-libs-kivydatagridplugin-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-libs.kivydatagridplugin.BorderBehavior">
+<span id="src-libs-kivydatagridplugin-borderbehavior-module"></span><h2>src.libs.kivydatagridplugin.BorderBehavior module<a class="headerlink" href="#module-libs.kivydatagridplugin.BorderBehavior" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="libs.kivydatagridplugin.BorderBehavior.BorderBehavior">
+<em class="property">class </em><tt class="descclassname">libs.kivydatagridplugin.BorderBehavior.</tt><tt class="descname">BorderBehavior</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#libs.kivydatagridplugin.BorderBehavior.BorderBehavior" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://kivy.org/docs/api-kivy.uix.widget.html#kivy.uix.widget.Widget" title="(in Kivy v1.10.1)"><tt class="xref py py-class docutils literal"><span class="pre">kivy.uix.widget.Widget</span></tt></a></p>
+<dl class="attribute">
+<dt id="libs.kivydatagridplugin.BorderBehavior.BorderBehavior.CAP">
+<tt class="descname">CAP</tt><em class="property"> = 'square'</em><a class="headerlink" href="#libs.kivydatagridplugin.BorderBehavior.BorderBehavior.CAP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libs.kivydatagridplugin.BorderBehavior.BorderBehavior.JOINT">
+<tt class="descname">JOINT</tt><em class="property"> = 'none'</em><a class="headerlink" href="#libs.kivydatagridplugin.BorderBehavior.BorderBehavior.JOINT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libs.kivydatagridplugin.BorderBehavior.BorderBehavior.border_origin">
+<tt class="descname">border_origin</tt><a class="headerlink" href="#libs.kivydatagridplugin.BorderBehavior.BorderBehavior.border_origin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Property that allows the creation of a tuple of other properties.</p>
+<p>For example, if <cite>x</cite> and <cite>y</cite> are <tt class="xref py py-class docutils literal"><span class="pre">NumericProperty</span></tt>s, we can create a
+<tt class="xref py py-class docutils literal"><span class="pre">ReferenceListProperty</span></tt> for the <cite>pos</cite>. If you change the value of
+<cite>pos</cite>, it will automatically change the values of <cite>x</cite> and <cite>y</cite> accordingly.
+If you read the value of <cite>pos</cite>, it will return a tuple with the values of
+<cite>x</cite> and <cite>y</cite>.</p>
+<p>For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyWidget</span><span class="p">(</span><span class="n">EventDispatcher</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">NumericProperty</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">NumericProperty</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">ReferenceListProperty</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libs.kivydatagridplugin.BorderBehavior.BorderBehavior.border_origin_x">
+<tt class="descname">border_origin_x</tt><a class="headerlink" href="#libs.kivydatagridplugin.BorderBehavior.BorderBehavior.border_origin_x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Property that represents a numeric value.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>defaultvalue</strong> &#8211; int or float, defaults to 0:
+Specifies the default value of the property.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">wid</span> <span class="o">=</span> <span class="n">Widget</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wid</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">wid</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+<span class="go">42</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wid</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;plop&quot;</span>
+<span class="go"> Traceback (most recent call last):</span>
+<span class="go">   File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span>
+<span class="go">   File &quot;properties.pyx&quot;, line 93, in kivy.properties.Property.__set__</span>
+<span class="go">   File &quot;properties.pyx&quot;, line 111, in kivy.properties.Property.set</span>
+<span class="go">   File &quot;properties.pyx&quot;, line 159, in kivy.properties.NumericProperty.check</span>
+<span class="go"> ValueError: NumericProperty accept only int/float</span>
+</pre></div>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 1.4.1: </span>NumericProperty can now accept custom text and tuple value to indicate a
+type, like &#8220;in&#8221;, &#8220;pt&#8221;, &#8220;px&#8221;, &#8220;cm&#8221;, &#8220;mm&#8221;, in the format: &#8216;10pt&#8217; or (10,
+&#8216;pt&#8217;).</p>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libs.kivydatagridplugin.BorderBehavior.BorderBehavior.border_origin_y">
+<tt class="descname">border_origin_y</tt><a class="headerlink" href="#libs.kivydatagridplugin.BorderBehavior.BorderBehavior.border_origin_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>Property that represents a numeric value.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>defaultvalue</strong> &#8211; int or float, defaults to 0:
+Specifies the default value of the property.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">wid</span> <span class="o">=</span> <span class="n">Widget</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wid</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">wid</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+<span class="go">42</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wid</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;plop&quot;</span>
+<span class="go"> Traceback (most recent call last):</span>
+<span class="go">   File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span>
+<span class="go">   File &quot;properties.pyx&quot;, line 93, in kivy.properties.Property.__set__</span>
+<span class="go">   File &quot;properties.pyx&quot;, line 111, in kivy.properties.Property.set</span>
+<span class="go">   File &quot;properties.pyx&quot;, line 159, in kivy.properties.NumericProperty.check</span>
+<span class="go"> ValueError: NumericProperty accept only int/float</span>
+</pre></div>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 1.4.1: </span>NumericProperty can now accept custom text and tuple value to indicate a
+type, like &#8220;in&#8221;, &#8220;pt&#8221;, &#8220;px&#8221;, &#8220;cm&#8221;, &#8220;mm&#8221;, in the format: &#8216;10pt&#8217; or (10,
+&#8216;pt&#8217;).</p>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libs.kivydatagridplugin.BorderBehavior.BorderBehavior.borders">
+<tt class="descname">borders</tt><a class="headerlink" href="#libs.kivydatagridplugin.BorderBehavior.BorderBehavior.borders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Property that represents a Python object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>defaultvalue</strong> &#8211; object type:
+Specifies the default value of the property.</li>
+<li><strong>rebind</strong> &#8211; <p>bool, defaults to False:
+Whether kv rules using this object as an intermediate attribute
+in a kv rule, will update the bound property when this object
+changes.</p>
+<p>That is the standard behavior is that if there&#8217;s a kv rule
+<tt class="docutils literal"><span class="pre">text:</span> <span class="pre">self.a.b.c.d</span></tt>, where <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>, and <tt class="docutils literal"><span class="pre">c</span></tt> are
+properties with <tt class="docutils literal"><span class="pre">rebind</span></tt> <tt class="docutils literal"><span class="pre">False</span></tt> and <tt class="docutils literal"><span class="pre">d</span></tt> is a
+<tt class="xref py py-class docutils literal"><span class="pre">StringProperty</span></tt>. Then when the rule is applied, <tt class="docutils literal"><span class="pre">text</span></tt>
+becomes bound only to <tt class="docutils literal"><span class="pre">d</span></tt>. If <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>, or <tt class="docutils literal"><span class="pre">c</span></tt> change,
+<tt class="docutils literal"><span class="pre">text</span></tt> still remains bound to <tt class="docutils literal"><span class="pre">d</span></tt>. Furthermore, if any of them
+were <tt class="docutils literal"><span class="pre">None</span></tt> when the rule was initially evaluated, e.g. <tt class="docutils literal"><span class="pre">b</span></tt> was
+<tt class="docutils literal"><span class="pre">None</span></tt>; then <tt class="docutils literal"><span class="pre">text</span></tt> is bound to <tt class="docutils literal"><span class="pre">b</span></tt> and will not become bound
+to <tt class="docutils literal"><span class="pre">d</span></tt> even when <tt class="docutils literal"><span class="pre">b</span></tt> is changed to not be <tt class="docutils literal"><span class="pre">None</span></tt>.</p>
+<p>By setting <tt class="docutils literal"><span class="pre">rebind</span></tt> to <tt class="docutils literal"><span class="pre">True</span></tt>, however, the rule will be
+re-evaluated and all the properties rebound when that intermediate
+property changes. E.g. in the example above, whenever <tt class="docutils literal"><span class="pre">b</span></tt> changes
+or becomes not <tt class="docutils literal"><span class="pre">None</span></tt> if it was <tt class="docutils literal"><span class="pre">None</span></tt> before, <tt class="docutils literal"><span class="pre">text</span></tt> is
+evaluated again and becomes rebound to <tt class="docutils literal"><span class="pre">d</span></tt>. The overall result is
+that <tt class="docutils literal"><span class="pre">text</span></tt> is now bound to all the properties among <tt class="docutils literal"><span class="pre">a</span></tt>,
+<tt class="docutils literal"><span class="pre">b</span></tt>, or <tt class="docutils literal"><span class="pre">c</span></tt> that have <tt class="docutils literal"><span class="pre">rebind</span></tt> set to <tt class="docutils literal"><span class="pre">True</span></tt>.</p>
+</li>
+<li><strong>**kwargs</strong> &#8211; <p>a list of keyword arguments:
+<cite>baseclass</cite></p>
+<blockquote>
+<div>If kwargs includes a <cite>baseclass</cite> argument, this value will be
+used for validation: <cite>isinstance(value, kwargs[&#8216;baseclass&#8217;])</cite>.</div></blockquote>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">To mark the property as changed, you must reassign a new python object.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 1.9.0: </span><cite>rebind</cite> has been introduced.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 1.7.0: </span><cite>baseclass</cite> parameter added.</p>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libs.kivydatagridplugin.BorderBehavior.BorderBehavior.bottom_border_points">
+<tt class="descname">bottom_border_points</tt><em class="property"> = []</em><a class="headerlink" href="#libs.kivydatagridplugin.BorderBehavior.BorderBehavior.bottom_border_points" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libs.kivydatagridplugin.BorderBehavior.BorderBehavior.dash_styles">
+<tt class="descname">dash_styles</tt><em class="property"> = {'solid': {'dash_length': 1, 'dash_offset': 0}, 'dashed': {'dash_length': 10, 'dash_offset': 5}, 'dotted': {'dash_length': 1, 'dash_offset': 1}}</em><a class="headerlink" href="#libs.kivydatagridplugin.BorderBehavior.BorderBehavior.dash_styles" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="libs.kivydatagridplugin.BorderBehavior.BorderBehavior.draw_border">
+<tt class="descname">draw_border</tt><big>(</big><big>)</big><a class="headerlink" href="#libs.kivydatagridplugin.BorderBehavior.BorderBehavior.draw_border" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libs.kivydatagridplugin.BorderBehavior.BorderBehavior.left_border_points">
+<tt class="descname">left_border_points</tt><em class="property"> = []</em><a class="headerlink" href="#libs.kivydatagridplugin.BorderBehavior.BorderBehavior.left_border_points" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="libs.kivydatagridplugin.BorderBehavior.BorderBehavior.on_border_origin">
+<tt class="descname">on_border_origin</tt><big>(</big><em>instance</em>, <em>value</em><big>)</big><a class="headerlink" href="#libs.kivydatagridplugin.BorderBehavior.BorderBehavior.on_border_origin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="libs.kivydatagridplugin.BorderBehavior.BorderBehavior.on_borders">
+<tt class="descname">on_borders</tt><big>(</big><em>instance</em>, <em>value</em><big>)</big><a class="headerlink" href="#libs.kivydatagridplugin.BorderBehavior.BorderBehavior.on_borders" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="libs.kivydatagridplugin.BorderBehavior.BorderBehavior.on_pos">
+<tt class="descname">on_pos</tt><big>(</big><em>instance</em>, <em>value</em><big>)</big><a class="headerlink" href="#libs.kivydatagridplugin.BorderBehavior.BorderBehavior.on_pos" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="libs.kivydatagridplugin.BorderBehavior.BorderBehavior.on_size">
+<tt class="descname">on_size</tt><big>(</big><em>instance</em>, <em>value</em><big>)</big><a class="headerlink" href="#libs.kivydatagridplugin.BorderBehavior.BorderBehavior.on_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libs.kivydatagridplugin.BorderBehavior.BorderBehavior.right_border_points">
+<tt class="descname">right_border_points</tt><em class="property"> = []</em><a class="headerlink" href="#libs.kivydatagridplugin.BorderBehavior.BorderBehavior.right_border_points" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="libs.kivydatagridplugin.BorderBehavior.BorderBehavior.set_border_origin">
+<tt class="descname">set_border_origin</tt><big>(</big><big>)</big><a class="headerlink" href="#libs.kivydatagridplugin.BorderBehavior.BorderBehavior.set_border_origin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libs.kivydatagridplugin.BorderBehavior.BorderBehavior.top_border_points">
+<tt class="descname">top_border_points</tt><em class="property"> = []</em><a class="headerlink" href="#libs.kivydatagridplugin.BorderBehavior.BorderBehavior.top_border_points" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="libs.kivydatagridplugin.BorderBehavior.BorderBehavior.update_borders">
+<tt class="descname">update_borders</tt><big>(</big><big>)</big><a class="headerlink" href="#libs.kivydatagridplugin.BorderBehavior.BorderBehavior.update_borders" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-libs.kivydatagridplugin.Datagrid">
+<span id="src-libs-kivydatagridplugin-datagrid-module"></span><h2>src.libs.kivydatagridplugin.Datagrid module<a class="headerlink" href="#module-libs.kivydatagridplugin.Datagrid" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="libs.kivydatagridplugin.Datagrid.BorderButton">
+<em class="property">class </em><tt class="descclassname">libs.kivydatagridplugin.Datagrid.</tt><tt class="descname">BorderButton</tt><a class="headerlink" href="#libs.kivydatagridplugin.Datagrid.BorderButton" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://kivy.org/docs/api-kivy.uix.button.html#kivy.uix.button.Button" title="(in Kivy v1.10.1)"><tt class="xref py py-class docutils literal"><span class="pre">kivy.uix.button.Button</span></tt></a>, <a class="reference internal" href="#libs.kivydatagridplugin.BorderBehavior.BorderBehavior" title="libs.kivydatagridplugin.BorderBehavior.BorderBehavior"><tt class="xref py py-class docutils literal"><span class="pre">libs.kivydatagridplugin.BorderBehavior.BorderBehavior</span></tt></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="libs.kivydatagridplugin.Datagrid.BorderLabel">
+<em class="property">class </em><tt class="descclassname">libs.kivydatagridplugin.Datagrid.</tt><tt class="descname">BorderLabel</tt><a class="headerlink" href="#libs.kivydatagridplugin.Datagrid.BorderLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://kivy.org/docs/api-kivy.uix.label.html#kivy.uix.label.Label" title="(in Kivy v1.10.1)"><tt class="xref py py-class docutils literal"><span class="pre">kivy.uix.label.Label</span></tt></a>, <a class="reference internal" href="#libs.kivydatagridplugin.BorderBehavior.BorderBehavior" title="libs.kivydatagridplugin.BorderBehavior.BorderBehavior"><tt class="xref py py-class docutils literal"><span class="pre">libs.kivydatagridplugin.BorderBehavior.BorderBehavior</span></tt></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="libs.kivydatagridplugin.Datagrid.DataGrid">
+<em class="property">class </em><tt class="descclassname">libs.kivydatagridplugin.Datagrid.</tt><tt class="descname">DataGrid</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#libs.kivydatagridplugin.Datagrid.DataGrid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://kivy.org/docs/api-kivy.uix.boxlayout.html#kivy.uix.boxlayout.BoxLayout" title="(in Kivy v1.10.1)"><tt class="xref py py-class docutils literal"><span class="pre">kivy.uix.boxlayout.BoxLayout</span></tt></a></p>
+<dl class="method">
+<dt id="libs.kivydatagridplugin.Datagrid.DataGrid.addRow">
+<tt class="descname">addRow</tt><big>(</big><em>rowsData</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#libs.kivydatagridplugin.Datagrid.DataGrid.addRow" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="libs.kivydatagridplugin.Datagrid.DataGrid.changeCellValueAtRow">
+<tt class="descname">changeCellValueAtRow</tt><big>(</big><em>rowIndex</em>, <em>cellIndex</em>, <em>cellValue</em><big>)</big><a class="headerlink" href="#libs.kivydatagridplugin.Datagrid.DataGrid.changeCellValueAtRow" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="libs.kivydatagridplugin.Datagrid.DataGrid.changeRowColor">
+<tt class="descname">changeRowColor</tt><big>(</big><em>rowIndex</em>, <em>changedColor</em><big>)</big><a class="headerlink" href="#libs.kivydatagridplugin.Datagrid.DataGrid.changeRowColor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="libs.kivydatagridplugin.Datagrid.DataGrid.changeRowColorByID">
+<tt class="descname">changeRowColorByID</tt><big>(</big><em>widget_id</em>, <em>changedColor</em><big>)</big><a class="headerlink" href="#libs.kivydatagridplugin.Datagrid.DataGrid.changeRowColorByID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="libs.kivydatagridplugin.Datagrid.DataGrid.removeAllContent">
+<tt class="descname">removeAllContent</tt><big>(</big><big>)</big><a class="headerlink" href="#libs.kivydatagridplugin.Datagrid.DataGrid.removeAllContent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="libs.kivydatagridplugin.Datagrid.DataGrid.removeRowAtIndex">
+<tt class="descname">removeRowAtIndex</tt><big>(</big><em>index</em><big>)</big><a class="headerlink" href="#libs.kivydatagridplugin.Datagrid.DataGrid.removeRowAtIndex" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="libs.kivydatagridplugin.Datagrid.DataGrid.removeRowById">
+<tt class="descname">removeRowById</tt><big>(</big><em>widget_id</em><big>)</big><a class="headerlink" href="#libs.kivydatagridplugin.Datagrid.DataGrid.removeRowById" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="libs.kivydatagridplugin.Datagrid.DataGrid.setupGrid">
+<tt class="descname">setupGrid</tt><big>(</big><em>headers</em>, <em>width</em>, <em>height</em><big>)</big><a class="headerlink" href="#libs.kivydatagridplugin.Datagrid.DataGrid.setupGrid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="libs.kivydatagridplugin.Datagrid.DataGridContent">
+<em class="property">class </em><tt class="descclassname">libs.kivydatagridplugin.Datagrid.</tt><tt class="descname">DataGridContent</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#libs.kivydatagridplugin.Datagrid.DataGridContent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://kivy.org/docs/api-kivy.uix.scrollview.html#kivy.uix.scrollview.ScrollView" title="(in Kivy v1.10.1)"><tt class="xref py py-class docutils literal"><span class="pre">kivy.uix.scrollview.ScrollView</span></tt></a></p>
+<dl class="method">
+<dt id="libs.kivydatagridplugin.Datagrid.DataGridContent.addRow">
+<tt class="descname">addRow</tt><big>(</big><em>widget</em>, <em>index</em><big>)</big><a class="headerlink" href="#libs.kivydatagridplugin.Datagrid.DataGridContent.addRow" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="libs.kivydatagridplugin.Datagrid.DataGridContent.changeCellValueAtRow">
+<tt class="descname">changeCellValueAtRow</tt><big>(</big><em>rowIndex</em>, <em>cellIndex</em>, <em>cellValue</em><big>)</big><a class="headerlink" href="#libs.kivydatagridplugin.Datagrid.DataGridContent.changeCellValueAtRow" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="libs.kivydatagridplugin.Datagrid.DataGridContent.insertRowAtIndex">
+<tt class="descname">insertRowAtIndex</tt><big>(</big><em>row</em>, <em>index</em><big>)</big><a class="headerlink" href="#libs.kivydatagridplugin.Datagrid.DataGridContent.insertRowAtIndex" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="libs.kivydatagridplugin.Datagrid.DataGridContent.removeRowAtIndex">
+<tt class="descname">removeRowAtIndex</tt><big>(</big><em>index</em><big>)</big><a class="headerlink" href="#libs.kivydatagridplugin.Datagrid.DataGridContent.removeRowAtIndex" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="libs.kivydatagridplugin.Datagrid.DataGridContent.removeRowById">
+<tt class="descname">removeRowById</tt><big>(</big><em>widget_id</em><big>)</big><a class="headerlink" href="#libs.kivydatagridplugin.Datagrid.DataGridContent.removeRowById" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="libs.kivydatagridplugin.Datagrid.DataGridRow">
+<em class="property">class </em><tt class="descclassname">libs.kivydatagridplugin.Datagrid.</tt><tt class="descname">DataGridRow</tt><big>(</big><em>data</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#libs.kivydatagridplugin.Datagrid.DataGridRow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://kivy.org/docs/api-kivy.uix.gridlayout.html#kivy.uix.gridlayout.GridLayout" title="(in Kivy v1.10.1)"><tt class="xref py py-class docutils literal"><span class="pre">kivy.uix.gridlayout.GridLayout</span></tt></a></p>
+<dl class="attribute">
+<dt id="libs.kivydatagridplugin.Datagrid.DataGridRow.bgColorProperty">
+<tt class="descname">bgColorProperty</tt><a class="headerlink" href="#libs.kivydatagridplugin.Datagrid.DataGridRow.bgColorProperty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Property that represents a Python object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>defaultvalue</strong> &#8211; object type:
+Specifies the default value of the property.</li>
+<li><strong>rebind</strong> &#8211; <p>bool, defaults to False:
+Whether kv rules using this object as an intermediate attribute
+in a kv rule, will update the bound property when this object
+changes.</p>
+<p>That is the standard behavior is that if there&#8217;s a kv rule
+<tt class="docutils literal"><span class="pre">text:</span> <span class="pre">self.a.b.c.d</span></tt>, where <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>, and <tt class="docutils literal"><span class="pre">c</span></tt> are
+properties with <tt class="docutils literal"><span class="pre">rebind</span></tt> <tt class="docutils literal"><span class="pre">False</span></tt> and <tt class="docutils literal"><span class="pre">d</span></tt> is a
+<tt class="xref py py-class docutils literal"><span class="pre">StringProperty</span></tt>. Then when the rule is applied, <tt class="docutils literal"><span class="pre">text</span></tt>
+becomes bound only to <tt class="docutils literal"><span class="pre">d</span></tt>. If <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>, or <tt class="docutils literal"><span class="pre">c</span></tt> change,
+<tt class="docutils literal"><span class="pre">text</span></tt> still remains bound to <tt class="docutils literal"><span class="pre">d</span></tt>. Furthermore, if any of them
+were <tt class="docutils literal"><span class="pre">None</span></tt> when the rule was initially evaluated, e.g. <tt class="docutils literal"><span class="pre">b</span></tt> was
+<tt class="docutils literal"><span class="pre">None</span></tt>; then <tt class="docutils literal"><span class="pre">text</span></tt> is bound to <tt class="docutils literal"><span class="pre">b</span></tt> and will not become bound
+to <tt class="docutils literal"><span class="pre">d</span></tt> even when <tt class="docutils literal"><span class="pre">b</span></tt> is changed to not be <tt class="docutils literal"><span class="pre">None</span></tt>.</p>
+<p>By setting <tt class="docutils literal"><span class="pre">rebind</span></tt> to <tt class="docutils literal"><span class="pre">True</span></tt>, however, the rule will be
+re-evaluated and all the properties rebound when that intermediate
+property changes. E.g. in the example above, whenever <tt class="docutils literal"><span class="pre">b</span></tt> changes
+or becomes not <tt class="docutils literal"><span class="pre">None</span></tt> if it was <tt class="docutils literal"><span class="pre">None</span></tt> before, <tt class="docutils literal"><span class="pre">text</span></tt> is
+evaluated again and becomes rebound to <tt class="docutils literal"><span class="pre">d</span></tt>. The overall result is
+that <tt class="docutils literal"><span class="pre">text</span></tt> is now bound to all the properties among <tt class="docutils literal"><span class="pre">a</span></tt>,
+<tt class="docutils literal"><span class="pre">b</span></tt>, or <tt class="docutils literal"><span class="pre">c</span></tt> that have <tt class="docutils literal"><span class="pre">rebind</span></tt> set to <tt class="docutils literal"><span class="pre">True</span></tt>.</p>
+</li>
+<li><strong>**kwargs</strong> &#8211; <p>a list of keyword arguments:
+<cite>baseclass</cite></p>
+<blockquote>
+<div>If kwargs includes a <cite>baseclass</cite> argument, this value will be
+used for validation: <cite>isinstance(value, kwargs[&#8216;baseclass&#8217;])</cite>.</div></blockquote>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">To mark the property as changed, you must reassign a new python object.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 1.9.0: </span><cite>rebind</cite> has been introduced.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 1.7.0: </span><cite>baseclass</cite> parameter added.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="libs.kivydatagridplugin.Datagrid.DataGridRow.changeCellValueAtIndex">
+<tt class="descname">changeCellValueAtIndex</tt><big>(</big><em>index</em>, <em>value</em><big>)</big><a class="headerlink" href="#libs.kivydatagridplugin.Datagrid.DataGridRow.changeCellValueAtIndex" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="libs.kivydatagridplugin.Datagrid.DataGridRow.changeRowColor">
+<tt class="descname">changeRowColor</tt><big>(</big><em>changedColor</em><big>)</big><a class="headerlink" href="#libs.kivydatagridplugin.Datagrid.DataGridRow.changeRowColor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="libs.kivydatagridplugin.Datagrid.DataGridRow.cleanCells">
+<tt class="descname">cleanCells</tt><big>(</big><big>)</big><a class="headerlink" href="#libs.kivydatagridplugin.Datagrid.DataGridRow.cleanCells" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="libs.kivydatagridplugin.Datagrid.DataGridRow.updateRect">
+<tt class="descname">updateRect</tt><big>(</big><em>*args</em><big>)</big><a class="headerlink" href="#libs.kivydatagridplugin.Datagrid.DataGridRow.updateRect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="src-libs-kivydatagridplugin-example-module">
+<h2>src.libs.kivydatagridplugin.example module<a class="headerlink" href="#src-libs-kivydatagridplugin-example-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-libs.kivydatagridplugin">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-libs.kivydatagridplugin" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">src.libs.kivydatagridplugin package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-libs.kivydatagridplugin.BorderBehavior">src.libs.kivydatagridplugin.BorderBehavior module</a></li>
+<li><a class="reference internal" href="#module-libs.kivydatagridplugin.Datagrid">src.libs.kivydatagridplugin.Datagrid module</a></li>
+<li><a class="reference internal" href="#src-libs-kivydatagridplugin-example-module">src.libs.kivydatagridplugin.example module</a></li>
+<li><a class="reference internal" href="#module-libs.kivydatagridplugin">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="libs.html"
+                        title="previous chapter">src.libs package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="libs_copy.html"
+                        title="next chapter">src.libs_copy package</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/libs.kivydatagridplugin.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="libs_copy.html" title="src.libs_copy package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="libs.html" title="src.libs package"
+             >previous</a> |</li>
+        <li><a href="index.html">Home Economy 0.0.5 documentation</a> &raquo;</li>
+          <li><a href="libs.html" >src.libs package</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2018, Javier Marcon.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

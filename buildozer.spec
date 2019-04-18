@@ -37,7 +37,7 @@ version.filename = .bumpversion.cfg
 
 # (list) Application requirements
 # comma seperated e.g. requirements = sqlite3,kivy
-requirements = python2, kivy, sqlite3, passlib, pytest, SQLAlchemy, incremental, twisted, lxml, pycrypto, future, KivyCalendar, openssl, requests
+requirements = python2, kivy, sqlite3, passlib, pytest, SQLAlchemy, incremental, twisted, lxml, pycrypto, future, KivyCalendar, openssl, requests, mock
 #, python3crystax, openssl
 #kivy==master,git+https://gitlab.com/kivymd/KivyMD.git
 

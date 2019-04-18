@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>&lt;no title&gt; &mdash; Home Economy 0.0.5 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Home Economy 0.0.5 documentation" href="index.html" />
+    <link rel="next" title="src.hecore package" href="hecore.html" />
+    <link rel="prev" title="Welcome to Home Economy’s documentation!" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="hecore.html" title="src.hecore package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Home Economy’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Home Economy 0.0.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <p id="readme"># Economia Casera</p>
+<p>Sistema que permita llevar la economía de la casa en forma fácil e intuitiva permitiendo que cada integrante del grupo familiar cargue las transacciones desde su celular sin necesidad de estar conectado y se pueda llevar una economía ordenada tanto de la casa como de los gastos personales de cada uno.</p>
+<p>Tambien esta pensado para que la informacion que pueda ser accesible via web o mail se cargue en forma automatica evitandole al usuario el trabajo de cargarla (ahorrandole tiempo y esfuerzo al usuario) y evitando discrepancias x olvidarse de cargar algo.</p>
+<p>## Características</p>
+<p>### realizadas
+Todavia no hay nada hecho que sea usable.</p>
+<p>### sprint actual</p>
+<p>#### Seguridad:
+- Manejo básico de usuarios.</p>
+<p>#### Usabilidad</p>
+<ul class="simple">
+<li>Que sea facil de usar para personas sin conocimientos de computación ni de economia.</li>
+<li>Que sea multi-plataforma (Linux, Windows, Android, etc.)</li>
+<li>Que permita sincronizar diferentes dispositivos y mantenga una base de datos en cada terminal.</li>
+<li>Que permita el uso sin estar conectado a internet y al obtener conexión permita sincronizar con las demás terminales.</li>
+<li>Que tenga sistema de plugins para agregar funcionalidades en forma fácil.</li>
+</ul>
+<p>#### Economia</p>
+<ul class="simple">
+<li>Que permita ingresar operaciones básicas como gastos, ingresos simples o transferencias simples</li>
+<li>Que maneje múltiples monedas.</li>
+</ul>
+<p>### Sprints futuros</p>
+<p>#### Seguridad:
+- Usuarios con contraseña estatica o dinamica (que la contraseña incluya calculos con variables como fecha y hora para que cambie cada 5 minutos por ejemplo).
+- Que se puedan usar varios patrones de contraseña en forma secuencial o por horarios.
+- Que haya un comando para deshabilitar el login hasta el proximo cambio de contraseña.</p>
+<p>#### Usabilidad</p>
+<ul class="simple">
+<li>Que permita guardar y transmitir los datos en forma encriptada,</li>
+<li>Que cada transacción permita guardar uno o varios archivos de comprobante.</li>
+<li>Que permita importar y exportar datos en QIF y otros formatos de archivos contables.</li>
+<li>Que permita importar datos de bases de datos de otros progrmamas como &#8220;money Manager Ex&#8221; por ejemplo.</li>
+<li>Que tenga backward-compatibility permitiendo la sincronización entre distintas versiones.</li>
+<li>Que tenga un parser de mails para incorporar automaticamente transacciones que se informan por mail (pagos con débito automático, valorización de cartera, acreditación de dividendos, etc).</li>
+<li>Que permita hablarle a la aplicacion con patrones preestablecidos y la aplicacion reconozca la voz y ejecute las ordenes dictadas. Por ejemplo &#8220;contraseña 12345 gasté 57 pesos con 40 centavos en una ensalada en chino top para almuerzo deshabilitar login&#8221; y (si la contraseña especificada es correcta) que deshabilite el login e ingrese una transaccion nueva con los datos: tipo: gasto, moneda: ARS, importe: 57.40, destinatario: chino top, categoria: almuerzo, descripcion: ensalada. Tambien podria ser por ejemplo &#8220;ayer le preste 14 pesos a NN para comprar una coca cola&#8221; o &#8220;NN me devolvio 14 pesos de lo que me debia&#8221;.</li>
+<li>Que tenga un anazizador de webs tipo selenium para loguearse en páginas (de bancos, de inversiones, etc.) para actualizar los valores de las inversiones.</li>
+<li>Que permita guardar backups en forma automatica.</li>
+<li>Que permita usar y guardar plantillas de operaciones.</li>
+<li>Que tenga reglas para definir x horario y monto la plantilla x defecto al iniciar una operacion.</li>
+<li>Que tenga multiples idiomas.</li>
+<li>Que sincronice con Google Calendar los eventos de inversiones (pago cupones y dividendos, finalizacion de inversiones, etc).</li>
+</ul>
+<p>#### Economia</p>
+<ul class="simple">
+<li>Que maneje múltiples monedas y la conversión de las mismas (con o sin comisión).</li>
+<li>Que maneje gastos tanto recurrentes (impuestos x ejemplo) como no recurrentes.</li>
+<li>Que maneje ingresos incluyendo valores futuros (cheque diferido x ejemplo).</li>
+<li>Que maneje transacciones con comisiones fijas y/o variables.</li>
+<li>Que maneje inversiones (bonos, acciones, crowfunding, crowlending,  criptomonedas, metales, etc).</li>
+<li>Que maneje presupuesto de gastos.</li>
+<li>Que tenga un modo &#8220;avanzado&#8221; que permita calcular y registrar operaciones mas complejas (como swaption por ejemplo).</li>
+<li>Que calcule algunos impuestos como por ejemplo bienes personales, ingresos brutos, ganancias, etc.</li>
+<li>Que permita importar datos de bancos, tarjetas de crédito, brokers, etc.</li>
+<li>Que tenga cuentas compartidas (gastos de la casa  o supermercados por ejemplo).</li>
+<li>Que maneje prestamos a otras personas.</li>
+<li>Que tenga plugins de consejos financieros (por ejemplo te puede aconsejar cuando comprar o vender divisas o acciones usando estrategias como los promedios de ruedas moviles).</li>
+</ul>
+<p>## Diseño y desarrollo</p>
+<p>La aplicación se desarrollará en capas utilizando el lenguaje Python. Se empaquetará con Kivy para que sea multiplataforma.</p>
+<p>La aplicación tendrá distintas partes que interactuarán:
+- <strong>Core</strong>: parte central que permitirá hacer los asientos, cálculos que se guarden, lógica de usuarios, manejo de plugins, etc.
+- <strong>Sync</strong>: módulo de sincronización y api que permite que interactuar con otras instancias de Home_Economy o con programas externos.
+- <strong>GUI</strong>: interfaz gráfica linda para interacuar con la aplicación.
+- <strong>Listener</strong>: módulo para interactuar hablando con la aplicación.</p>
+<p>### Core</p>
+<p>El core se hará con clases de python puro, las cuales serán importadas por los demás módulos.
+Para procesamiento de datos se usará pandas y numpy.
+Para almacenamiento de datos se utilizará el ORM sqlAlchemy con una base de datos sqlite (tener en cuenta <a class="reference external" href="http://cheparev.com/kivy-sqlite/">http://cheparev.com/kivy-sqlite/</a>), ya que sqlite es muy liviana, permite encriptar y no necesita la instalación de un motor de base de datos separado. Si la aplicación crece en complejidad puede sustituirse la base de datos por una bd relacional más robusta (como postgresql) o incluso sustituir el diseño para utilizar una base de datos nosql o de grafos. Igualmente al tener una api de comunicación, el cambio sería transparente para los demás módulos.</p>
+<p>### Sync</p>
+<p>La parte de sync tendrá una api hecha con Tornado, la cual se utilizará tanto para la comunicación con otras instancias de la aplicación como con programas externos. También se prevee que en el futuro permita importar y exportar datos utilizando archivos compartidos por Dropbox, Google Drive, etc. Al sincronizar x http tendra opciones de ingresar ip, utilizar ultima ip conocida y/o buscar host en lan.</p>
+<p>### GUI</p>
+<p>La gui se desarrollará con kivy, que es multiplataforma, y de esa forma me evito tener 2 aplicaciones distintas (para moviles y para pc). Entre los widgets que se pretende utilizar se encuentran:
+- Kivy Datagrid Plugin (<a class="reference external" href="https://github.com/namkazt/Kivy-Datagrid-plugin">https://github.com/namkazt/Kivy-Datagrid-plugin</a>)
+- Kivy Garden (<a class="reference external" href="https://github.com/kivy-garden">https://github.com/kivy-garden</a>)</p>
+<p>### Listener</p>
+<p>Este módulo utilizará reconocimiento de voz para entender lo que el usuario le dice y así operar con el sistema. Se utilizará para eso la librería CMUSphinx (<a class="reference external" href="https://cmusphinx.github.io/">https://cmusphinx.github.io/</a>) para hacer el reconocmimiento y la librería SpeechRecognition (<a class="reference external" href="https://pypi.python.org/pypi/SpeechRecognition">https://pypi.python.org/pypi/SpeechRecognition</a>) como puente entre el programa y CMUSphinx.</p>
+<p>### Plugins</p>
+<p>Los plugins tendrán funcionalidades específicas como por ejemplo leer mails, manejar duplicados (por ejemplo si 2 plugins leen info de distintos medios y ponen una misma transacción 2 veces), etc.</p>
+<p>### Testing
+Se desarrollará tests unitarios en forma de historia y luego se verificará el accuracy y coverage de los tests para  que no quede nada en el tintero. Posiblemente se utilice KivyUnitTests (<a class="reference external" href="https://github.com/KeyWeeUsr/KivyUnitTest">https://github.com/KeyWeeUsr/KivyUnitTest</a>).</p>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to Home Economy&#8217;s documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="hecore.html"
+                        title="next chapter">src.hecore package</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/readme.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="hecore.html" title="src.hecore package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Home Economy’s documentation!"
+             >previous</a> |</li>
+        <li><a href="index.html">Home Economy 0.0.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2018, Javier Marcon.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>
