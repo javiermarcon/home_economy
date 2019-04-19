@@ -47,7 +47,7 @@ requirements = python2, kivy, sqlite3, passlib, pytest, SQLAlchemy, incremental,
 # requirements.source.kivy = ../../kivy
 
 # (list) Garden requirements
-#garden_requirements =
+garden_requirements = filebrowser
 
 # (str) Presplash of the application
 #presplash.filename = %(source.dir)s/data/presplash.png
