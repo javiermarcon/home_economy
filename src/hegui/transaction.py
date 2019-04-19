@@ -6,8 +6,8 @@
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from KivyCalendar import DatePicker
-from libs.float_input import FloatInput
-from libs.hvspinner import HVSpinner
+from lib.float_input import FloatInput
+from lib.hvspinner import HVSpinner
 
 from hecore.model.model import Account, Category
 

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from kivy.uix.boxlayout import BoxLayout
-from libs.kivydatagridplugin.Datagrid import DataGrid
+from lib.kivydatagridplugin.Datagrid import DataGrid
 from kivy.core.window import Window
 #from kivy.graphics import Color
 from hecore.model.model import Currency

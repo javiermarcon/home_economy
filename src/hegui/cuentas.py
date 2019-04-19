@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from hecore.model.model import Account, Acounttype
-from libs.treeviewdb import TreeViewDb
+from lib.treeviewdb import TreeViewDb
 
 
 class PaginaCuentas(TreeViewDb):

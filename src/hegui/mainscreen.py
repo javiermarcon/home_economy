@@ -4,7 +4,7 @@ from kivy.app import App
 from kivy.uix.recycleview import RecycleView
 #from kivy.clock import Clock
 from hegui.transaction import GuiTransaction
-from libs.treeviewdb import TreeViewDb
+from lib.treeviewdb import TreeViewDb
 from hecore.model.model import Account, Acounttype
 
 class MainPanel(TreeViewDb):

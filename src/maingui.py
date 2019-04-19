@@ -26,7 +26,7 @@ import string
 from hegui.login import Login
 from hegui.menufunctions import MenuFunctions, SidePanel_AppMenu
 from hegui.settings_data import settings_data, SettingPassword
-from libs.setting_option_mapping import SettingOptionMapping
+from lib.setting_option_mapping import SettingOptionMapping
 from hegui.popup import PopupActions
 
 from hecore.hecore import HecoreBackend
