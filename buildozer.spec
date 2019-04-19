@@ -37,7 +37,7 @@ version.filename = .bumpversion.cfg
 
 # (list) Application requirements
 # comma seperated e.g. requirements = sqlite3,kivy
-requirements = python2, unicodedata, kivy, sqlite3, passlib, pytest, SQLAlchemy, incremental, twisted, lxml, pycrypto, future, KivyCalendar, openssl, requests, mock
+requirements = python2, kivy, sqlite3, passlib, pytest, SQLAlchemy, incremental, twisted, lxml, pycrypto, future, KivyCalendar, openssl, requests, mock
 #, python3crystax, openssl
 #kivy==master,git+https://gitlab.com/kivymd/KivyMD.git
 
@@ -92,16 +92,16 @@ fullscreen = 0
 #android.permissions = INTERNET
 
 # (int) Android API to use
-android.api = 19
+#android.api = 19
 
 # (int) Minimum API required
-android.minapi = 19
+#android.minapi = 19
 
 # (int) Android SDK version to use
-android.sdk = 23
+#android.sdk = 23
 
 # (str) Android NDK version to use
-android.ndk = 9d
+#android.ndk = 9d
 #10.3.2
 
 # (bool) Use --private data storage (True) or --dir public storage (False)
