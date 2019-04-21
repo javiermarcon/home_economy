@@ -65,7 +65,7 @@ __check_defined = \
 
 git_commit: check_msg_var
 	# root files 
-	git add ./Makefile ./readme.md ./buildozer.spec
+	git add ./Makefile ./readme.md ./buildozer.spec ./.bumpversion.cfg
 	# requirements
 	git add ./src/requirements*.txt
 	# documents
